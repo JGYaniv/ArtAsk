@@ -27,3 +27,7 @@
 /config/master.key
 
 Gemfile.lock
+package-lock.json
+
+/app/assets/javascripts/bundle.js
+/app/assets/javascripts/bundle.js.map
