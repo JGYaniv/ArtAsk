@@ -1,0 +1,27 @@
+
+ .menu-bar{
+    height: 50px;
+    padding: 5px 20px 5px 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid lightgray 1px;
+
+    nav {
+        a{
+            padding: 0 16px 0 16px;
+            text-decoration: none;
+            color: mediumslateblue;
+            font-family: sans-serif;
+            font-size: 1rem;
+        }
+        a:hover{
+            color:#5c46d4;
+        }
+    }
+
+    img {
+        display: block;
+        height: 35px;
+    }
+ }
