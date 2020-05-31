@@ -20,4 +20,5 @@ export const login = user => dispatch => (
 export const logout = () => dispatch => (
     sessionApiUtil.logout()
         .then(() => dispatch(logoutCurrentUser()))
+        .then(() => window.localStorage.setItem('currentUser', null))
 )

@@ -17,6 +17,10 @@ export default class LogIn extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.login(this.state)
+            .then(() => window.localStorage.setItem('currentUser', {
+                email: this.state.email,
+                account_type: 'client',
+            }))
             .then(() => this.props.history.push('/dashboard'));
     }
 
