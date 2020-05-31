@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
             login(@user)
             redirect_to api_user_url(@user)
         else
-            render json: @user.errors.full_messages
+            render json: @user.errors.full_messages, status: 401
         end
     end
 
@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
         if @user.update(user_params)
             redirect_to api_user_url
         else
-            render json: @user.errors.full_messages
+            render json: @user.errors.full_messages, status: 401
         end
     end
 

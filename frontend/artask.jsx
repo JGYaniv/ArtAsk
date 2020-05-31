@@ -5,12 +5,14 @@ import storeConfig from './store/store'
 import {logout} from './actions/session_actions'
 document.addEventListener("DOMContentLoaded", ()=>{
     var preloadedState = {}
-    if (window.localStorage.getItem('currentUser')) {
+
+    if (Boolean(window.localStorage.getItem('currentUser'))) {
         preloadedState = {
             session: { currentUser: { ...window.localStorage.getItem('currentUser')} }
         }
     }
     let store = storeConfig(preloadedState)
+
     window.store = store
     window.logout = () => store.dispatch(logout())
 

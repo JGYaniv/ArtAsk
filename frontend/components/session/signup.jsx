@@ -16,13 +16,24 @@ export default class SignUp extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.postUser(this.state)
-            .then(() => window.localStorage.setItem('currentUser', {
-                email: this.state.email,
-                account_type: 'client'
-            }))
             .then(() => this.props.history.push('/dashboard'))
     }
 
+    renderErrors() {
+        let errors = []
+        if (this.props.errors.length > 0) {
+            // console.log(this.props.errors)
+            return (
+                <ul>
+                    {this.props.errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+            )
+        }
+        return errors
+    }
+    
     render(){
         return(
             <div className="session-background-image">
@@ -33,6 +44,7 @@ export default class SignUp extends React.Component {
                     <input type="text" placeholder="Email Address" onChange={this.handleChange("email")} value={this.state.email}/>
                     <input type="password" placeholder="Password" onChange={this.handleChange("password")} value={this.state.password}/>
                     <input type="text" placeholder="Area Code" onChange={this.handleChange("area_code")} value={this.state.area_code}/>
+                    {this.renderErrors()}
                     <p>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions.</a></p>
                     <input type="submit" value="Sign up"/>
                 </form>

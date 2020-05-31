@@ -19,3 +19,12 @@ User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
         area_code: rand(10000..99999)
     })
 end
+
+User.create!({
+        email: "bob@tablo.co",
+        password: "123456",
+        first_name: "Bobby",
+        last_name: "Tables",
+        account_type: "client",
+        area_code: rand(10000..99999)
+})
