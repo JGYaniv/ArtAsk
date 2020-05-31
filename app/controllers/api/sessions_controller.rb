@@ -3,7 +3,7 @@ class Api::SessionsController < ApplicationController
         user = User.find_by(email: user_params[:email])
         if user && user.is_password?(user_params[:password])
             login(user)
-            redirect_to root_url
+            redirect_to api_user_url(user)
         else
             render json: ["invalid username or password"]
         end
@@ -11,6 +11,5 @@ class Api::SessionsController < ApplicationController
 
     def destroy
         logout
-        redirect_to root_url
     end
 end

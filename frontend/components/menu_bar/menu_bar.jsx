@@ -9,17 +9,17 @@ export default class MenuBar extends React.Component{
         if (this.mode === "splash"){
             return (
                 <div className="menu-bar">
-                    <img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo" />
+                    <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo" /></a>
                     <nav>
                         <a href="#login">Login</a>
-                        <a href="#signup">Artist Sign Up</a>
+                        <a href="#signup" className="volunteerButton">Volunteer with us!</a>
                     </nav>
                 </div>
             )
         } else {
             return(
                 <div className="menu-bar">
-                    <img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo"/>
+                    <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo"/></a>
                     <nav>
                         <a href="#dashboard/explore">Book a Task</a>
                         <a href="#dashboard/active">My Tasks</a>

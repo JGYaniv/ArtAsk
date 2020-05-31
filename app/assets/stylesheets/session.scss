@@ -18,8 +18,6 @@ form {
     height: 525px;
     align-items: center;    
     img {
-        position:relative;
-        text-align: start;
         margin: 10px 0 13px 0;
         height: 50px;
     }
@@ -82,6 +80,9 @@ form {
     a:hover{
         color: #5c46d4; 
     }
+    a:first-child{
+        text-align: center;
+    }
 }
 
 form.signup{
@@ -113,6 +114,8 @@ form.signup{
         padding-top: 40px;
         width: 100%;
         height: 100%;
+        border: none;
+        border-radius: 0;
         input {
             width: 250px;
         }
@@ -123,7 +126,8 @@ form.signup{
             width: 270px;
         }
         p {
-            margin-left: 50px;
+            margin-left: 10px;
+            width: 270px;
         }
     }
 }

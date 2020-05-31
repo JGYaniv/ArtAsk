@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
             :about,
             :portfolio_url,
             :account_type,
-            :phone_number
+            :phone_number,
+            :area_code
         )
     end
 end

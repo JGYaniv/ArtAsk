@@ -24,4 +24,16 @@
         display: block;
         height: 35px;
     }
+
+    .volunteerButton {
+        border: 1px solid mediumslateblue;
+        border-radius: 4px;
+        padding: 10px;
+        margin-left: 20px;
+    }
+
+    .volunteerButton:hover{
+        background-color: mediumslateblue;
+        color: white;
+    }
  }

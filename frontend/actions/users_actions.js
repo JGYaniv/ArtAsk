@@ -1,4 +1,5 @@
 import * as usersApiUtil from '../utils/users_api_utils'
+import {recieveCurrentUser, receiveCurrentUser} from './session_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -23,3 +24,8 @@ export const getUsers = () => dispatch => (
         .then(user => dispatch(receiveUser(user)))
 )
 
+export const postUser = user => dispatch => (
+    usersApiUtil.postUser(user)
+        .then(user => dispatch(receiveUser(user)))
+        .then(user => dispatch(receiveCurrentUser(user)))
+)
