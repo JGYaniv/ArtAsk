@@ -1,12 +1,10 @@
 import React from 'react'
 
-export default class SignUp extends React.Component {
+export default class Volunteer extends React.Component {
     constructor(props) {
         super(props)
-        const { errors, postUser, history } = props.sessionProps
-        this.errors = errors
-        this.postUser = postUser
-        this.history = history
+        this.errors = props.errors
+        this.postUser = props.postUser
 
         this.state = { email: "", password: "", first_name: "", last_name: "", area_code: "", account_type: "client" }
 
@@ -41,15 +39,20 @@ export default class SignUp extends React.Component {
 
     render() {
         return (
-            <form className="signup volunteer" onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="First Name" onChange={this.handleChange("first_name")} value={this.state.first_name} />
-                <input type="text" placeholder="Last Name" onChange={this.handleChange("last_name")} value={this.state.last_name} />
-                <input type="text" placeholder="Email Address" onChange={this.handleChange("email")} value={this.state.email} />
-                <input type="password" placeholder="Password" onChange={this.handleChange("password")} value={this.state.password} />
-                <input type="text" placeholder="Area Code" onChange={this.handleChange("area_code")} value={this.state.area_code} />
+            <form onSubmit={this.handleSubmit}>
+                <label>First Name</label>
+                <input type="text" onChange={this.handleChange("first_name")} value={this.state.first_name} />
+                <label>Last Name</label>
+                <input type="text" onChange={this.handleChange("last_name")} value={this.state.last_name} />
+                <label>Email Address</label>
+                <input type="text" onChange={this.handleChange("email")} value={this.state.email} />
+                <label>Password</label>
+                <input type="password" onChange={this.handleChange("password")} value={this.state.password} />
+                <label>Zip Code</label>
+                <input type="text" onChange={this.handleChange("area_code")} value={this.state.area_code} />
                 {this.renderErrors()}
-                <p>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions.</a></p>
-                <input type="submit" value="Start Volunteering!" />
+                <p className='big-terms'>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions. </a>Please read them carefully!</p>
+                <input type="submit" value="Sign up" className="signup" />
             </form>
         )
     }

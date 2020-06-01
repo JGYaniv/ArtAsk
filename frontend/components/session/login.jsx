@@ -3,8 +3,8 @@ import React from 'react'
 export default class LogIn extends React.Component {
     constructor(props){
         super(props)
-        this.errors = this.props.errors
-        this.login = this.props.login
+        this.errors = props.errors
+        this.login = props.login
 
         this.state = {email: "", password: ""}
 

@@ -3,8 +3,8 @@ import React from 'react'
 export default class SignUp extends React.Component {
     constructor(props){
         super(props)
-        this.errors = this.props.errors
-        this.postUser = this.props.postUser
+        this.errors = props.errors
+        this.postUser = props.postUser
 
         this.state = { email: "", password: "", first_name: "", last_name: "", area_code: "", account_type: "client"}
 
@@ -39,7 +39,7 @@ export default class SignUp extends React.Component {
     
     render(){
         return(
-            <form className="signup" onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <label>First Name</label>
                 <input type="text" onChange={this.handleChange("first_name")} value={this.state.first_name}/>
                 <label>Last Name</label>
