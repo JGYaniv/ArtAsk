@@ -43,15 +43,9 @@ class SignInOrUp extends React.Component {
                     <a href="/"><img src='https://i.imgur.com/sh8ARuh.png' /></a>
                     <Switch>
                         <Route exact path='/a' component={SignInOrUpForm} />
-                        <Route path='/a/login' render={(props) => <LogIn {...props} 
-                            login={this.props.login} 
-                            errors={this.props.errors}/>} />
-                        <Route path='/a/signup' render={(props) => <SignUp {...props} 
-                            postUser={this.props.postUser} 
-                            errors={this.props.errors} />} />
-                        <Route path='/a/volunteer' render={(props) => <Volunteer {...props} 
-                            postUser={this.props.postUser} 
-                            errors={this.props.errors} />} />
+                        <Route path='/a/login' render={(props) => <LogIn {...props} login={this.props.login} errors={this.props.errors}/>} />
+                        <Route path='/a/signup' render={(props) => <SignUp {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
+                        <Route path='/a/volunteer' render={(props) => <Volunteer {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
                     </Switch>
                 </div>
             </div>

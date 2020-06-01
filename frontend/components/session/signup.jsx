@@ -3,7 +3,6 @@ import React from 'react'
 export default class SignUp extends React.Component {
     constructor(props){
         super(props)
-        this.errors = props.errors
         this.postUser = props.postUser
 
         this.state = { email: "", password: "", first_name: "", last_name: "", area_code: "", account_type: "client"}
@@ -25,10 +24,10 @@ export default class SignUp extends React.Component {
 
     renderErrors() {
         let errors = []
-        if (this.errors.length > 0) {
+        if (this.props.errors.length > 0) {
             return (
                 <ul>
-                    {this.errors.map((error, idx) => (
+                    {this.props.errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>

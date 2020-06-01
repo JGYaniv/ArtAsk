@@ -3,9 +3,6 @@ import React from 'react'
 export default class LogIn extends React.Component {
     constructor(props){
         super(props)
-        this.errors = props.errors
-        this.login = props.login
-
         this.state = {email: "", password: ""}
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -20,13 +17,13 @@ export default class LogIn extends React.Component {
     
     handleSubmit(e){
         e.preventDefault();
-        this.login(this.state)
+        this.props.login(this.state)
             .then(() => this.props.history.push('/dashboard'));
     }
 
     demoLogin(e){
         e.preventDefault();
-        this.login({email: 'bob@tablo.co', password: '123456'})
+        this.props.login({email: 'bob@tablo.co', password: '123456'})
             .then(() => this.props.history.push('/dashboard'));
     }
 

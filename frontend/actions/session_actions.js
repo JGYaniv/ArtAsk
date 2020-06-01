@@ -18,6 +18,8 @@ export const receiveSessionErrors = (errors) => ({
     errors
 })
 
+//login hard coded for client user type
+
 export const login = user => dispatch => (
     sessionApiUtil.login(user)
         .then(user => dispatch(receiveCurrentUser(user)))

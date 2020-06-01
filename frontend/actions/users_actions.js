@@ -32,8 +32,10 @@ export const getUsers = () => dispatch => (
 
 export const postUser = user => dispatch => (
     usersApiUtil.postUser(user)
-        .then(user => dispatch(receiveCurrentUser(user)))
-        .then(user => dispatch(login(user)))
+        .then(user => {
+            dispatch(receiveCurrentUser(user))
+        })
+        .then(() => {dispatch(login(user))})
         .fail(errors => {
             dispatch(receiveSessionErrors(errors.responseJSON))
         })
