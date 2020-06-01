@@ -6,6 +6,11 @@ export default () => (
     <>
         <HeaderNotifications />
         <MenuBar mode="splash"/>
-        <div className="stuff">Hi! I'm splashy stuff.</div>
+        <div className="stuff">
+            <p></p>
+            <p>Hi! I'm stuff.</p>
+            <p></p>
+            <p>Why don't you try loggin in fam?</p>
+        </div>
     </>
 )

@@ -23,7 +23,7 @@ class SignInOrUp extends React.Component {
         const SignInOrUpForm = () => (
             <form className='sign-in-or-up'>
                 {/* facebook and google oauth features to be added: */}
-                <input type="submit" value="Facebook" className="facebook" onClick={this.demoLogin} />
+                <input type="submit" value="Facebook" className="facebook" onClick={() => alert('oAuth featuer coming soon!')} />
                 {/* ^^ oauth feature coming soon ^^ */}
 
                 <input type="submit" value="Demo Log In" className="demo" onClick={this.demoLogin}/>
@@ -43,9 +43,15 @@ class SignInOrUp extends React.Component {
                     <a href="/"><img src='https://i.imgur.com/sh8ARuh.png' /></a>
                     <Switch>
                         <Route exact path='/a' component={SignInOrUpForm} />
-                        <Route path='/a/login' render={(props) => <LogIn {...props} login={this.props.login} errors={this.props.errors}/>}/>
-                        <Route path='/a/signup' render={(props) => <SignUp {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
-                        <Route path='/a/volunteer' render={(props) => <Volunteer {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
+                        <Route path='/a/login' render={(props) => <LogIn {...props} 
+                            login={this.props.login} 
+                            errors={this.props.errors}/>} />
+                        <Route path='/a/signup' render={(props) => <SignUp {...props} 
+                            postUser={this.props.postUser} 
+                            errors={this.props.errors} />} />
+                        <Route path='/a/volunteer' render={(props) => <Volunteer {...props} 
+                            postUser={this.props.postUser} 
+                            errors={this.props.errors} />} />
                     </Switch>
                 </div>
             </div>

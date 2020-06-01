@@ -1,3 +1,3 @@
 import React from 'react'
 
-export default () => (<div className="header-notifications"><p>👷🏻‍♀️ 👋 SITE UNDER CONSTRUCTION 🚧 🚜</p></div>)
+export default () => (<div className="header-notifications"><marquee>👷🏻‍♀️ 👋 SITE UNDER CONSTRUCTION 🚧 🚜</marquee></div>)
