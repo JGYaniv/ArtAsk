@@ -1,5 +1,5 @@
 import * as usersApiUtil from '../utils/users_api_utils'
-import {login} from './session_actions'
+import {login, receiveCurrentUser, receiveSessionErrors} from './session_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -27,12 +27,14 @@ export const getUser = userId => dispatch => (
 
 export const getUsers = () => dispatch => (
     usersApiUtil.getUsers()
-        .then(user => dispatch(receiveUser(user)))
+        .then(users => dispatch(receiveUsers(users)))
 )
 
 export const postUser = user => dispatch => (
     usersApiUtil.postUser(user)
-        .then(user => dispatch(receiveUser(user)))
+        .then(user => dispatch(receiveCurrentUser(user)))
         .then(user => dispatch(login(user)))
-        .fail(errors => dispatch(receiveUsersErrors(errors.responseJSON)))
+        .fail(errors => {
+            dispatch(receiveSessionErrors(errors.responseJSON))
+        })
 )

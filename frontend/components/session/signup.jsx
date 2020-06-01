@@ -3,7 +3,11 @@ import React from 'react'
 export default class SignUp extends React.Component {
     constructor(props){
         super(props)
+        this.errors = this.props.errors
+        this.postUser = this.props.postUser
+
         this.state = { email: "", password: "", first_name: "", last_name: "", area_code: "", account_type: "client"}
+
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
@@ -15,17 +19,16 @@ export default class SignUp extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.postUser(this.state)
+        this.postUser(this.state)
             .then(() => this.props.history.push('/dashboard'))
     }
 
     renderErrors() {
         let errors = []
-        if (this.props.errors.length > 0) {
-            // console.log(this.props.errors)
+        if (this.errors.length > 0) {
             return (
                 <ul>
-                    {this.props.errors.map((error, idx) => (
+                    {this.errors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                 </ul>
@@ -36,19 +39,21 @@ export default class SignUp extends React.Component {
     
     render(){
         return(
-            <div className="session-background-image">
-                <form className="signup" onSubmit={this.handleSubmit}>
-                    <a href="/"><img src='https://i.imgur.com/sh8ARuh.png' /></a>
-                    <input type="text" placeholder="First Name" onChange={this.handleChange("first_name")} value={this.state.first_name}/>
-                    <input type="text" placeholder="Last Name" onChange={this.handleChange("last_name")} value={this.state.last_name}/>
-                    <input type="text" placeholder="Email Address" onChange={this.handleChange("email")} value={this.state.email}/>
-                    <input type="password" placeholder="Password" onChange={this.handleChange("password")} value={this.state.password}/>
-                    <input type="text" placeholder="Area Code" onChange={this.handleChange("area_code")} value={this.state.area_code}/>
-                    {this.renderErrors()}
-                    <p>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions.</a></p>
-                    <input type="submit" value="Sign up"/>
-                </form>
-            </div>
+            <form className="signup" onSubmit={this.handleSubmit}>
+                <label>First Name</label>
+                <input type="text" onChange={this.handleChange("first_name")} value={this.state.first_name}/>
+                <label>Last Name</label>
+                <input type="text" onChange={this.handleChange("last_name")} value={this.state.last_name}/>
+                <label>Email Address</label>
+                <input type="text" onChange={this.handleChange("email")} value={this.state.email}/>
+                <label>Password</label>
+                <input type="password" onChange={this.handleChange("password")} value={this.state.password}/>
+                <label>Zip Code</label>
+                <input type="text" onChange={this.handleChange("area_code")} value={this.state.area_code}/>
+                {this.renderErrors()}
+                <p className='big-terms'>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions. </a>Please read them carefully!</p>
+                <input type="submit" value="Sign up" className="signup"/>
+            </form>
         )
     }
 }

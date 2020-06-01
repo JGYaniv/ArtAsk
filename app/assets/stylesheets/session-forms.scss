@@ -1,0 +1,174 @@
+.session {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://i.imgur.com/uUn4oz3.jpg);
+    background-size: cover;
+    z-index: -10;
+
+    div {
+        background-color: white;
+        border-radius: 5px;
+        border: 1px black solid;
+        box-sizing: border-box;
+        margin: 30px auto;
+        padding: 20px 34px;
+        max-width: 500px;
+        text-align: center;
+
+        img {
+            margin: 10px auto;
+            height: 50px;
+        }
+
+        form {
+            input {
+                border-radius: 4px;
+                width: 100%;
+                height: 45px;
+                padding: 5px;
+                box-sizing: border-box;
+                border: 1px solid lightgray;
+                margin-bottom: 20px;
+            }
+
+            input[type="submit"]{
+                font-size: 16px;
+                color: white;
+            }
+
+            input[type="submit"]:hover{
+                cursor: pointer;
+            }
+
+            p {
+                color: gray;
+                margin-top: 0;
+                line-height: 2;
+            }
+
+            .terms, .terms a{
+                margin-top: 25px;
+                font-size: 12px;
+                text-decoration: none;
+            }
+
+            .big-terms, .big-terms a{
+                font-size: 14px;
+                margin: 10px 0 20px 0;
+                text-align: left;
+            }
+
+            .big-terms a{
+                color: mediumslateblue;
+                font-weight: 400;
+            }
+
+            .reset, .reset a {
+                text-align: right;
+                color: mediumslateblue;
+                font-weight: 400;
+                font-size: 18px;
+            }
+
+            .login {
+                background-color: #7b68ee;
+            }
+
+            .login:hover{
+                background-color: #5c46d4;
+                cursor: pointer;
+            }
+
+            .signup {
+                background-color: #7b68ee;
+            }
+
+            .signup:hover{
+                background-color: #5c46d4;
+                cursor: pointer;
+            }
+
+            .demo {
+                background-color: #c71585;
+            }
+
+            .demo:hover {
+                background-color: #950861;
+            }
+
+            .facebook {
+                background-color: #3b5998;
+            }
+
+            .separator{
+                height: 0px;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 0;
+                border: none;
+                border-bottom: 1px solid lightgray;
+            }
+
+            .session-link {
+                border: 1px mediumslateblue solid;
+                color: mediumslateblue;
+                border-radius: 4px;
+                padding: 10px;
+                box-sizing: border-box;
+                width: 45%;
+                font-size: 16px;
+                display: inline-block;
+                text-decoration: none;
+            }
+
+            nav {
+                display: flex; 
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .session-link:hover{
+                background-color: mediumslateblue;
+                color: white;
+            }
+
+            label {
+                text-align: left;
+                display:block;
+                margin: 0 0 5px 5px;
+                font-size: 12px;
+            }
+
+            ul, li.error {
+                margin-top: 0;
+                color: mediumslateblue;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .session {
+        background-image: url('https://i.imgur.com/Q1y0l0p.jpg');
+        div{
+            width: 100%;
+            margin-top: 0;
+            border-radius: 0;
+            form, form.signup{
+                border: none;
+                nav{
+                    display: block;
+                }
+                a.session-link {
+                    width: 100%;
+                    display:block;
+                }
+                a.session-link:first-child {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+}
