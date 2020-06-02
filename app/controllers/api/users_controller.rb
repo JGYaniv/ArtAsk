@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update(user_params)
-            redirect_to api_user_url
+           render :show
         else
             render json: @user.errors.full_messages, status: 401
         end
@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.id == current_user.id
             @user.destroy
-            redirect_to root_url
+            render json: ["all your base belongs to us"]
         end
     end
 

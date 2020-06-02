@@ -1,7 +1,6 @@
 import React from 'react'
 import LogIn from './login'
 import SignUp from './signup'
-import Volunteer from './volunteer'
 import {Switch, Route, Link} from 'react-router-dom'
 import {AuthRoute} from '../../utils/route_utils'
 
@@ -45,7 +44,6 @@ class SignInOrUp extends React.Component {
                         <Route exact path='/a' component={SignInOrUpForm} />
                         <Route path='/a/login' render={(props) => <LogIn {...props} login={this.props.login} errors={this.props.errors}/>} />
                         <Route path='/a/signup' render={(props) => <SignUp {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
-                        <Route path='/a/volunteer' render={(props) => <Volunteer {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
                     </Switch>
                 </div>
             </div>

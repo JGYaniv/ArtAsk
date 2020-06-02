@@ -144,6 +144,21 @@
                 margin-top: 0;
                 color: mediumslateblue;
             }
+
+            .inlineError {
+                margin: -20px 0 15px 5px;
+                text-align: left;
+                font-size: 12px;
+                color: red;
+            }
+
+            .activeInput {
+                border: 1px mediumslateblue solid;
+            }
+
+            .invalidInput {
+                border: 1px red solid;
+            }
         }
     }
 }

@@ -1,14 +1,15 @@
 import * as usersApiUtil from '../utils/users_api_utils'
-import {login, receiveCurrentUser, receiveSessionErrors} from './session_actions'
+import {login, logout, receiveCurrentUser, receiveSessionErrors} from './session_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USERS_ERRORS = 'RECEIVE_USERS_ERRORS';
 
-export const receiveUser = user => ({
-    type: RECEIVE_USER,
-    user
-})
+export const receiveUser = user => {
+    return ({
+        type: RECEIVE_USER,
+        user: user
+})}
 
 export const receiveUsers = users => ({
     type: RECEIVE_USER,
@@ -40,3 +41,18 @@ export const postUser = user => dispatch => (
             dispatch(receiveSessionErrors(errors.responseJSON))
         })
 )
+
+export const updateUser = user => dispatch => (
+    usersApiUtil.updateUser(user)
+        .then(user => {
+            dispatch(receiveCurrentUser(user))
+        })
+        .fail(errors => {
+            dispatch(receiveSessionErrors(errors.responseJSON))
+        })
+)
+
+export const deleteUser = userId => dispatch => {
+    usersApiUtil.deleteUser(userId)
+        .then(() => dispatch(logout()))
+}

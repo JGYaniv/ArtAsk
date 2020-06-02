@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     if (Boolean(window.localStorage.getItem('currentUser'))) {
         preloadedState = {
-            session: { currentUser: { ...window.localStorage.getItem('currentUser')} }
+            session: { currentUser: JSON.parse(window.localStorage.getItem('currentUser')) }
         }
     }
     let store = storeConfig(preloadedState)

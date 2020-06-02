@@ -20,17 +20,17 @@ export const postUser = (user) => (
     })
 )
 
-export const updateUser = (user) => (
-    $.ajax({
+export const updateUser = (user) => {
+    return $.ajax({
         url: `/api/users/${user.id}`,
         method: 'patch',
         data: { user: user }
     })
-)
+}
 
 export const deleteUser = (userId) => (
     $.ajax({
-        url: `/api/users${userId}`,
+        url: `/api/users/${userId}`,
         method: 'delete'
     })
 )

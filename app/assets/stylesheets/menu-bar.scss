@@ -1,11 +1,19 @@
 
  .menu-bar{
     height: 50px;
-    padding: 5px 20px 5px 20px; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 5px 0; 
     border-bottom: solid lightgray 1px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    div{
+        min-width: 1200px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
 
     nav {
         a{
@@ -17,6 +25,10 @@
         }
         a:hover{
             color:#5c46d4;
+        }
+        .active {
+            color: mediumorchid;
+            font-weight: 500;
         }
     }
 
@@ -37,3 +49,13 @@
         color: white;
     }
  }
+
+@media only screen and (max-width: 1200px) {
+     .menu-bar{
+        div {
+            width: 100%;
+            min-width: 500px;
+
+        }
+    }
+}

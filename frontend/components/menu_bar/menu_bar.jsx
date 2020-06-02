@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default class MenuBar extends React.Component{
     constructor(props){
@@ -9,22 +10,26 @@ export default class MenuBar extends React.Component{
         if (this.mode === "splash"){
             return (
                 <div className="menu-bar">
-                    <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo" /></a>
-                    <nav>
-                        <a href="#/a/">Login</a>
-                        <a href="#/a/volunteer" className="volunteerButton">Volunteer with us!</a>
-                    </nav>
+                    <div>
+                        <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo" /></a>
+                        <nav>
+                            <a href="#/a/">Login</a>
+                            <a href="#/" className="volunteerButton">Volunteer with us!</a>
+                        </nav>
+                    </div>
                 </div>
             )
         } else {
             return(
                 <div className="menu-bar">
+                    <div>
                     <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo"/></a>
-                    <nav>
-                        <a href="#dashboard/explore">Book a Task</a>
-                        <a href="#dashboard/active">My Tasks</a>
-                        <a href="#account">Account</a>
-                    </nav>
+                        <nav>
+                            <NavLink to="/dashboard/explore">Book a Task</NavLink>
+                            <NavLink to="/dashboard/active">My Tasks</NavLink>
+                            <NavLink to="/account">Account</NavLink>
+                        </nav>
+                    </div>
                 </div>
             )
         }
