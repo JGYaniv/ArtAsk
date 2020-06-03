@@ -35,6 +35,7 @@ export const postUser = user => dispatch => (
     usersApiUtil.postUser(user)
         .then(user => {
             dispatch(receiveCurrentUser(user))
+            window.localStorage.setItem('currentUser', JSON.stringify(user))
         })
         .then(() => {dispatch(login(user))})
         .fail(errors => {
