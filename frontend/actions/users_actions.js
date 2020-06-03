@@ -47,6 +47,7 @@ export const updateUser = user => dispatch => (
     usersApiUtil.updateUser(user)
         .then(user => {
             dispatch(receiveCurrentUser(user))
+            window.localStorage.setItem('currentUser', JSON.stringify(user))
         })
         .fail(errors => {
             dispatch(receiveSessionErrors(errors.responseJSON))
