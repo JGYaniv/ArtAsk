@@ -34,3 +34,11 @@ export const deleteUser = (userId) => (
         method: 'delete'
     })
 )
+
+export const verification = user => {
+    return $.ajax({
+        url: `/api/users/${user.id}/verification`,
+        method: 'get',
+        data: {user: user}
+    })
+}

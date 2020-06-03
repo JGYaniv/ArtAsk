@@ -78,6 +78,10 @@
             form {
                 display: flex;
                 flex-flow: column;
+                ul, li.error {
+                    margin-top: 0;
+                    color: mediumslateblue;
+                }
                 label{
                     color: rgb(78, 78, 78);
                     margin-bottom: 2px;

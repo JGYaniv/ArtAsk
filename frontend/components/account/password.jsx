@@ -1,10 +1,12 @@
 import React from 'react'
+import { verification } from '../../utils/users_api_utils'
 
 export default class Password extends React.Component {
     constructor(props) {
         super(props)
         this.state = { oldPassword: "", newPassword: "", confirmPassword: "" }
         this.localErrors = {}
+        this.verification = verification
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleBlur = this.handleBlur.bind(this)
     }
@@ -19,10 +21,26 @@ export default class Password extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.newPassword == this.state.confirmPassword){
-        this.props.update({id: this.props.currentUser.id, password: this.state.newPassword})
-            .then(() => this.props.history.push('/account'));
-    }}
+        this.verification({
+            id: this.props.currentUser.id,
+            email: this.props.currentUser.email, 
+            password: this.state.oldPassword
+        }).then( res => {
+            console.log(res.bool)
+            if (res.bool && this.state.newPassword == this.state.confirmPassword){
+                this.props.update({
+                    id: this.props.currentUser.id,
+                    password: this.state.newPassword
+                }).then(
+                    () => this.props.history.push('/account')
+                )
+            } else {
+                this.localErrors.oldPassword = "Invalid password"
+                let tester = this.localErrors
+                this.forceUpdate();
+            }
+        })
+    }
 
     handleFocus(e) {
         e.target.classList.add("activeInput")

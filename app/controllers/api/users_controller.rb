@@ -34,4 +34,13 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def verification
+        @user = User.find(params[:id])
+        if @user && @user.is_password?(user_params[:password])
+            render json: {bool: true}
+        else
+            render json: {bool: false}
+        end
+    end
+
 end
