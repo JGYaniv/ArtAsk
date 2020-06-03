@@ -18,16 +18,19 @@
      margin:0;
  }
 
-a, input, p, li, label{
+a, input, p, li, label, button{
     font-size: 14px;
     margin: 0;
     padding: 0;
     color: gray;
-    font-family: sans-serif;
+    font-family: 'Khula', sans-serif;
     font-weight: 200;
     text-decoration: none;
     list-style: none;
 }
 
+h1, h2, h3{
+    font-family: 'Asap', sans-serif;
+}
 
 
