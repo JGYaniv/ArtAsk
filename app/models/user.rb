@@ -4,7 +4,8 @@ class User < ApplicationRecord
     validates :password_digest, presence: true
     attr_reader :password
     after_initialize :ensure_session_token
-
+    has_one_attached :photo
+    
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)
