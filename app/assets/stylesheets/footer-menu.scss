@@ -1,0 +1,38 @@
+.footer {
+    background-color: rgb(101, 109, 125);
+    height: 380px;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    .footer-header{
+        p{
+            display:inline-block;
+            margin-right: 5px;
+        }
+        a{
+            margin: 0 5px;
+        }
+        margin-bottom: 20px;
+    }
+    p{
+        color: rgb(190, 190, 190);
+        font-size: 18px;
+    }
+    ul, li, a {
+        margin:0;
+        padding:0;
+        line-height: 1.7;
+
+    }
+    a{
+        color:white;
+        font-size: 18px;
+    }
+    .cols {
+        display: flex;
+        .left-col, .mid-col{
+            width: 375px;
+            min-height: 200px;
+        }
+    }
+}
