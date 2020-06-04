@@ -3,12 +3,33 @@
     height: 500px;
     padding-top: 85px;
     box-sizing: border-box;
+    border-radius: 2px;
     .banner-cta{
+        border-radius: 2px;
+
         width: 665px;
         display: flex;
         flex-flow: column;
         background-color: white;
         margin: 0 auto;
+        ul.hide{
+            display: none;
+        }
+        ul.reveal{
+            display: block;
+        }
+        ul{
+            position: absolute;
+            margin-top: 60px;
+            padding-bottom: 10px;
+            background-color: white;
+            width: 665px;
+            box-sizing: border-box;
+            li{
+                height: 52px;
+                font-size: 16px;
+            }
+        }
     }
     h1, p{
         text-align: center;

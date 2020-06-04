@@ -1,5 +1,5 @@
 import React from 'react'
-import MenuBar from '../menu_bar/menu_bar_container'
+import MenuBar from '../menu_bar/menu_bar'
 import {Route, NavLink, Redirect} from 'react-router-dom'
 import Profile from './profile'
 import EditProfile from './edit_profile'

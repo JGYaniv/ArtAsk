@@ -25,7 +25,16 @@ export default () => (
                 </ul>
             </div>
             <div className="right-col">
-
+                <ul className="footer-menu">
+                    <li><p>About</p></li>
+                    <li><p>
+                        ArtAsk is also a thought exercise in how <br />
+                        to effectively offer in-kind donations to <br />
+                        nonprofits.The UI and layout is a clone of <br/>
+                        Task Rabbit, but the messaging and the <br />
+                        community is entirely different.<br />
+                    </p></li>
+                </ul>
             </div>
         </div>
     </div>
