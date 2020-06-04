@@ -1,0 +1,91 @@
+
+
+
+form.explorer-form{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    position: relative;
+    ul.hide{
+        display: none;
+    }
+    ul.reveal{
+        display: block;
+    }
+    ul{
+        position: absolute;
+        margin-top: 60px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        background-color: white;
+        width: 665px;
+        box-sizing: border-box;
+        border: 1px lightgray solid;
+        border-top: none;
+
+        li{
+            height: 52px;
+            font-size: 16px;
+        }
+    }
+    input{
+        box-sizing: border-box;
+        height: 45px;
+        padding: 10px;
+        border-radius: 3px;
+    }
+    input:first-child{
+        margin-right: 10px;
+        width: 450px;
+        border: 1px solid lightgray;
+        padding-left: 50px;
+        z-index: 1;
+    }
+    input:last-child{
+        width: 150px;
+        background-color: mediumslateblue;
+        color:white;
+        
+        border:none;
+    }
+    input:last-child:hover{
+        background-color: rgb(93, 77, 181);
+    }
+    .mag-glass{
+        position: absolute;
+        left: 40px;
+        z-index: 1;
+        align-self: center;
+    }
+}
+
+.explorer-background-image{
+    background-image: url(https://i.imgur.com/H58O7Yy.jpg);
+    background-image: url(https://i.imgur.com/KyiDRpw.jpg);
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-size: 1000px 575px;
+}
+
+.explorer-dash{
+    width: 800px;
+    height: 365px;
+    margin: 0 auto;
+
+    form{
+        input.dash-input {
+            width: 800px;
+        }
+        ul {
+            width: 790px;
+            padding-top: 20px;
+            margin-top: 42px;
+            margin-left: -5px;
+            border-top: none;
+        }
+
+        .mag-glass{
+            left: 20px;
+        }
+    }
+}
