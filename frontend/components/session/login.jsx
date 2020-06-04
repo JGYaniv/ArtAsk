@@ -10,6 +10,10 @@ export default class LogIn extends React.Component {
         this.demoLogin = this.demoLogin.bind(this)
     }
 
+    componentDidMount(){
+        this.props.clearErrors()
+    }
+
     handleChange(type){
         return (e) => {
             this.setState({[type]: e.target.value})
@@ -70,7 +74,7 @@ export default class LogIn extends React.Component {
     
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form className="login-form" onSubmit={this.handleSubmit}>
                 <label>Email Address</label>
                 <input 
                     type="text"
@@ -91,8 +95,8 @@ export default class LogIn extends React.Component {
                 <p className="inlineError">{this.localErrors.password}</p>
                 {this.renderErrors()}
                 <input type="submit" value="Log in" className="login"/>
-                <input type="submit" value="Demo Login" className="demo" onClick={this.demoLogin}/>
-                <p className='reset'><a href="#">Reset password</a></p>
+                <input type="submit" value="Demo Login" className="demo login-page" onClick={this.demoLogin}/>
+                <p className='reset'><a href="#">Forgot Password?</a></p>
             </form>
         )
     }

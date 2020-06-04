@@ -6,7 +6,6 @@ import FooterMenu from '../menu_bar/footer_menu'
 
 export default () => (
     <>
-        <HeaderNotifications />
         <MenuBar mode="splash"/>
         <BannerCta />
         <FooterMenu />

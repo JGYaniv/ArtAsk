@@ -12,13 +12,13 @@ export const getUsers = () => (
     })
 )
 
-export const postUser = (user) => (
-    $.ajax({
+export const postUser = (user) => {
+    return $.ajax({
         url: `/api/users`,
         method: 'post',
         data: { user: user }
     })
-)
+}
 
 export const updateUser = (user) => {
     return $.ajax({

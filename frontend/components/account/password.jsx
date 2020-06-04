@@ -11,6 +11,10 @@ export default class Password extends React.Component {
         this.handleBlur = this.handleBlur.bind(this)
     }
 
+    componentDidMount() {
+        this.props.clearSessionErrors()
+    }
+
     handleChange(type) {
         return (e) => {
             this.setState({ [type]: e.target.value })
@@ -68,10 +72,10 @@ export default class Password extends React.Component {
     //maybe this can be refactored into a util file
     renderErrors() {
         let errors = []
-        if (this.props.errors.length > 0) {
+        if (this.props.sessionErrors.length > 0) {
             return (
                 <ul className='errors'>
-                    {this.props.errors.map((error, idx) => (
+                    {this.props.sessionErrors.map((error, idx) => (
                         <li key={idx} className="error">{error}</li>
                     ))}
                 </ul>

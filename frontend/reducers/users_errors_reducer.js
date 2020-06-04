@@ -1,5 +1,5 @@
 
-import { RECEIVE_USERS_ERRORS, RECEIVE_USER } from '../actions/users_actions'
+import { RECEIVE_USERS_ERRORS, RECEIVE_USER, CLEAR_USER_ERRORS } from '../actions/users_actions'
 
 export default (initialState = [], action) => {
     Object.freeze(initialState)
@@ -8,6 +8,8 @@ export default (initialState = [], action) => {
             return action.errors
         case RECEIVE_USER:
             return []
+        case CLEAR_USER_ERRORS:
+            return [];
         default:
             return initialState;
     }

@@ -11,6 +11,10 @@ export default class SignUp extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentDidMount() {
+        this.props.clearErrors()
+    }
+    
     handleChange(type) {
         return (e) => {
             this.setState({ [type]: e.target.value })
@@ -62,9 +66,9 @@ export default class SignUp extends React.Component {
         let errors = []
         if (this.props.errors.length > 0) {
             return (
-                <ul>
+                <ul className='errors'>
                     {this.props.errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                        <li key={idx} className='error'>{error}</li>
                     ))}
                 </ul>
             )
@@ -121,7 +125,7 @@ export default class SignUp extends React.Component {
                     onBlur={this.handleBlur} />
                 <p className="inlineError">{this.localErrors.area_code}</p>
                 {this.renderErrors()}
-                <p className='big-terms'>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions. </a>Please read them carefully!</p>
+                <p className='big-terms'>By clicking below you are agreeing to the ArtAsk <a href="#" onClick={e => e.preventDefault()}>terms and conditions. </a>Please read them carefully!</p>
                 <input type="submit" value="Sign up" className="signup"/>
             </form>
         )

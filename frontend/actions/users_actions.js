@@ -4,6 +4,7 @@ import {login, logout, receiveCurrentUser, receiveSessionErrors} from './session
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USERS_ERRORS = 'RECEIVE_USERS_ERRORS';
+export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
 
 export const receiveUser = user => {
     return ({
@@ -19,6 +20,10 @@ export const receiveUsers = users => ({
 export const receiveUsersErrors = errors => ({
     type: RECEIVE_USERS_ERRORS,
     errors
+})
+
+export const clearUsersErrors = () => ({
+    type: CLEAR_USER_ERRORS,
 })
 
 export const getUser = userId => dispatch => (

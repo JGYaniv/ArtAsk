@@ -26,13 +26,13 @@ class SignInOrUp extends React.Component {
                 {/* ^^ oauth feature coming soon ^^ */}
 
                 <input type="submit" value="Demo Log In" className="demo" onClick={this.demoLogin}/>
-                <p>or</p>
-                <p>Log in or sign up with email</p>
+                <p className="or">or</p>
+                <p className="or-message">Log in or sign up with email</p>
                 <nav>
                     <Link className="session-link" to="/a/login">Log In</Link>
                     <Link className="session-link" to="/a/signup">Sign Up</Link>
                 </nav>
-                <p className='terms'>By clicking below you are agreeing to the ArtAsk <a href="#">terms and conditions.</a></p>
+                <p className='terms'>By clicking below you are agreeing to the ArtAsk <a href="#" onClick={e => e.preventDefault()}>terms and conditions.</a></p>
             </form>
         )
         
@@ -42,8 +42,14 @@ class SignInOrUp extends React.Component {
                     <a href="/"><img src='https://i.imgur.com/sh8ARuh.png' /></a>
                     <Switch>
                         <Route exact path='/a' component={SignInOrUpForm} />
-                        <Route path='/a/login' render={(props) => <LogIn {...props} login={this.props.login} errors={this.props.errors}/>} />
-                        <Route path='/a/signup' render={(props) => <SignUp {...props} postUser={this.props.postUser} errors={this.props.errors} />} />
+                        <Route path='/a/login' render={(props) => <LogIn {...props} 
+                            login={this.props.login} 
+                            errors={this.props.errors}
+                            clearErrors={this.props.clearErrors}/>} />
+                        <Route path='/a/signup' render={(props) => <SignUp {...props} 
+                            postUser={this.props.postUser} 
+                            errors={this.props.errors} 
+                            clearErrors={this.props.clearErrors}/>} />
                     </Switch>
                 </div>
             </div>

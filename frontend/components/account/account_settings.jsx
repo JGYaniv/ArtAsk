@@ -33,12 +33,16 @@ export default class extends React.Component{
                         <Route path='/account/edit' render={() => <EditProfile 
                                 {...this.props} 
                                 currentUser={this.props.currentUser}
-                                logout={this.props.logout} />}
+                                logout={this.props.logout}
+                                clearUserErrors={this.props.clearUserErrors}
+                                userErrors={this.props.userErrors} />}
                         />
                         <Route path='/account/password' render={() => <Password 
                                 {...this.props} 
                                 currentUser={this.props.currentUser}
-                                update={this.props.update} />}
+                                update={this.props.update}
+                                clearUserErrors={this.props.clearUserErrors}
+                                userErrors={this.props.userErrors} />}
                         />
                         <Route path='/account/deactivate' render={() => <Deactivate 
                                 {...this.props} 

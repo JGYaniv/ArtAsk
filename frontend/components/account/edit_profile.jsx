@@ -10,6 +10,10 @@ export default class EditProfile extends React.Component {
         this.handleBlur = this.handleBlur.bind(this)
     }
 
+    componentDidMount(){
+        this.props.clearSessionErrors()
+    }
+
     handleChange(type) {
         return (e) => {
             this.setState({ [type]: e.target.value })
@@ -30,7 +34,9 @@ export default class EditProfile extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (this.state.newPassword == this.state.confirmPassword) {
+        if (this.state.email === "bob@tablo.co"){
+            alert("Cannot edit demo account Mr. Tables!")
+        } else {
             this.props.update(this.state)
                 .then(() => this.props.history.push('/account'));
         }
@@ -65,10 +71,10 @@ export default class EditProfile extends React.Component {
     //maybe this can be refactored into a util file
     renderErrors() {
         let errors = []
-        if (this.props.errors.length > 0) {
+        if (this.props.sessionErrors.length > 0) {
             return (
                 <ul className='errors'>
-                    {this.props.errors.map((error, idx) => (
+                    {this.props.sessionErrors.map((error, idx) => (
                         <li key={idx} className="error">{error}</li>
                     ))}
                 </ul>
@@ -113,7 +119,7 @@ export default class EditProfile extends React.Component {
                     <input
                         type="text"
                         name="phone_number"
-                        value={this.state.phone_number}
+                        value={this.state.phone_number || ""}
                         onChange={this.handleChange("phone_number")}
                         onFocus={this.handleFocus}
                         onBlur={this.handleBlur} />
@@ -129,7 +135,7 @@ export default class EditProfile extends React.Component {
                     <p className="inlineError">{this.localErrors.area_code}</p>
                     {this.renderErrors()}
                     <span>
-                        <button>Cancel</button>
+                        <button onClick={() => this.props.history.push('/account')}>Cancel</button>
                         <button onClick={this.handleSubmit}>Submit</button>
                     </span>
                 </form>
