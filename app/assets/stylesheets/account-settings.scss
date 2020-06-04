@@ -36,7 +36,7 @@
             box-sizing: border-box;
             a:hover{
                 box-sizing: border-box;
-                padding: 0 0 0 12px;
+                padding: 5px 0 0 12px;
                 border-left: 3px solid lightgray;
             }
             a {
@@ -44,8 +44,9 @@
                 display: flex;
                 height: 40px;
                 color: rgb(40, 40, 40);
-                padding: 0 0 0 15px;
+                padding: 5px 0 0 15px;
                 align-items: center;
+                font-size: 15px;
 
             }
             a.active {
@@ -143,6 +144,9 @@
             color: white;
         }
     }
+    form.submit-buttons{
+        margin-left: 200px;
+    }
     div.profile-cols{
         display:flex;
         flex-flow: row;
@@ -151,6 +155,7 @@
         width: 100%;
         margin: 0;
         padding: 0;
+
         .left-col{
             border: none;
             display: flex;
@@ -185,6 +190,21 @@
                     font-weight: 100;
                 }
             }
+        }
+        .middle-col{
+            width: 220px;
+            input[type="text"]{
+                width:100%;
+            }
+            border: none;
+            margin-left: 20px;
+            button{
+                margin: 0;
+            }
+        }
+        .middle-col:last-child{
+            margin: 0;
+            padding-left: 5px;
         }
         button {
             margin-left: 50px;

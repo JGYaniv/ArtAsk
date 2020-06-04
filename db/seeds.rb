@@ -10,9 +10,16 @@ User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 TaskType.destroy_all
 TaskType.connection.execute('ALTER SEQUENCE task_types_id_seq RESTART WITH 1')
-
+anon_profile_animals = [
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/cat_silhouette.png',
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/dog_silhouette.jpg',
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/dog_silhouette2.jpg',
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/horse_silhouette.jpg',
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/rhino_silhouette.jpg',
+    '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/unicorn_silhouette.png'
+]
 (10).times do
-    User.create!({
+    u = User.create!({
         email: Faker::Internet.email,
         password: "123456",
         first_name: Faker::Name.first_name,
@@ -20,9 +27,11 @@ TaskType.connection.execute('ALTER SEQUENCE task_types_id_seq RESTART WITH 1')
         account_type: "client",
         area_code: rand(10000..99999)
     })
+    file = File.open(anon_profile_animals.sample)
+    u.photo.attach(io: file, filename: "#{u.first_name.capitalize}_#{u.last_name.capitalize}")
 end
 
-User.create!({
+bob = User.create!({
         email: "bob@tablo.co",
         password: "123456",
         first_name: "Bobby",
@@ -30,6 +39,9 @@ User.create!({
         account_type: "client",
         area_code: rand(10000..99999)
 })
+
+file = File.open('/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/bob_tables.png')
+bob.photo.attach(io: file, filename: "bob_tables.png")
 
 record_song = TaskType.create!({
     title: "Record Song",

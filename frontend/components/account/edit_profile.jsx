@@ -87,53 +87,66 @@ export default class EditProfile extends React.Component {
         return (
             <div>
                 <h2>Edit Profile</h2>
-                <form>
-                    <label>First Name</label>
-                        <input
-                            type="text"
-                            name="first_name"
-                            value={this.state.first_name}
-                            onChange={this.handleChange("first_name")}
-                            onFocus={this.handleFocus}
-                            onBlur={this.handleBlur} />
-                    <p className="inlineError">{this.localErrors.first_name}</p>
+                <div className="profile-cols">
+                    <div className="left-col">
+                        <img src={this.props.currentUser.photoUrl} className="profilePic"></img>
+                    </div>
+                    <div className="middle-col">
+                        <form>
+                            <label>First Name</label>
+                            <input
+                                type="text"
+                                name="first_name"
+                                value={this.state.first_name}
+                                onChange={this.handleChange("first_name")}
+                                onFocus={this.handleFocus}
+                                onBlur={this.handleBlur} />
+                            <p className="inlineError">{this.localErrors.first_name}</p>
+                            <label>Email</label>
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleChange("email")}
+                                name="email"
+                                onFocus={this.handleFocus}
+                                onBlur={this.handleBlur} />
+                            <p className="inlineError">{this.localErrors.email}</p>
+                            <label>Phone Number</label>
+                            <input
+                                type="text"
+                                name="phone_number"
+                                value={this.state.phone_number || ""}
+                                onChange={this.handleChange("phone_number")}
+                                onFocus={this.handleFocus}
+                                onBlur={this.handleBlur} />
+                            <p className="inlineError">{this.localErrors.phone_number}</p>
+                            <label>Zip Code</label>
+                            <input
+                                type="text"
+                                name="area_code"
+                                value={this.state.area_code}
+                                onChange={this.handleChange("area_code")}
+                                onFocus={this.handleFocus}
+                                onBlur={this.handleBlur} />
+                            <p className="inlineError">{this.localErrors.area_code}</p>
+                            {this.renderErrors()}
+                        </form>
+                    </div>
+                    <div className="middle-col">
+                    <form>
                     <label>Last Name</label>
-                        <input
-                            type="text"
-                            name="last_name"
-                            value={this.state.last_name}
-                            onChange={this.handleChange("last_name")}
-                            onFocus={this.handleFocus}
-                            onBlur={this.handleBlur} />
+                    <input
+                        type="text"
+                        name="last_name"
+                        value={this.state.last_name}
+                        onChange={this.handleChange("last_name")}
+                        onFocus={this.handleFocus}
+                        onBlur={this.handleBlur} />
                     <p className="inlineError">{this.localErrors.last_name}</p>
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        value={this.state.email}
-                        onChange={this.handleChange("email")}
-                        name="email"
-                        onFocus={this.handleFocus}
-                        onBlur={this.handleBlur} />
-                    <p className="inlineError">{this.localErrors.email}</p>
-                    <label>Phone Number</label>
-                    <input
-                        type="text"
-                        name="phone_number"
-                        value={this.state.phone_number || ""}
-                        onChange={this.handleChange("phone_number")}
-                        onFocus={this.handleFocus}
-                        onBlur={this.handleBlur} />
-                    <p className="inlineError">{this.localErrors.phone_number}</p>
-                    <label>Zip Code</label>
-                    <input
-                        type="text"
-                        name="area_code"
-                        value={this.state.area_code}
-                        onChange={this.handleChange("area_code")}
-                        onFocus={this.handleFocus}
-                        onBlur={this.handleBlur} />
-                    <p className="inlineError">{this.localErrors.area_code}</p>
-                    {this.renderErrors()}
+                    </form>
+                    </div>
+                </div>
+                <form className="submit-buttons">
                     <span>
                         <button onClick={() => this.props.history.push('/account')}>Cancel</button>
                         <button onClick={this.handleSubmit}>Submit</button>
