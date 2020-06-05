@@ -1,0 +1,87 @@
+.progress-bar{
+    display: flex;
+    height: 110px;
+    padding: 28px 10px 10px 10px;
+    box-sizing: border-box;
+    max-width: 1140px;
+    margin: 0 auto;
+    img {
+        display: block;
+        height: 35px;
+        margin: 8px 0 0 2%;
+    }
+    .form-step{
+        width:25%;
+        display: flex;
+        position: relative;
+        box-sizing: border-box;
+
+        .form-step-line{
+            height: 0;
+            width: 50%;
+            border: 1px lightgray solid;
+            margin-top: 10px;
+            box-sizing: border-box;
+
+        }
+        .form-number{
+            display: block;
+            border-radius:50%;
+            background-color:lightgray;
+            min-width: 25px;
+            height: 25px;
+            text-align: center;
+            color: mediumslateblue;
+            line-height: 2;
+        }
+        .step-description{
+            color:gray;
+            display:block;
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 300;
+
+        }
+    }
+
+    .step-1{
+        justify-content: flex-end;
+        .right-line{
+            width: 45%;
+        }
+    }
+
+    .step-4{
+        .left-line{
+            width: 45%;
+        }
+    }
+
+    .active{
+        .left-line{
+            border-color: mediumslateblue;
+        }
+        .form-number{
+            background-color: mediumslateblue;
+            color: white;
+            font-weight: 500;
+        }
+        .step-description{
+            color: black;
+            font-weight: 600;
+        }
+    }
+
+    .completed{
+        .right-line{
+            border-color: mediumslateblue
+        }
+        .step-description{
+            color: rgb(100, 100, 100);
+            font-weight: 300;
+        }
+    }
+}

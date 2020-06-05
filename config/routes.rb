@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         get 'verification'
       end
     end
-    resources :tasks, only: [:show, :create, :update]
+    resources :tasks, only: [:show, :create, :update, :destroy]
     resources :task_types, only: [:show, :index]
     resource :session, only: [:create, :destroy]
   end

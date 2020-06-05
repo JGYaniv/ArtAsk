@@ -1,4 +1,4 @@
-import { RECEIVE_TASKS_ERRORS, CLEAR_TASKS_ERRORS, RECEIVE_TASK } from '../../actions/users_actions'
+import { RECEIVE_TASKS_ERRORS, CLEAR_TASKS_ERRORS, RECEIVE_TASK } from '../../actions/tasks_actions'
 
 export default (initialState = [], action) => {
     Object.freeze(initialState)

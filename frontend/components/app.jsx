@@ -5,7 +5,7 @@ import AccountSettings from './account/account_settings_container'
 import Dashboard from './home/dashboard'
 import Splash from './home/splash'
 import {ProtectedRoute, AuthRoute} from '../utils/route_utils'
-import TaskForm from './task_form/task_form'
+import TaskForm from './task_form/task_form_container'
 import Modal from './modals/modal'
 
 export default () => (

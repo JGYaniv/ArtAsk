@@ -7,6 +7,7 @@ export default class BannerCta extends React.Component{
         this.state = { drop: false }
         this.clicker = this.clicker.bind(this)
         this.leave = this.leave.bind(this)
+        this.timeout = null
     }
 
     componentWillMount(){
@@ -17,13 +18,25 @@ export default class BannerCta extends React.Component{
         this.setState({"drop": true})
     }
 
-    leave(e){
-        this.setState({"drop": false})
+    componentWillUnmount() {
+        clearTimeout(this.timeout)
+    }
+
+    leave(e) {
+        this.timeout = setTimeout(() => this.setState({ "drop": false }), 100)
+    }
+
+    selectTask(taskType) {
+        console.log("setting up...")
+        return (e) => {
+            this.props.selectTaskType(taskType);
+            console.log(taskType);
+        }
     }
 
     render(){
         const taskTypes = this.props.taskTypes.map((taskType, idx) => (
-            <li key={idx}><Link to="/">{taskType.title}</Link></li>
+            <li key={idx}><Link to="/form" onClick={this.selectTask(taskType)}>{taskType.title}</Link></li>
         )).slice(1,5)
         return(
             <div className="explorer-background-image">

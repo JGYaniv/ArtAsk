@@ -41,8 +41,8 @@ export default class extends React.Component{
                                 {...this.props} 
                                 currentUser={this.props.currentUser}
                                 update={this.props.update}
-                                clearUserErrors={this.props.clearUserErrors}
-                                userErrors={this.props.userErrors} />}
+                                clearSessionErrors={this.props.clearSessionErrors}
+                                sessionErrors={this.props.sessionErrors} />}
                         />
                         <Route path='/account/deactivate' render={() => <Deactivate 
                                 {...this.props} 

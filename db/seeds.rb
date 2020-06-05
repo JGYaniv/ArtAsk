@@ -7,14 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+Review.destroy_all
+Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
+Task.destroy_all
+Task.connection.execute('ALTER SEQUENCE tasks_id_seq RESTART WITH 1')
+ArtistTaskType.destroy_all
+ArtistTaskType.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 User.destroy_all
 User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 TaskType.destroy_all
 TaskType.connection.execute('ALTER SEQUENCE task_types_id_seq RESTART WITH 1')
-Task.destroy_all
-Task.connection.execute('ALTER SEQUENCE tasks_id_seq RESTART WITH 1')
-Review.destroy_all
-Review.connection.execute('ALTER SEQUENCE reviews_id_seq RESTART WITH 1')
 
 anon_profile_animals = [
     '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/cat_silhouette.png',
@@ -24,6 +26,7 @@ anon_profile_animals = [
     '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/rhino_silhouette.jpg',
     '/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/anon_profile_animals/unicorn_silhouette.png'
 ]
+
 artist_names = %w(
     Agnes_Varda
     Andy_Goldsworthy

@@ -3,7 +3,7 @@ import * as tasksApiUtil from '../utils/tasks_api_utils'
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASKS_ERRORS = 'RECEIVE_TASKS_ERRORS';
-export const CLEAR_TASK_ERRORS = 'CLEAR_TASK_ERRORS';
+export const CLEAR_TASKS_ERRORS = 'CLEAR_TASK_ERRORS';
 
 export const receiveTask = task => {
     return ({
@@ -23,7 +23,7 @@ export const receiveTasksErrors = errors => ({
 })
 
 export const clearTasksErrors = () => ({
-    type: CLEAR_TASK_ERRORS,
+    type: CLEAR_TASKS_ERRORS,
 })
 
 export const getTask = taskId => dispatch => (
