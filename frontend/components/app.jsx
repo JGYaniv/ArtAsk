@@ -5,14 +5,17 @@ import AccountSettings from './account/account_settings_container'
 import Dashboard from './home/dashboard'
 import Splash from './home/splash'
 import {ProtectedRoute, AuthRoute} from '../utils/route_utils'
+import TaskForm from './task_form/task_form'
+import Modal from './modals/modal'
 
 export default () => (
     <>
+        <Modal />
         <Switch>
             <AuthRoute path="/a/" component={SignInOrUp}/> 
             <AuthRoute path="/splash" component={Splash}/> 
             <ProtectedRoute path="/account" component={AccountSettings}/> 
-            {/* <Route path="/form" component={TaskForm}/>  */}
+            <Route path="/form" component={TaskForm}/>
             <ProtectedRoute path="/" component={Dashboard}/>
         </Switch>
     </>

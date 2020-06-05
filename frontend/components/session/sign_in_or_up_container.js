@@ -13,4 +13,7 @@ const mapDispatchToProps = dispatch => ({
     clearErrors: () => dispatch(clearSessionErrors())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignInOrUp)
+export default connect(
+    mapStateToProps, 
+    mapDispatchToProps
+)(SignInOrUp)

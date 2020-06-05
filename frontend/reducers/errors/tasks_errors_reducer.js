@@ -1,14 +1,13 @@
-
-import { RECEIVE_USERS_ERRORS, RECEIVE_USER, CLEAR_USER_ERRORS } from '../actions/users_actions'
+import { RECEIVE_TASKS_ERRORS, CLEAR_TASKS_ERRORS, RECEIVE_TASK } from '../../actions/users_actions'
 
 export default (initialState = [], action) => {
     Object.freeze(initialState)
     switch (action.type) {
-        case RECEIVE_USERS_ERRORS:
+        case RECEIVE_TASKS_ERRORS:
             return action.errors
-        case RECEIVE_USER:
+        case RECEIVE_TASK:
             return []
-        case CLEAR_USER_ERRORS:
+        case CLEAR_TASKS_ERRORS:
             return [];
         default:
             return initialState;

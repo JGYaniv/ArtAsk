@@ -1,5 +1,5 @@
-import sessionErrors from './session_errors_reducer'
-import usersErrors from './users_errors_reducer'
+import sessionErrors from './errors/session_errors_reducer'
+import usersErrors from './errors/users_errors_reducer'
 import {combineReducers} from 'redux'
 
 export default combineReducers({

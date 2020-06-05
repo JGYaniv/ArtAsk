@@ -1,4 +1,4 @@
-import { RECEIVE_USER, RECEIVE_USERS } from '../actions/users_actions'
+import { RECEIVE_USER, RECEIVE_USERS } from '../../actions/users_actions'
 
 export default (initialState = {}, action) => {
     Object.freeze(initialState)

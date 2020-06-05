@@ -1,4 +1,4 @@
-import { RECEIVE_TASK_TYPE, RECEIVE_TASK_TYPES } from '../actions/task_types_actions'
+import { RECEIVE_TASK_TYPE, RECEIVE_TASK_TYPES } from '../../actions/task_types_actions'
 
 export default (initialState = {}, action) => {
     Object.freeze(initialState)
