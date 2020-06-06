@@ -14,6 +14,10 @@
 
 .form-page{
     padding: 30px 90px;
+    .task-title{
+        margin: 0 auto;
+        width: 1000px;
+    }
     h1{
         font-family: khula, san-serif;
         font-size: 20px;
@@ -26,12 +30,16 @@
         color: #6d6d6d;
         font-size: 15px;
     }
+    h4 {
+        display: none;
+    }
     .form-section{
         border: 1px solid lightgray;
         padding: 20px;
         margin: 0 auto;
         max-width: 1000px;
         box-shadow: 2px 4px 6px 0px #c4c4c466;
+        box-sizing: border-box;
         margin-bottom: 20px;
         h1{
             margin: 32px 0 0 0;
@@ -41,6 +49,7 @@
                 display:block;
             }
             label{
+                font-size: 16px;
                 color:black;
             }
             input[type="radio"]{
@@ -49,6 +58,12 @@
             div{
                 text-align:center;
                 margin: 37px 0 15px;
+            }
+            .inline-error {
+                margin: -20px 0 12px 5px;
+                text-align: left;
+                font-size: 14px;
+                color: red;
             }
             input[type="submit"]{
                 background-color: mediumslateblue;
@@ -62,6 +77,26 @@
             input[type="submit"]:hover{
                 background-color: rgb(89, 74, 173);
             }
+        }
+    }
+    .address-form{
+        display: none;
+    }
+    .completed{
+        form{
+            display: none;
+        }
+        h4 {
+            display: inline;
+        }
+    }
+
+    .focused{
+        h4 {
+            display: none;
+        }
+        form{
+            display: block;
         }
     }
 }

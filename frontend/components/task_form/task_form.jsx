@@ -7,57 +7,85 @@ import SelectArtist from './2_select_artist'
 import SelectTime from './3_select_time'
 import Confirm from './4_confirm'
 
+// const defaultState = {
+//     task_type_id: "",
+//     form_step: "",
+//     describe: {
+//         interest: "",
+//         street_address: "",
+//         apartment_number: "",
+//         size: "",
+//         revisions: "",
+//         details: ""
+//     },
+//     select_artist: {
+//         artist_id: ""
+//     },
+//     select_time: {
+//         start_date: "",
+//         end_date: ""
+//     }
+// }
+
 export default class TaskForm extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            form_step: "",
-            forms_completed: [],
-            task_size: "",
-            status: "",
-            location: "",
-            details: "",
-            start_date: "",
-            end_date: "",
-            artist_id: "",
-            task_type_id: "",
-            task_type_title: "",
-            interest: "",
-            local_errors: {}    
-        }
-        
+        this.state = Object.assign({}, this.props.taskForm, {localErrors: {}, completedFormSections: [], focusSection: null})
         this.setFormStep = this.setFormStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleSave = this.handleSave.bind(this)
+        this.setLocalError = this.setLocalError.bind(this)
+        this.addCompletedFormSection = this.addCompletedFormSection.bind(this)
+        this.setFocusSection = this.setFocusSection.bind(this)
+        this.removeCompleted = this.removeCompleted.bind(this)
     }
 
     componentDidMount(){
-        this.setFormStep(1)
+        if(this.state.form_step === "") {this.setFormStep(1)}
     }
 
-    handleChange(type) {
+    handleChange(form, type) {
         return (e) => {
-            this.setState({ [type]: e.target.value })
-            this.forceUpdate()
+            const newState = Object.assign({}, this.state)
+            newState[form][type] = e.target.value
+            this.setState(newState)
         }
     }
 
-    handleSave(type) {
-        return (e) => {
-            this.setState({ [type]: e.target.value })
-            this.forceUpdate()
+    addCompletedFormSection(formName){
+        if (this.state.completedFormSections.includes(formName)){
+            console.log("NO BUENO, SENOR GATO FUEGO")
+        } else {
+            let completed = Object.assign([], this.state.completedFormSections)
+            completed.push(formName)
+            this.setState({ completedFormSections: completed })
+            this.forceUpdate();
         }
     }
 
     setFormStep(step){
         this.setState({form_step: step})
+    }
+
+    setFocusSection(sectionName){
+        this.setState({ focusSection: sectionName})
+    }
+
+    removeCompleted(sectionName){
+        let completed = Object.assign([], this.state.completedFormSections)
+        let removeIdx = completed.indexOf(sectionName)
+        delete completed[removeIdx]
+        this.setState({ completedFormSections: completed})
+    }
+
+    setLocalError(component, message){
+        this.setState({localErrors: {[component]: message}})
         this.forceUpdate();
     }
 
     render(){
         if (this.props.taskTypeId){
             let CurrentForm;
-            window.formState = this.state;
+            window.formState = this.state
             switch (this.state.form_step){
                 case 1:
                     CurrentForm = (props) => <DescribeTask {...props} />; break;
@@ -82,10 +110,13 @@ export default class TaskForm extends React.Component {
                         currentUser={this.props.currentUser}
                         errors={this.props.errors}
                         handleChange={this.handleChange}
-                        handleSave={this.handleSave}
                         openModal={this.props.openModal}
                         postTask={this.props.postTask}
+                        removeCompleted={this.removeCompleted}
+                        setFocusSection={this.setFocusSection}
                         setFormStep={this.setFormStep}
+                        setLocalError={this.setLocalError}
+                        addCompletedFormSection={this.addCompletedFormSection}
                         state={this.state}
                     />
                 </>

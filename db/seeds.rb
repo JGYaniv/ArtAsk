@@ -89,8 +89,8 @@ bob = User.create!({
     area_code: rand(10000..99999)
 })
 
-file = File.open('/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/bob_tables.png')
-bob.photo.attach(io: file, filename: "bob_tables.png")
+# file = File.open('/Users/jonathanyaniv/Desktop/ArtAsk/app/assets/images/bob_tables.png')
+# bob.photo.attach(io: file, filename: "bob_tables.png")
 
 record_song = TaskType.create!({
     title: "Record Song",
