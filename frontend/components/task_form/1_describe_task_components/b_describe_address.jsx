@@ -6,6 +6,7 @@ export default class Describe extends React.Component{
         super(props)
         this.state = { street_address: "", apartment_number: "" }
         this.completeAddress = this.completeAddress.bind(this)
+        this.updateAddress = this.updateAddress.bind(this)
     }
 
     componentDidMount(){
@@ -42,28 +43,31 @@ export default class Describe extends React.Component{
         }
     }
     render(){
-        window.addState = this.state
-
         return(
             <>
-            
-                <form className="address-form">
-                    <h1>Leave blank if this is a remote project.</h1><br />
-                    <input className="street-address"
-                        type="text"
-                        onChange={(e) => this.setState({ street_address: e.target.value })}
-                        value={this.state.street_address} />
-                    <input className="apartment-number"
-                        type="text"
-                        onChange={(e) => this.setState({ apartment_number: e.target.value})}
-                        value={this.state.apartment_number} />
-                    <div>
-                        {this.props.checkCompleted("address") ?
-                            <input type="submit" value="Save" onClick={this.updateAddress} /> :
-                            <input type="submit" value="Continue" onClick={this.completeAddress} />
-                        }
+                <div id="address" className={`form-section ${this.props.assignCompleted("address")} ${this.props.assignFocused("address")}`}>
+                    <div className="form-section-header" onClick={this.props.assignOnClick("address")}>
+                        <h3>TASK LOCATION</h3>
+                        <h4>{this.props.state.describe.street_address}</h4>
                     </div>
-                </form>
+                    <form className="address-form">
+                        <h1>Leave blank if this is a remote project.</h1><br />
+                        <input className="street-address"
+                            type="text"
+                            onChange={(e) => this.setState({ street_address: e.target.value })}
+                            value={this.state.street_address} />
+                        <input className="apartment-number"
+                            type="text"
+                            onChange={(e) => this.setState({ apartment_number: e.target.value})}
+                            value={this.state.apartment_number} />
+                        <div>
+                            {this.props.checkCompleted("address") ?
+                                <input type="submit" value="Save" onClick={this.updateAddress} /> :
+                                <input type="submit" value="Continue" onClick={this.completeAddress} />
+                            }
+                        </div>
+                    </form>
+                </div>
             </>
         )
     }

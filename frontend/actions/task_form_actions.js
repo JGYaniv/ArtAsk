@@ -12,15 +12,17 @@ export const selectTaskType = taskType => ({
     taskType
 })
 
-export const receiveTaskForm = taskForm => ({
+export const receiveTaskForm = taskForm => {
+    return {
     type: RECEIVE_TASK_FORM,
     taskForm
-})
+}}
 
-export const receiveDescribeForm = describe => ({
+export const receiveDescribeForm = describe => {
+    return {
     type: RECEIVE_DESCRIBE_FORM,
     describe
-})
+}}
 
 export const receiveArtistForm = artist => ({
     type: RECEIVE_ARTIST_FORM,

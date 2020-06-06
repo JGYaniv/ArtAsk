@@ -2,7 +2,7 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 
 import ProgressBar from './progress_bar'
-import DescribeTask from './1_describe_task_copy'
+import DescribeTask from './1_describe_task'
 import SelectArtist from './2_select_artist'
 import SelectTime from './3_select_time'
 import Confirm from './4_confirm'
@@ -34,6 +34,7 @@ export default class TaskForm extends React.Component {
         this.setFormStep = this.setFormStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.setLocalError = this.setLocalError.bind(this)
+        this.setLocalErrors = this.setLocalErrors.bind(this)
         this.addCompletedFormSection = this.addCompletedFormSection.bind(this)
         this.setFocusSection = this.setFocusSection.bind(this)
         this.removeCompleted = this.removeCompleted.bind(this)
@@ -78,7 +79,15 @@ export default class TaskForm extends React.Component {
     }
 
     setLocalError(component, message){
-        this.setState({localErrors: {[component]: message}})
+        const errors = Object.assign({}, this.state.localErrors)
+        errors[component] = message
+        this.setState({ localErrors: errors })
+        this.forceUpdate();
+    }
+
+    setLocalErrors(newErrors){
+        const errors = Object.assign({}, this.state.localErrors, newErrors)
+        this.setState({ localErrors: errors })
         this.forceUpdate();
     }
     render(){
@@ -115,6 +124,7 @@ export default class TaskForm extends React.Component {
                         setFocusSection={this.setFocusSection}
                         setFormStep={this.setFormStep}
                         setLocalError={this.setLocalError}
+                        setLocalErrors={this.setLocalErrors}
                         addCompletedFormSection={this.addCompletedFormSection}
                         state={this.state}
                     />

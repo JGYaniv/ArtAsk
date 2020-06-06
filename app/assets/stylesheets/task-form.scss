@@ -65,6 +65,10 @@
                 font-size: 14px;
                 color: red;
             }
+
+            .sub-error{
+                margin: 0 0 12px 0;
+            }
             input[type="submit"]{
                 background-color: mediumslateblue;
                 color: white;
@@ -79,15 +83,15 @@
             }
         }
     }
-    // .address-form{
-    //     display: none;
-    // }
+    .address-form, .options-form, .details-form {
+        display: none;
+    }
     .completed{
-        // form{
-        //     display: none;
-        // }
+        form{
+            display: none;
+        }
         h4 {
-            display: inline;
+            display: block;
         }
     }
 
@@ -98,5 +102,12 @@
         form{
             display: block;
         }
+    }
+    .form-section-header{
+        font-family: 'Khula', sans-serif;
+        font-weight: 300;
+    }
+    .form-section-header:hover{
+        cursor: pointer;
     }
 }
