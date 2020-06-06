@@ -30,6 +30,7 @@ import Confirm from './4_confirm'
 export default class TaskForm extends React.Component {
     constructor(props){
         super(props)
+        this.props.getTaskTypes()
         this.state = Object.assign({}, this.props.taskForm, {localErrors: {}, completedFormSections: [], focusSection: null})
         this.setFormStep = this.setFormStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -42,6 +43,9 @@ export default class TaskForm extends React.Component {
 
     componentDidMount(){
         if(this.state.form_step === "") {this.setFormStep(1)}
+        if (window.localStorage.getItem("task_form")){
+            this.setState(JSON.parse(window.localStorage.getItem("task_form")))
+        }
     }
 
     handleChange(form, type) {
@@ -49,6 +53,7 @@ export default class TaskForm extends React.Component {
             const newState = Object.assign({}, this.state)
             newState[form][type] = e.target.value
             this.setState(newState)
+            window.localStorage.setItem("task_form", JSON.stringify(this.state))
         }
     }
 

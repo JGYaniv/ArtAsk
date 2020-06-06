@@ -42,7 +42,7 @@ export default (props) => {
                 <p>Tell us about your project! We use these details to show Artists who fit your needs.</p>
             </div>
             <div className="form-page">
-                <div className="task-title"><h1>{props.taskType.title || "pick a task yo"}</h1></div>
+                <div className="task-title"><h1>{(props.taskType ? props.taskType.title : "pick a task yo")}</h1></div>
                 <Interest {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} />
                 <Address {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  />
                 <Options {...props} complete={complete} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  />

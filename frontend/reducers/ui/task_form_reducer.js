@@ -32,7 +32,6 @@ export default (initialState = defaultState, action) => {
         case SELECT_TASK_TYPE:
             return Object.assign({}, initialState, {task_type_id: action.taskType.id})
         case RECEIVE_DESCRIBE_FORM:
-            debugger
             return Object.assign({}, initialState, {describe: action.describe})
         case RECEIVE_ARTIST_FORM:
             return Object.assign({}, initialState, {select_artist: action.artist})

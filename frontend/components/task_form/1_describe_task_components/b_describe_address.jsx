@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import { render } from 'react-dom';
+import React from 'react'
 
 export default class Describe extends React.Component{
     constructor(props){
         super(props)
         this.state = { street_address: "", apartment_number: "" }
         this.completeAddress = this.completeAddress.bind(this)
-        this.updateAddress = this.updateAddress.bind(this)
     }
 
     componentDidMount(){
@@ -25,23 +23,9 @@ export default class Describe extends React.Component{
             this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number }})
             this.props.addCompletedFormSection("address")
             this.props.setFocusSection("options")
-            console.log("truckin")
-
         }
     }
 
-    updateAddress(e){
-        e.preventDefault()
-        if (this.state.street_address === "") {
-            this.props.handleChange("describe", "street_address")({ target: { value: "remote" } })
-        } else {
-            this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address } })
-            this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number } })
-            this.props.addCompletedFormSection("address")
-            this.props.setFocusSection("options")
-            console.log("rockin")
-        }
-    }
     render(){
         return(
             <>
@@ -62,7 +46,7 @@ export default class Describe extends React.Component{
                             value={this.state.apartment_number} />
                         <div>
                             {this.props.checkCompleted("address") ?
-                                <input type="submit" value="Save" onClick={this.updateAddress} /> :
+                                <input type="submit" value="Save" onClick={this.completeAddress} /> :
                                 <input type="submit" value="Continue" onClick={this.completeAddress} />
                             }
                         </div>

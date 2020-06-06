@@ -12,6 +12,8 @@ export default class BannerCta extends React.Component{
 
     selectTask(taskType){
         return (e) => {
+            let taskFormState = JSON.stringify({task_type_id: taskType.id})
+            window.localStorage.setItem("task_form", taskFormState)
             this.props.selectTaskType(taskType);
         }
     }
