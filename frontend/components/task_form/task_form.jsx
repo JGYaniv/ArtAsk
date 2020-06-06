@@ -2,7 +2,7 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 
 import ProgressBar from './progress_bar'
-import DescribeTask from './1_describe_task'
+import DescribeTask from './1_describe_task_copy'
 import SelectArtist from './2_select_artist'
 import SelectTime from './3_select_time'
 import Confirm from './4_confirm'
@@ -81,7 +81,6 @@ export default class TaskForm extends React.Component {
         this.setState({localErrors: {[component]: message}})
         this.forceUpdate();
     }
-
     render(){
         if (this.props.taskTypeId){
             let CurrentForm;

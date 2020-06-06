@@ -45,10 +45,9 @@ export default class BannerCta extends React.Component{
                     <form className="explorer-form">
                         <input className="dash-input" type="text" 
                             onFocus={this.clicker} 
-                            onBlur={this.leave}
                             placeholder="What do you need help with?"/>
                         <div className="mag-glass">🔎</div>
-                        <ul className={this.state.drop ? "reveal" : "hide"}>
+                        <ul onBlur={this.leave} className={this.state.drop ? "reveal" : "hide"}>
                             {taskTypes}
                         </ul>
                     </form>
