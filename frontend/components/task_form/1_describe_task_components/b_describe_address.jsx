@@ -9,10 +9,9 @@ export default class Describe extends React.Component{
     }
 
     componentDidMount(){
-        debugger
         this.setState({ 
             street_address: this.props.state.describe.street_address,
-            apartment_number: this.props.state.describe.street_address
+            apartment_number: this.props.state.describe.apartment_number
         })
     }
 
@@ -21,10 +20,10 @@ export default class Describe extends React.Component{
         if (this.state.street_address === "") {
             this.props.handleChange("describe", "street_address")({ target: { value: "remote" } })
         } else {
-            // this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address }})
-            // this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number }})
-            // this.props.addCompletedFormSection("address")
-            // this.props.setFocusSection("options")
+            this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address }})
+            this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number }})
+            this.props.addCompletedFormSection("address")
+            this.props.setFocusSection("options")
             console.log("truckin")
 
         }
@@ -32,34 +31,32 @@ export default class Describe extends React.Component{
 
     updateAddress(e){
         e.preventDefault()
-        if (this.props.state.describe.street_address === "") {
+        if (this.state.street_address === "") {
             this.props.handleChange("describe", "street_address")({ target: { value: "remote" } })
         } else {
-            // this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address } })
-            // this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number } })
-            // this.props.addCompletedFormSection("address")
-            // this.props.setFocusSection("options")
+            this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address } })
+            this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number } })
+            this.props.addCompletedFormSection("address")
+            this.props.setFocusSection("options")
             console.log("rockin")
         }
     }
     render(){
-    return(
-        <>
-            <div id="address" className={`form-section ${this.props.assignCompleted("address")} ${this.props.assignFocused("address")}`}>
-                <div className="form-section-header" onClick={this.props.assignOnClick("address")}>
-                    <h3>TASK LOCATION</h3>
-                    <h4>{this.props.state.describe.street_address}</h4>
-                </div>
+        window.addState = this.state
+
+        return(
+            <>
+            
                 <form className="address-form">
                     <h1>Leave blank if this is a remote project.</h1><br />
                     <input className="street-address"
                         type="text"
                         onChange={(e) => this.setState({ street_address: e.target.value })}
-                        value={this.state.streetAddress} />
+                        value={this.state.street_address} />
                     <input className="apartment-number"
                         type="text"
-                        onChange={(e) => this.setState({apartment_number: e.target.value})}
-                        value={this.state.apartmentNumber} />
+                        onChange={(e) => this.setState({ apartment_number: e.target.value})}
+                        value={this.state.apartment_number} />
                     <div>
                         {this.props.checkCompleted("address") ?
                             <input type="submit" value="Save" onClick={this.updateAddress} /> :
@@ -67,7 +64,7 @@ export default class Describe extends React.Component{
                         }
                     </div>
                 </form>
-            </div>
-        </>
-    )}
+            </>
+        )
+    }
 }

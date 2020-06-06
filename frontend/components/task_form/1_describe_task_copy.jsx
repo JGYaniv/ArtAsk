@@ -18,13 +18,28 @@ export default (props) => {
     const assignOnClick = (sectionName) => checkCompleted(sectionName) ? () => props.setFocusSection(sectionName) : null;
     return (
         <>
+            <div className="task-title"><h1>{props.taskType.title || "pick a task yo"}</h1></div>
             <div className="form-banner">
                 <p>Tell us about your project! We use these details to show Artists who fit your needs.</p>
             </div>
             <div className="form-page">
-                <div className="task-title"><h1>{props.taskType.title || "pick a task yo"}</h1></div>
+                <div id="interest" className={`form-section ${assignCompleted("interest")} ${assignFocused("interest")}`} >
+                    <div className="form-section-header" onClick={assignOnClick("interest")}>
+                        <h3>TASK INTEREST</h3>
+                        <h4>{props.state.describe.interest}</h4>
+                    </div>
                 <Interest {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} />
+                </div>
+
+                <div id="address" className={`form-section ${assignCompleted("address")} ${assignFocused("address")}`}>
+                    <div className="form-section-header" onClick={assignOnClick("address")}>
+                        <h3>TASK LOCATION</h3>
+                        <h4>{props.state.describe.street_address}</h4>
+                    </div>
                 <Address {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  />
+                </div>
+
+
                 {/* <Options {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  /> */}
                 <Details {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} completePage={completePage} />
             </div>
