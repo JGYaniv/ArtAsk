@@ -1,0 +1,27 @@
+.address-form, .options-form, .details-form {
+    display: none;
+}
+.completed{
+    form{
+        display: none;
+    }
+    h4 {
+        display: block;
+    }
+}
+
+.focused{
+    h4 {
+        display: none;
+    }
+    form{
+        display: block;
+    }
+}
+.form-section-header{
+    font-family: 'Khula', sans-serif;
+    font-weight: 300;
+}
+.form-section-header:hover{
+    cursor: pointer;
+}

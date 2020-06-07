@@ -12,17 +12,7 @@ export default (props) => {
             props.setFocusSection("address")
         }
     }
-
-    const updateInterest = (e) => {
-        e.preventDefault()
-        if (props.state.describe.interest === "") {
-            props.setLocalError("interest", "Please select an option before continuing!")
-        } else {
-            props.setLocalError("interest", "")
-            props.addCompletedFormSection("interest")
-            props.setFocusSection("address")
-        }
-    }
+    
     return (
         <>
             <div id="interest" className={`form-section ${props.assignCompleted("interest")} ${props.assignFocused("interest")}`} >
@@ -64,7 +54,7 @@ export default (props) => {
                     </div>
                     <div>
                         {props.checkCompleted("interest") ?
-                            <input type="submit" value="Save" onClick={updateInterest} /> :
+                            <input type="submit" value="Save" onClick={completeInterest} /> :
                             <input type="submit" value="Continue" onClick={completeInterest} />
                         }
                     </div>

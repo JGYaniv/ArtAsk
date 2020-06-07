@@ -3,7 +3,8 @@ import {
     CLEAR_TASK_TYPE, 
     RECEIVE_DESCRIBE_FORM,
     RECEIVE_ARTIST_FORM,
-    RECEIVE_TIME_FORM
+    RECEIVE_TIME_FORM,
+    RECEIVE_FORM_STEP
 } from '../../actions/task_form_actions'
 
 const defaultState = {
@@ -37,6 +38,8 @@ export default (initialState = defaultState, action) => {
             return Object.assign({}, initialState, {select_artist: action.artist})
         case RECEIVE_TIME_FORM:
             return Object.assign({}, initialState, {select_time: action.time})
+        case RECEIVE_FORM_STEP:
+            return Object.assign({}, initialState, {form_step: action.formStep})
         case CLEAR_TASK_TYPE:
             return {}
         default:

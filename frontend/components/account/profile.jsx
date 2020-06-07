@@ -8,7 +8,7 @@ export default (props) => (
         </span>
         <div className="profile-cols">
             <div className="left-col">
-                <img src={props.currentUser.photoUrl} className="profilePic"></img>
+                <img src={props.currentUser.photo_url} className="profilePic"></img>
             </div>
             <div className='right-col'>
                 <ul>

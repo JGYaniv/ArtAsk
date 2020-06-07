@@ -6,6 +6,7 @@ export const RECEIVE_TIME_FORM = 'RECEIVE_TIME_FORM';
 export const RECEIVE_TASK_FORM = 'RECEIVE_TASK_FORM';
 export const RECEIVE_TASK_FORM_ERRORS = 'RECEIVE_TASK_FORM_ERRORS'
 export const CLEAR_TASK_FORM_ERRORS = 'CLEAR_TASK_FORM_ERRORS'
+export const RECEIVE_FORM_STEP = 'RECEIVE_FORM_STEP'
 
 export const selectTaskType = taskType => ({
     type: SELECT_TASK_TYPE,
@@ -16,6 +17,12 @@ export const receiveTaskForm = taskForm => {
     return {
     type: RECEIVE_TASK_FORM,
     taskForm
+}}
+
+export const receiveFormStep = formStep => {
+    return {
+    type: RECEIVE_FORM_STEP,
+        formStep
 }}
 
 export const receiveDescribeForm = describe => {

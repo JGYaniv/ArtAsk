@@ -89,7 +89,7 @@ export default class EditProfile extends React.Component {
                 <h2>Edit Profile</h2>
                 <div className="profile-cols">
                     <div className="left-col">
-                        <img src={this.props.currentUser.photoUrl} className="profilePic"></img>
+                        <img src={this.props.currentUser.photo_url} className="profilePic"></img>
                     </div>
                     <div className="middle-col">
                         <form>

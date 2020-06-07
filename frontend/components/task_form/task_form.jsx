@@ -7,31 +7,17 @@ import SelectArtist from './2_select_artist'
 import SelectTime from './3_select_time'
 import Confirm from './4_confirm'
 
-// const defaultState = {
-//     task_type_id: "",
-//     form_step: "",
-//     describe: {
-//         interest: "",
-//         street_address: "",
-//         apartment_number: "",
-//         size: "",
-//         revisions: "",
-//         details: ""
-//     },
-//     select_artist: {
-//         artist_id: ""
-//     },
-//     select_time: {
-//         start_date: "",
-//         end_date: ""
-//     }
-// }
-
 export default class TaskForm extends React.Component {
     constructor(props){
         super(props)
         this.props.getTaskTypes()
-        this.state = Object.assign({}, this.props.taskForm, {localErrors: {}, completedFormSections: [], focusSection: null})
+        let storedState = {};
+        if (window.localStorage.getItem("task_form")) {
+            storedState = JSON.parse(window.localStorage.getItem("task_form"))
+        }
+
+        this.state = Object.assign({}, this.props.taskForm, {localErrors: {}, completedFormSections: [], focusSection: null}, storedState)
+
         this.setFormStep = this.setFormStep.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.setLocalError = this.setLocalError.bind(this)
@@ -42,10 +28,15 @@ export default class TaskForm extends React.Component {
     }
 
     componentDidMount(){
-        if(this.state.form_step === "") {this.setFormStep(1)}
-        if (window.localStorage.getItem("task_form")){
-            this.setState(JSON.parse(window.localStorage.getItem("task_form")))
+        if (this.state.form_step === "") { this.setFormStep(1) }
+        if (this.props.taskTypeId){
+            this.props.getTaskTypeArtists(this.props.taskTypeId)
+            this.props.getTaskTypeReviews(this.props.taskTypeId)
         }
+    }
+
+    componentDidUpdate(){
+        window.localStorage.setItem("task_form", JSON.stringify(this.state))
     }
 
     handleChange(form, type) {
@@ -59,7 +50,6 @@ export default class TaskForm extends React.Component {
 
     addCompletedFormSection(formName){
         if (this.state.completedFormSections.includes(formName)){
-            console.log("NO BUENO, SENOR GATO FUEGO")
         } else {
             let completed = Object.assign([], this.state.completedFormSections)
             completed.push(formName)
@@ -69,7 +59,7 @@ export default class TaskForm extends React.Component {
     }
 
     setFormStep(step){
-        this.setState({form_step: step})
+        this.setState({ form_step: step })  
     }
 
     setFocusSection(sectionName){
@@ -105,7 +95,13 @@ export default class TaskForm extends React.Component {
                 case 2:
                     CurrentForm = (props) => <SelectArtist {...props}/>; break;
                 case 3:
-                    CurrentForm = (props) => <SelectTime {...props}/>; break;
+                    CurrentForm = (props) => (
+                        <>
+                            <SelectArtist {...props}/>
+                            <SelectTime {...props} />
+                        </>
+                    );
+                    break;
                 case 4:
                     CurrentForm = (props) => <Confirm {...props}/>; break;
                 default:
@@ -118,7 +114,8 @@ export default class TaskForm extends React.Component {
                         setFormStep={this.setFormStep}/>
                     <CurrentForm 
                         taskType={this.props.taskTypes[this.props.taskTypeId]}
-                        artists={this.props.artists}
+                        users={this.props.users}
+                        reviews={this.props.reviews}
                         closeModal={this.props.closeModal}
                         currentUser={this.props.currentUser}
                         errors={this.props.errors}
@@ -126,6 +123,8 @@ export default class TaskForm extends React.Component {
                         openModal={this.props.openModal}
                         postTask={this.props.postTask}
                         removeCompleted={this.removeCompleted}
+                        receiveDescribeForm={this.props.receiveDescribeForm}
+                        receiveArtistForm={this.props.receiveArtistForm}
                         setFocusSection={this.setFocusSection}
                         setFormStep={this.setFormStep}
                         setLocalError={this.setLocalError}

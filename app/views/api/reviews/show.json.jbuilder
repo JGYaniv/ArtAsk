@@ -1,0 +1,1 @@
+@review.extract! review, :id, :artist_id, :details, :rating, :task_id

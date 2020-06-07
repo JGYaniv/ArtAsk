@@ -30,7 +30,6 @@ export default class Password extends React.Component {
             email: this.props.currentUser.email, 
             password: this.state.oldPassword
         }).then( res => {
-            console.log(res.bool)
             if (res.bool && this.state.newPassword == this.state.confirmPassword){
                 this.props.update({
                     id: this.props.currentUser.id,

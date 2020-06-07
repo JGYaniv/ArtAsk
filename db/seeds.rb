@@ -47,6 +47,7 @@ artist_names = %w(
     Paul_Hirsch
     Paula_Scher
     Pedro_Almodovar
+    Philip_Guston
     Richard_Chew
     Salvador_Dali
     Sam_Pollard
@@ -55,6 +56,7 @@ artist_names = %w(
     Tom_Waits
     Vincent_VanGoh
 )
+
 artists = {}
 artist_names.each do |artist|
     artists[artist] = User.create!({
@@ -104,9 +106,15 @@ nai_song = Task.create!({
     user_id: clients[0].id
 })
 
+ArtistTaskType.create!({
+    task_type_id: record_song.id,
+    artist_id: artists["Nai_Palm"].id
+})
+
 Review.create!({
     task_id: nai_song.id,
     rating: 4,
+    artist_id: artists["Nai_Palm"].id,
     details: "Nai wrote an awesome song! It took a little longer than expected, but totally worth it."
 })
 
@@ -117,10 +125,16 @@ ken_song = Task.create!({
     user_id: clients[1].id
 })
 
+ArtistTaskType.create!({
+    task_type_id: record_song.id,
+    artist_id: artists["Kendrick_Lamar"].id
+})
+
 Review.create!({
     task_id: ken_song.id,
     rating: 5,
-    details: "I was truly humbled by the experience of workign with Ken. The song he wrote for us was fire!"
+    artist_id: artists["Kendrick_Lamar"].id,
+    details: "I was truly humbled by the experience of working with Ken. The song he wrote for us was fire!"
 })
 
 tom_song = Task.create!({
@@ -130,9 +144,15 @@ tom_song = Task.create!({
     user_id: clients[2].id
 })
 
+ArtistTaskType.create!({
+    task_type_id: record_song.id,
+    artist_id: artists["Tom_Waits"].id
+})
+
 Review.create!({
-    task_id: ken_song.id,
+    task_id: tom_song.id,
     rating: 4,
+    artist_id: artists["Tom_Waits"].id,
     details: "Tom recorded an amazing acoustic cover for us of 'We Are the Champions' for our fundraiser."
 })
 
@@ -140,10 +160,66 @@ persuasive_writing = TaskType.create!({
     title: "Write Persuasively",
     description: "Need help writing persuasively for a donor letter, rally speach, or online mission statement."
 })
-
+# Philip_Guston, Fridah_Kahlo, Gustave_Courbet
 paint_mural = TaskType.create!({
     title: "Paint Mural",
     description: "Need an artist to paint a mural for us."
+})
+philip_mural = Task.create!({
+    completed: true,
+    artist_id: artists["Philip_Guston"].id,
+    task_type_id: paint_mural.id,
+    user_id: clients[3].id
+})
+
+ArtistTaskType.create!({
+    task_type_id: paint_mural.id,
+    artist_id: artists["Philip_Guston"].id
+})
+
+Review.create!({
+    task_id: philip_mural.id,
+    rating: 5,
+    artist_id: artists["Philip_Guston"].id,
+    details: "Phil's otherwordly mural was powerful and completed ahead of schedule. Would love to work together again!"
+})
+
+fridah_mural = Task.create!({
+    completed: true,
+    artist_id: artists["Fridah_Kahlo"].id,
+    task_type_id: paint_mural.id,
+    user_id: clients[4].id
+})
+
+ArtistTaskType.create!({
+    task_type_id: paint_mural.id,
+    artist_id: artists["Fridah_Kahlo"].id
+})
+
+Review.create!({
+    task_id: fridah_mural.id,
+    rating: 5,
+    artist_id: artists["Fridah_Kahlo"].id,
+    details: "Fridah's mural will be the highlight of our downtown public space for generations to come."
+})
+
+gus_mural = Task.create!({
+    completed: true,
+    artist_id: artists["Gustave_Courbet"].id,
+    task_type_id: paint_mural.id,
+    user_id: clients[5].id
+})
+
+ArtistTaskType.create!({
+    task_type_id: paint_mural.id,
+    artist_id: artists["Gustave_Courbet"].id
+})
+
+Review.create!({
+    task_id: gus_mural.id,
+    rating: 4,
+    artist_id: artists["Gustave_Courbet"].id,
+    details: "Gus is incredibly talented and delivered on time. A bit risque for our community center, but otherwise no complaints!"
 })
 
 film_event = TaskType.create!({

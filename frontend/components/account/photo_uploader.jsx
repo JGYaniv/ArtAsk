@@ -14,7 +14,7 @@ export default class PhotoUploader extends React.Component{
         const file = e.currentTarget.files[0]
         const fileReader = new FileReader();
         fileReader.onloadend = () => {
-            this.setState({photo: file, photoUrl: fileReader.result})
+            this.setState({photo: file, photo_url: fileReader.result})
         }
         if (file){
             fileReader.readAsDataURL(file)

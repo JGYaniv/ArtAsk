@@ -46,9 +46,8 @@ export default (props) => {
                 <Interest {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} />
                 <Address {...props} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  />
                 <Options {...props} complete={complete} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick}  />
-                <Details {...props} complete={complete} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} completePage={completePage} />
+                <Details {...props} receiveDescribeForm={props.receiveDescribeForm} complete={complete} checkCompleted={checkCompleted} assignCompleted={assignCompleted} assignFocused={assignFocused} assignOnClick={assignOnClick} completePage={completePage} />
             </div>
-
         </>
     )
 }

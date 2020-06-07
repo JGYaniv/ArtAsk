@@ -17,6 +17,7 @@ export default class Details extends React.Component{
             props.setLocalError("details", "Please add a few project details before continuing!")
         } else {
             this.props.handleChange("describe", "details")({ target: { value: this.state.details } })
+            this.props.receiveDescribeForm(this.props.state)
             this.props.addCompletedFormSection("details")
             this.props.completePage()
         }

@@ -5,7 +5,16 @@ class User < ApplicationRecord
     attr_reader :password
     after_initialize :ensure_session_token
     has_one_attached :photo
-    
+    has_many :artist_tasks,
+        foreign_key: :artist_id,
+        class_name: :Task
+    has_many :client_tasks,
+        foreign_key: :user_id,
+        class_name: :Task
+    has_many :reviews,
+        through: :artist_tasks,
+        source: :reviews
+
     def password=(password)
         @password = password
         self.password_digest = BCrypt::Password.create(password)

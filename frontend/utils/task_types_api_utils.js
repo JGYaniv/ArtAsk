@@ -7,7 +7,21 @@ export const getTaskTypes = () => (
 
 export const getTaskType = (taskTypeId) => (
     $.ajax({
-        url: `/api/task_types${taskTypeId}`,
+        url: `/api/task_types/${taskTypeId}`,
         method: 'get'
     })
 )
+
+export const getTaskTypeArtists = (taskTypeId) => (
+    $.ajax({
+        url: `/api/task_types/${taskTypeId}/artists`,
+        method: 'get'
+    })
+)
+
+export const getTaskTypeReviews = (taskTypeId) => {
+    return $.ajax({
+        url: `/api/task_types/${taskTypeId}/reviews`,
+        method: 'get'
+    })
+}

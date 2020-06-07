@@ -1,0 +1,53 @@
+.artists{
+    display: flex;
+    max-width: 1200px;
+    min-width: 970px;
+    margin: 0 auto;
+    padding-top: 10px;
+    .filters {
+        margin-right: 20px;
+        width: 400px;
+    }
+    .select-artist{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        .artist {
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+
+            .left-col{
+                width: 25%;
+                display: flex;
+                flex-flow: column;
+                img{
+                    border-radius: 50%;
+                }
+            }
+            .right-col{
+                box-sizing: border-box;
+                width: 75%;
+                padding-left: 10px;
+                display: flex;
+                flex-flow: column;
+                .artist-review{
+                    img{
+                        height: 50px;
+                        width: 50x;
+                        border-radius: 50%;
+                    }
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+.sort-menu {
+    margin-top: 10px;
+    padding: 0;
+    justify-content: flex-end;
+    select{
+        width: 265px;
+    }
+}

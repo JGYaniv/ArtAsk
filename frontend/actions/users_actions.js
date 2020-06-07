@@ -13,7 +13,7 @@ export const receiveUser = user => {
 })}
 
 export const receiveUsers = users => ({
-    type: RECEIVE_USER,
+    type: RECEIVE_USERS,
     users
 })
 
