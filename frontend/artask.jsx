@@ -8,9 +8,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     if (Boolean(window.localStorage.getItem('currentUser'))) {
         preloadedState = {
-            session: { currentUser: JSON.parse(window.localStorage.getItem('currentUser')) }
+            session: { currentUser: JSON.parse(window.localStorage.getItem('currentUser')) },
         }
     }
+
+    let taskForm = JSON.parse(window.localStorage.getItem("task_form"))
+    if (Boolean(taskForm.task_type_id)){
+        preloadedState.ui = { task_form: taskForm }
+    }
+    debugger
     let store = storeConfig(preloadedState)
 
     window.store = store

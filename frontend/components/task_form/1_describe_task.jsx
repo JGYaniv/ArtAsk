@@ -41,9 +41,9 @@ export default ({
             <div className="form-page">
             <div className="task-title"><h1>{(taskType ? taskType.title : "")}</h1></div>
                 <Interest {...sectionProps} />
-                {/* <Address {...sectionProps} />
+                <Address {...sectionProps} />
                 <Options {...sectionProps} />
-                <Details {...sectionProps} /> */}
+                {/* <Details {...sectionProps} /> */}
             </div>
         </>
     )

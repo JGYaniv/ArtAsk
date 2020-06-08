@@ -11,11 +11,9 @@ export default class TaskForm extends React.Component {
     constructor(props){
         super(props)
         if (this.props.formStep === "") { 
-                this.props.setFormStep(1) 
-                this.props.setFocus("interest")
-            }
-        // let storedState = JSON.parse(window.localStorage.getItem("task_form"))
-        // props.receiveTaskForm(storedState)
+            this.props.setFormStep(1) 
+            this.props.setFocus("interest")
+        }
     }
 
     componentDidMount(){
@@ -24,12 +22,14 @@ export default class TaskForm extends React.Component {
             this.props.getTaskTypeArtists(this.props.taskTypeId)
             this.props.getTaskTypeReviews(this.props.taskTypeId)
         }
-        
-        debugger
+    }
+
+    componentDidUpdate(){
+        window.localStorage.setItem("task_form", JSON.stringify(this.props.taskForm))
     }
 
     render(){
-        if (this.props.taskTypeId){
+        if (Boolean(this.props.taskTypeId)){
             let CurrentForm;
             switch (this.props.formStep){
                 case 1:
@@ -50,7 +50,7 @@ export default class TaskForm extends React.Component {
                 <>  
                     <ProgressBar 
                         step={this.props.formStep} 
-                        setFormStep={this.props.setFormStep}/>
+                        setFormStep={this.props.setFormStep} />
                     <CurrentForm 
                         taskForm={this.props.taskForm}
                         taskType={this.props.taskTypes[this.props.taskTypeId]}
@@ -67,10 +67,9 @@ export default class TaskForm extends React.Component {
                         setFormStep={this.props.setFormStep}
                         setFocus={this.props.setFocus}
                         setError={this.props.setError}
-                        clearError={this.props.clearError}
-                    />
+                        clearError={this.props.clearError} />
                 </>
             )
-        } else { return <Redirect to="/" /> }
+        } //else { return <Redirect to="/" /> }
     }
 }

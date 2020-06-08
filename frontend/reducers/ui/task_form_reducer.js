@@ -30,50 +30,34 @@ const defaultState = {
     }
 }
 
-const storeState = state => window.localStorage.setItem("task_form", JSON.stringify(state))
 
 export default (initialState = defaultState, action) => {
     Object.freeze(initialState)
+    let newState;
     switch (action.type) {
         case SELECT_TASK_TYPE:
-            let newState1 = Object.assign({}, initialState, {task_type_id: action.taskType.id})
-            // storeState(newState)
-            return newState1;
+            return Object.assign({}, initialState, {task_type_id: action.taskType.id});
         case RECEIVE_DESCRIBE_FORM:
-            let newState2 = Object.assign({}, initialState, {describe: action.describe})
-            // storeState(newState)
-            return newState2;
+            return Object.assign({}, initialState, {describe: action.describe});
         case UPDATE_DESCRIBE_FORM:
-            let newState3 = Object.assign({}, initialState)
+            newState = Object.assign({}, initialState)
             let changeKeys = Object.keys(action.describeAttributes)
             changeKeys.forEach(key => {
-                newState3.describe[key] = action.describeAttributes[key]
+                newState.describe[key] = action.describeAttributes[key]
             })
-            // storeState(newState)
-            return newState3;
+            return newState;
         case RECEIVE_ARTIST_FORM:
-            let newState4 = Object.assign({}, initialState, { select_artist: action.artist })
-            // storeState(newState)
-            return newState4;
+            return Object.assign({}, initialState, { select_artist: action.artist });
         case RECEIVE_TIME_FORM:
-            let newState5 = Object.assign({}, initialState, { select_time: action.time })
-            // storeState(newState)
-            return newState5;
+            return Object.assign({}, initialState, { select_time: action.time });
         case RECEIVE_TASK_FORM:
-            let newState6 = Object.assign({}, initialState, action.taskForm)
-            return newState6;
+            return Object.assign({}, initialState, action.taskForm);
         case RECEIVE_FORM_STEP:
-            let newState7 = Object.assign({}, initialState, { form_step: action.formStep })
-            // storeState(newState)
-            return newState7;
+            return Object.assign({}, initialState, { form_step: action.formStep });
         case RECEIVE_FOCUS_SECTION:
-            let newState9 = Object.assign({}, initialState, { focus_section: action.focusSection })
-            // storeState(newState)
-            return newState9;
+            return Object.assign({}, initialState, { focus_section: action.focusSection });
         case CLEAR_TASK_TYPE:
-            let newState10 = Object.assign({}, initialState, { task_type_id: "" })
-            // storeState(newState)
-            return newState10;
+            return Object.assign({}, initialState, { task_type_id: "" });
         default:
             return initialState;
     }

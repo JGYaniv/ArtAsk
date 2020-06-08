@@ -1,58 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default class Describe extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = { street_address: "", apartment_number: "" }
-        this.completeAddress = this.completeAddress.bind(this)
-    }
+export default ({
+    updateDescribeForm,
+    setFocus,
+    taskForm
+}) => {
+    const [streetAddress, setStreetAddress] = useState(taskForm.describe.street_address);
+    const [apartmentNumber, setApartmentNumber] = useState(taskForm.describe.apartment_number);
+    const [completed, setComplete] = useState(!!taskForm.describe.street_address);
 
-    componentDidMount(){
-        this.setState({ 
-            street_address: this.props.state.describe.street_address,
-            apartment_number: this.props.state.describe.apartment_number
+    const completeAddress = (e) => {
+        e.preventDefault()
+        setComplete("completed")
+        setFocus("options")
+        let address = (`${streetAddress}, ${apartmentNumber}`)
+        updateDescribeForm({ 
+            street_address: streetAddress, 
+            apartment_number: apartmentNumber 
         })
     }
 
-    completeAddress(e){
-        e.preventDefault()
-        if (this.state.street_address === "") {
-            this.props.handleChange("describe", "street_address")({ target: { value: "remote" } })
-        } else {
-            this.props.handleChange("describe", "street_address")({ target: { value: this.state.street_address }})
-            this.props.handleChange("describe", "apartment_number")({ target: { value: this.state.apartment_number }})
-            this.props.addCompletedFormSection("address")
-            this.props.setFocusSection("options")
-        }
+    const focus = () => {
+        setFocus("address")
     }
 
-    render(){
-        return(
-            <>
-                <div id="address" className={`form-section ${this.props.assignCompleted("address")} ${this.props.assignFocused("address")}`}>
-                    <div className="form-section-header" onClick={this.props.assignOnClick("address")}>
-                        <h3>TASK LOCATION</h3>
-                        <h4>{this.props.state.describe.street_address}</h4>
-                    </div>
-                    <form className="address-form">
-                        <h1>Leave blank if this is a remote project.</h1><br />
-                        <input className="street-address"
-                            type="text"
-                            onChange={(e) => this.setState({ street_address: e.target.value })}
-                            value={this.state.street_address} />
-                        <input className="apartment-number"
-                            type="text"
-                            onChange={(e) => this.setState({ apartment_number: e.target.value})}
-                            value={this.state.apartment_number} />
-                        <div>
-                            {this.props.checkCompleted("address") ?
-                                <input type="submit" value="Save" onClick={this.completeAddress} /> :
-                                <input type="submit" value="Continue" onClick={this.completeAddress} />
-                            }
-                        </div>
-                    </form>
+    const classString = `form-section ${
+            completed ? "completed" : ""
+        } ${
+            taskForm.focus_section === "address" ? "focused" : ""
+        }`
+
+    return(
+        <div id="address" 
+            className={classString}>
+
+            <div className="form-section-header" onClick={focus}>
+                <h3>TASK LOCATION</h3>
+                <h4>{taskForm.describe.street_address}</h4>
+            </div>
+            <form className="address-form">
+                <h1>Leave blank if this is a remote project.</h1><br />
+
+                <input className="street-address"
+                    type="text"
+                    onChange={e => setStreetAddress(e.target.value)}
+                    value={streetAddress} />
+                <input className="apartment-number"
+                    type="text"
+                    onChange={e => setApartmentNumber(e.target.value)}
+                    value={apartmentNumber} />
+
+                <div>
+                
+                <input 
+                    type="submit" 
+                    value={completed ? "Save" : "Continue"} 
+                    onClick={completeAddress} /> :
                 </div>
-            </>
-        )
-    }
+            </form>
+        </div>
+    )
 }

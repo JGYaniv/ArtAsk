@@ -6,17 +6,10 @@ export default ({
     setError,
     clearError,
     setFocus,
-    completePage,
     taskForm
 }) => {
     const [interest, setInterest] = useState(taskForm.describe.interest);
-    const [completed, setComplete] = useState(!!taskForm.describe.interest)
-    
-    window.interest = interest
-    window.completed = completed
-    window.errors = errors
-    window.storedState = JSON.parse(window.localStorage.getItem("task_form"))
-    window.taskForm = taskForm
+    const [completed, setComplete] = useState(!!taskForm.describe.interest);
 
     const completeInterest = (e) => {
         e.preventDefault()
@@ -28,24 +21,25 @@ export default ({
             setFocus("address")
             updateDescribeForm({interest: interest})
         }
-        debugger
     }
 
     const focus= () => {
         setFocus("interest")
     }
 
+    const classString = `form-section ${
+            completed ? "completed" : ""
+        } ${
+            taskForm.focus_section === "interest" ? "focused" : ""
+        }`
+
     return (
         <div id="interest" 
-            className={`form-section ${
-                completed ? "completed" : ""
-            } ${
-                taskForm.focus_section === "interest" ? "focused" : ""
-            }`} >
+            className={classString} >
 
             <div className="form-section-header" onClick={focus}>
                 <h3>TASK INTEREST</h3>
-                <h4>tbd</h4>
+                <h4>{taskForm.describe.interest}</h4>
             </div>
             <form className="interest-form">
                 <h1>What brings you here today?</h1>
@@ -80,7 +74,10 @@ export default ({
                     <p className="inline-error">{errors.includes("interest") ? "Cannot leave blank!" : ""}</p>
                 </div>
                 <div>
-                    <input type="submit" value={completed ? "Save" : "Continue"} onClick={completeInterest} /> :
+                    <input 
+                        type="submit" 
+                        value={completed ? "Save" : "Continue"} 
+                        onClick={completeInterest} /> :
                 </div>
             </form>
         </div>
