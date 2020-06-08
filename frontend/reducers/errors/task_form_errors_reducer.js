@@ -12,7 +12,9 @@ export default (initialState = [], action) => {
         case RECEIVE_TASK_FORM_ERRORS:
             return action.errors
         case RECEIVE_TASK_FORM_ERROR:
-            return Object.assign([], initialState, [action.errorType])
+            let errors = Object.assign([], initialState)
+            errors.push(action.errorType)
+            return errors
         case RECEIVE_TASK_FORM:
             return []
         case CLEAR_TASK_FORM_ERRORS:

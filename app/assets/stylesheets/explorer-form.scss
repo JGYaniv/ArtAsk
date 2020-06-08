@@ -3,6 +3,7 @@
 
 form.explorer-form{
     display: flex;
+    flex-flow: column;
     justify-content: center;
     margin-bottom: 40px;
     position: relative;
@@ -12,9 +13,12 @@ form.explorer-form{
     ul.reveal{
         display: block;
     }
+    span{
+        text-align: center;
+    }
     ul{
-        position: absolute;
-        margin-top: 60px;
+        // position: absolute;
+        margin-top: 0px;
         padding-top: 20px;
         padding-bottom: 10px;
         background-color: white;
@@ -26,6 +30,14 @@ form.explorer-form{
         li{
             height: 52px;
             font-size: 16px;
+            a{
+                width: 100%;
+                display: inline-block;
+                height: 100%;
+            }
+        }
+        li:hover{
+            background-color: lightgray;
         }
     }
     input{
@@ -54,6 +66,7 @@ form.explorer-form{
     .mag-glass{
         position: absolute;
         left: 40px;
+        top: 10px;
         z-index: 1;
         align-self: center;
     }
@@ -79,13 +92,14 @@ form.explorer-form{
         ul {
             width: 790px;
             padding-top: 20px;
-            margin-top: 42px;
-            margin-left: -5px;
+            // margin-top: 42px;
+            margin-left: -10px;
             border-top: none;
         }
 
         .mag-glass{
             left: 20px;
+            top: 10px;
         }
     }
 }

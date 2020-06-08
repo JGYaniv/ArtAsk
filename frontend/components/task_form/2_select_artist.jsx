@@ -13,8 +13,7 @@ export default (props) => {
         artistList = artists.map((artist, idx) => {
             let firstReview = props.reviews[artist.review_ids[0]]
             let handleSelect = () => {
-                props.receiveArtistForm({ artist_id: artist.id })
-                props.handleChange("select_artist", "artist_id")({ target: { value: artist.id } })
+                props.setArtistForm({ artist_id: artist.id })
                 props.setFormStep(3)
             }
 
@@ -23,7 +22,7 @@ export default (props) => {
                     <ArtistListItem 
                         artist={artist} 
                         review={firstReview} 
-                        receiveArtistForm={props.receiveArtistForm} 
+                        setArtistForm={props.setArtistForm} 
                         handleSelect={handleSelect}
                     />
                 </div>
@@ -31,8 +30,7 @@ export default (props) => {
         })
         
     }
-    window.artistList = artistList
-    window.users = props.users
+
     return (
         <>
             <div className="form-banner">

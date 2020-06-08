@@ -7,7 +7,8 @@ import {
     RECEIVE_TIME_FORM,
     RECEIVE_TASK_FORM,
     RECEIVE_FORM_STEP,
-    RECEIVE_FOCUS_SECTION
+    RECEIVE_FOCUS_SECTION,
+    CLEAR_TASK_FORM
 } from '../../actions/task_form_actions'
 
 const defaultState = {
@@ -36,7 +37,9 @@ export default (initialState = defaultState, action) => {
     let newState;
     switch (action.type) {
         case SELECT_TASK_TYPE:
-            return Object.assign({}, initialState, {task_type_id: action.taskType.id});
+            newState = Object.assign({}, defaultState, { task_type_id: action.taskType.id })
+            window.localStorage.setItem("task_form", JSON.stringify(newState))
+            return newState;
         case RECEIVE_DESCRIBE_FORM:
             return Object.assign({}, initialState, {describe: action.describe});
         case UPDATE_DESCRIBE_FORM:
@@ -47,7 +50,8 @@ export default (initialState = defaultState, action) => {
             })
             return newState;
         case RECEIVE_ARTIST_FORM:
-            return Object.assign({}, initialState, { select_artist: action.artist });
+            newState = Object.assign({}, initialState, { select_artist: action.artist })
+            return newState;
         case RECEIVE_TIME_FORM:
             return Object.assign({}, initialState, { select_time: action.time });
         case RECEIVE_TASK_FORM:
@@ -58,6 +62,9 @@ export default (initialState = defaultState, action) => {
             return Object.assign({}, initialState, { focus_section: action.focusSection });
         case CLEAR_TASK_TYPE:
             return Object.assign({}, initialState, { task_type_id: "" });
+        case CLEAR_TASK_FORM:
+            window.localStorage.setItem("task_form", JSON.stringify(defaultState))
+            return Object.assign({}, defaultState);
         default:
             return initialState;
     }

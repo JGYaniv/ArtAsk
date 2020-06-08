@@ -29,7 +29,7 @@ export default class BannerCta extends React.Component{
     }
 
     leave(e){
-        this.timeout = setTimeout(() => this.setState({ "drop": false }), 100) 
+        this.timeout = setTimeout(() => this.setState({ "drop": false }), 200) 
     }
 
     render(){
@@ -44,14 +44,15 @@ export default class BannerCta extends React.Component{
                         <p>Our artist volunteers are mobilized and motivated to help you change the world. Lets work together!</p>
                         <form className="explorer-form" 
                             onFocus={this.clicker}
-                            
-                            >
-                            <input type="text" placeholder="What do you need help with?"/>
-                            <div className="mag-glass">🔎</div>
-                            <ul onBlur={this.leave} className={this.state.drop ? "reveal" : "hide"}>
+                            onBlur={this.leave} > 
+                            <span>
+                                <input type="text" placeholder="What do you need help with?"/>
+                                <div className="mag-glass">🔎</div>
+                                <input type="submit" value="Find a volunteer" />
+                            </span>
+                            <ul className={this.state.drop ? "reveal" : "hide"}>
                                 {taskTypes}
                             </ul>
-                            <input type="submit" value="Find a volunteer" />
                         </form>
                     </div>
                 </div>

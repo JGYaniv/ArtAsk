@@ -16,8 +16,8 @@ export default class TaskForm extends React.Component {
         }
     }
 
-    componentDidMount(){
-        if (this.props.taskTypeId){
+    componentWillMount(){
+        if (Boolean(this.props.taskTypeId)){
             this.props.getTaskTypes()
             this.props.getTaskTypeArtists(this.props.taskTypeId)
             this.props.getTaskTypeReviews(this.props.taskTypeId)
@@ -53,6 +53,7 @@ export default class TaskForm extends React.Component {
                         setFormStep={this.props.setFormStep} />
                     <CurrentForm 
                         taskForm={this.props.taskForm}
+                        taskTypeId={this.props.taskTypeId}
                         taskType={this.props.taskTypes[this.props.taskTypeId]}
                         users={this.props.users}
                         reviews={this.props.reviews}
@@ -61,15 +62,21 @@ export default class TaskForm extends React.Component {
                         errors={this.props.errors}
                         openModal={this.props.openModal}
                         postTask={this.props.postTask}
-                        setDescribeForm={this.props.setDescribeForm}
                         updateDescribeForm={this.props.updateDescribeForm}
+                        setDescribeForm={this.props.setDescribeForm}
+                        setArtistForm={this.props.setArtistForm}
+                        setTimeForm={this.props.setTimeForm}
                         setArtistForm={this.props.setArtistForm}
                         setFormStep={this.props.setFormStep}
                         setFocus={this.props.setFocus}
                         setError={this.props.setError}
-                        clearError={this.props.clearError} />
+                        clearError={this.props.clearError}
+                        getTaskTypes={this.props.getTaskTypes}
+                        getTaskTypeArtists={this.props.getTaskTypeArtists}
+                        getTaskTypeReviews={this.props.getTaskTypeReviews} 
+                        history={this.props.history} />
                 </>
             )
-        } //else { return <Redirect to="/" /> }
+        } else { return <Redirect to="/" /> }
     }
 }

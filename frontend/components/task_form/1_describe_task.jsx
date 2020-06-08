@@ -17,7 +17,7 @@ export default ({
 }) => {
 
     const completePage = () => {
-        if (Object.values(props.errors.describe) === 0){
+        if (errors.length === 0){
             setFormStep(2)
         }
     }
@@ -43,7 +43,7 @@ export default ({
                 <Interest {...sectionProps} />
                 <Address {...sectionProps} />
                 <Options {...sectionProps} />
-                {/* <Details {...sectionProps} /> */}
+                <Details {...sectionProps} />
             </div>
         </>
     )

@@ -23,7 +23,7 @@ export default class BannerCta extends React.Component{
     }
 
     leave(e) {
-        this.timeout = setTimeout(() => this.setState({ "drop": false }), 100)
+        this.timeout = setTimeout(() => this.setState({ "drop": false }), 200)
     }
 
     selectTask(taskType) {
@@ -40,12 +40,11 @@ export default class BannerCta extends React.Component{
             <div className="explorer-background-image">
                 <div className="explorer-dash">
                     <h1>Book Your Next Task</h1>
-                    <form className="explorer-form">
+                    <form className="explorer-form" onBlur={this.leave} onFocus={this.clicker}>
                         <input className="dash-input" type="text" 
-                            onFocus={this.clicker} 
                             placeholder="What do you need help with?"/>
                         <div className="mag-glass">🔎</div>
-                        <ul onBlur={this.leave} className={this.state.drop ? "reveal" : "hide"}>
+                        <ul  className={this.state.drop ? "reveal" : "hide"}>
                             {taskTypes}
                         </ul>
                     </form>

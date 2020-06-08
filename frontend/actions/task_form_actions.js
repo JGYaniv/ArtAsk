@@ -1,11 +1,10 @@
 export const SELECT_TASK_TYPE = 'SELECT_TASK_TYPE';
 export const CLEAR_TASK_TYPE = 'CLEAR_TASK_TYPE';
 
-export const selectTaskType = taskType => {
-    debugger
-    return { type: SELECT_TASK_TYPE,
+export const selectTaskType = taskType => ({
+    type: SELECT_TASK_TYPE,
     taskType
-}}
+})
 
 export const clearTaskType = () => ({
     type: CLEAR_TASK_TYPE
@@ -16,6 +15,7 @@ export const UPDATE_DESCRIBE_FORM = 'UPDATE_DESCRIBE_FORM';
 export const RECEIVE_ARTIST_FORM = 'RECEIVE_ARTIST_FORM';
 export const RECEIVE_TIME_FORM = 'RECEIVE_TIME_FORM';
 export const RECEIVE_TASK_FORM = 'RECEIVE_TASK_FORM';
+export const CLEAR_TASK_FORM = 'CLEAR_TASK_FORM';
 
 export const receiveDescribeForm = describe => {
     return {
@@ -47,6 +47,13 @@ export const receiveTaskForm = taskForm => {
         taskForm
     }
 }
+
+export const clearTaskForm = () => {
+    return {
+        type: CLEAR_TASK_FORM
+    }
+}
+
 export const RECEIVE_TASK_FORM_ERRORS = 'RECEIVE_TASK_FORM_ERRORS'
 export const CLEAR_TASK_FORM_ERRORS = 'CLEAR_TASK_FORM_ERRORS'
 export const RECEIVE_TASK_FORM_ERROR = 'RECEIVE_TASK_FORM_ERROR'

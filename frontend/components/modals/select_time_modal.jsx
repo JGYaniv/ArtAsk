@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-export default (props) => {
 
+
+export default (props) => {
 
     const today = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -17,9 +18,10 @@ export default (props) => {
     const assignActive = (id) => (date === calculateDate(id) ? "active" : "");
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setTimeForm({start_date: today, end_date: today })
+        props.setTimeForm({start_date: today })
         props.setFormStep(4)
     }
+
     return (
         <>
             <div className="select-time-form">

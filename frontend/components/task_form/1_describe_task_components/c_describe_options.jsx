@@ -5,32 +5,33 @@ export default ({
     setFocus,
     taskForm,
     errors,
+    setError,
     clearError
 }) => {
-    const [size, setSize] = useState(taskForm.describe.street_address);
-    const [revisions, setRevisions] = useState(taskForm.describe.apartment_number);
-    const [completed, setComplete] = useState(!!taskForm.describe.street_address);
+    const [size, setSize] = useState(taskForm.describe.size);
+    const [revisions, setRevisions] = useState(taskForm.describe.revisions);
+    const [completed, setComplete] = useState(!!revisions && !!size);
 
     const completeAddress = (e) => {
         e.preventDefault()
         if (size === "") {
-            setError("interest")
+            setError("size")
         } else { 
-            clearError("interest") 
+            clearError("size") 
         }
         
         if (revisions === "") {
-            setError("interest")
+            setError("revisions")
         } else { 
-            clearError("interest") 
+            clearError("revisions") 
+            setComplete("completed")
+            setFocus("details")
+            updateDescribeForm({ 
+                revisions: revisions, 
+                size: size 
+            })
         }
         
-        setComplete("completed")
-        setFocus("details")
-        updateDescribeForm({ 
-            revisions: revisions, 
-            size: size 
-        })
     }
 
     const focus = () => {
@@ -80,7 +81,7 @@ export default ({
                     <label>Large - Est. 2 days</label>
 
                     <p className="inline-error">
-                        {errors.includes("revisions") ? "Cannot leave blank!" : ""}
+                        {errors.includes("size") ? "Cannot leave blank!" : ""}
                     </p>
 
                     <h1>Requested Revisions</h1><br />
@@ -105,6 +106,7 @@ export default ({
                         value="two"
                         checked={(revisions === "two") ? true : false} />
                     <label>Two rounds of revisions</label><br />
+                    
                     <p className="inline-error">
                         {errors.includes("revisions") ? "Cannot leave blank!" : ""}
                     </p>
@@ -113,7 +115,7 @@ export default ({
                     <input
                         type="submit"
                         value={completed ? "Save" : "Continue"}
-                        onClick={completeAddress} /> :
+                        onClick={completeAddress} />
                 </form>
             </div>
         </>

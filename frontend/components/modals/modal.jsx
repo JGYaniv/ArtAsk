@@ -8,11 +8,22 @@ import Login from '../session/login';
 import Signup from '../session/signup';
 import SelectTime from './select_time_modal';
 
-const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeTimeModal, setTimeForm, setFormStep }) => {
+const Modal = ({ 
+    modal, 
+    errors, 
+    closeModal, 
+    postUser, 
+    login, 
+    clearErrors, 
+    closeFormModal, 
+    setTimeForm, 
+    setFormStep 
+}) => {
     if (!modal) {
         return null;
     }
     let component;
+
     switch (modal) {
         case 'login':
             component = <Login 
@@ -31,7 +42,7 @@ const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeT
         case 'selectTime':
             component = <SelectTime 
                 clearErrors={clearErrors}
-                closeModal={closeModal}
+                closeModal={closeFormModal}
                 errors={errors}  
                 setTimeForm={setTimeForm}
                 setFormStep={setFormStep}/>
@@ -42,7 +53,7 @@ const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeT
 
     return (
         <>
-            <div className="modal-background" onClick={closeTimeModal}>
+            <div className="modal-background" onClick={closeFormModal}>
                 <div className="modal-child" onClick={e => e.stopPropagation()}>
                     {component}
                 </div>
@@ -62,9 +73,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()),
-        closeTimeModal: () => { 
+        closeFormModal: () => { 
             dispatch(closeModal());
-            // dispatch(receiveFormStep(2));
+            dispatch(receiveFormStep(2));
         },
         postUser: user => dispatch(postUser(user)),
         login: user => dispatch(login(user)),

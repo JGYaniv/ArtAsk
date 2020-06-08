@@ -20,29 +20,32 @@ export default class Password extends React.Component {
             this.setState({ [type]: e.target.value })
             this.forceUpdate()
         }
-
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.verification({
-            id: this.props.currentUser.id,
-            email: this.props.currentUser.email, 
-            password: this.state.oldPassword
-        }).then( res => {
-            if (res.bool && this.state.newPassword == this.state.confirmPassword){
-                this.props.update({
-                    id: this.props.currentUser.id,
-                    password: this.state.newPassword
-                }).then(
-                    () => this.props.history.push('/account')
-                )
-            } else {
-                this.localErrors.oldPassword = "Invalid password"
-                let tester = this.localErrors
-                this.forceUpdate();
-            }
-        })
+        if (this.props.currentUser.email === "bob@tablo.co") {
+            alert("Cannot edit demo account Mr. Tables!")
+        } else {
+            this.verification({
+                id: this.props.currentUser.id,
+                email: this.props.currentUser.email, 
+                password: this.state.oldPassword
+            }).then( res => {
+                if (res.bool && this.state.newPassword == this.state.confirmPassword){
+                    this.props.update({
+                        id: this.props.currentUser.id,
+                        password: this.state.newPassword
+                    }).then(
+                        () => this.props.history.push('/account')
+                    )
+                } else {
+                    this.localErrors.oldPassword = "Invalid password"
+                    let tester = this.localErrors
+                    this.forceUpdate();
+                }
+            })
+        }
     }
 
     handleFocus(e) {

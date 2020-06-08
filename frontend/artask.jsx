@@ -13,14 +13,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     let taskForm = JSON.parse(window.localStorage.getItem("task_form"))
-    if (Boolean(taskForm.task_type_id)){
+    if (Boolean(taskForm)){
         preloadedState.ui = { task_form: taskForm }
     }
-    debugger
+    
     let store = storeConfig(preloadedState)
 
     window.store = store
-    window.logout = () => store.dispatch(logout())
 
     ReactDOM.render(<Root store={store}/>,
         document.getElementById("root"))

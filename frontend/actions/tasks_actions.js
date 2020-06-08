@@ -1,4 +1,5 @@
 import * as tasksApiUtil from '../utils/tasks_api_utils'
+import {clearTaskForm} from  './task_form_actions'
 
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
@@ -38,9 +39,8 @@ export const getTasks = (userId) => dispatch => (
 
 export const postTask = task => dispatch => (
     tasksApiUtil.postTask(task)
-        .then(task => {
-            dispatch(receiveCurrentTask(task))
-        })
+        .then(task => dispatch(receiveTask(task)))
+        .then(() => dispatch(clearTaskForm()))
         .fail(errors => {
             dispatch(receiveTasksErrors(errors.responseJSON))
         })
@@ -49,7 +49,7 @@ export const postTask = task => dispatch => (
 export const updateTask = task => dispatch => (
     tasksApiUtil.updateTask(task)
         .then(task => {
-            dispatch(receiveCurrentTask(task))
+            dispatch(receiveTask(task))
         })
         .fail(errors => {
             dispatch(receiveTasksErrors(errors.responseJSON))

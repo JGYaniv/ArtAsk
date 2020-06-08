@@ -41,8 +41,10 @@ export default ({
                 <h3>TASK INTEREST</h3>
                 <h4>{taskForm.describe.interest}</h4>
             </div>
+            
             <form className="interest-form">
                 <h1>What brings you here today?</h1>
+
                 <span>
                     <input
                         type="radio"
@@ -70,15 +72,17 @@ export default ({
                         checked={(interest === "browsing") ? true : false} />
                     <label>I'm just browsing</label>
                 </span>
+
                 <div>
-                    <p className="inline-error">{errors.includes("interest") ? "Cannot leave blank!" : ""}</p>
+                    <p className="inline-error">
+                        {errors.includes("interest") ? "Cannot leave blank!" : ""}
+                    </p>
                 </div>
-                <div>
-                    <input 
-                        type="submit" 
-                        value={completed ? "Save" : "Continue"} 
-                        onClick={completeInterest} /> :
-                </div>
+
+                <input 
+                    type="submit" 
+                    value={completed ? "Save" : "Continue"} 
+                    onClick={completeInterest} />
             </form>
         </div>
     )

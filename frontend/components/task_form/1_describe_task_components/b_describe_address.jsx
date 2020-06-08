@@ -13,7 +13,7 @@ export default ({
         e.preventDefault()
         setComplete("completed")
         setFocus("options")
-        let address = (`${streetAddress}, ${apartmentNumber}`)
+        // let address = (`${streetAddress}, ${apartmentNumber}`)
         updateDescribeForm({ 
             street_address: streetAddress, 
             apartment_number: apartmentNumber 
@@ -50,13 +50,10 @@ export default ({
                     onChange={e => setApartmentNumber(e.target.value)}
                     value={apartmentNumber} />
 
-                <div>
-                
                 <input 
                     type="submit" 
                     value={completed ? "Save" : "Continue"} 
-                    onClick={completeAddress} /> :
-                </div>
+                    onClick={completeAddress} />
             </form>
         </div>
     )
