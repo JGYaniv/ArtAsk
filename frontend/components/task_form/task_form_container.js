@@ -1,37 +1,57 @@
 import { connect } from 'react-redux'
 import TaskForm from './task_form'
 import { postTask } from '../../actions/tasks_actions'
-import { getTaskTypes, getTaskTypeArtists, getTaskTypeReviews } from '../../actions/task_types_actions'
 import { openModal, closeModal } from '../../actions/modal_actions'
-import {receiveDescribeForm, receiveArtistForm, receiveTimeForm, receiveFormStep} from '../../actions/task_form_actions'
+import { 
+    getTaskTypes, 
+    getTaskTypeArtists, 
+    getTaskTypeReviews 
+} from '../../actions/task_types_actions'
+import { 
+    receiveDescribeForm, 
+    updateDescribeForm,
+    receiveArtistForm, 
+    receiveTimeForm, 
+    receiveFormStep,
+    receiveTaskForm, 
+    receiveTaskFormErrors, 
+    receiveTaskFormError, 
+    clearTaskFormErrors,
+    clearTaskFormError,
+    receiveFocusSection
+} from '../../actions/task_form_actions'
 
 const mapStateToProps = state => {
-    let savedForm = window.localStorage.getItem("task_form")
-    debugger
     return {
-    currentUser: state.session.currentUser,
-    taskTypes: state.entities.taskTypes,
-    taskTypeId: state.ui.task_form.task_type_id || (savedForm === "" ? "" : JSON.parse(savedForm).task_type_id),
-    errors: state.errors.tasks,
-    users: state.entities.users,
-    reviews: state.entities.reviews,
-    taskForm: state.ui.task_form,
-    formStep: state.ui.task_form.form_step || (savedForm === "" ? "" : JSON.parse(savedForm).form_step),
-}}
-
-//is receiveDescribeForm and the others really doing anything? somehow the globals tate seems to be updating regardless. Some redux magic I guess?
+        currentUser: state.session.currentUser,
+        taskTypes: state.entities.taskTypes,
+        taskTypeId: state.ui.task_form.task_type_id,
+        errors: state.errors.task_form,
+        users: state.entities.users,
+        reviews: state.entities.reviews,
+        taskForm: state.ui.task_form,
+        formStep: state.ui.task_form.form_step
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
     getTaskTypeArtists: taskTypeId => dispatch(getTaskTypeArtists(taskTypeId)),
     getTaskTypeReviews: taskTypeId => dispatch(getTaskTypeReviews(taskTypeId)),
-    receiveDescribeForm: describe => dispatch(receiveDescribeForm(describe)),
-    receiveArtistForm: artist => dispatch(receiveArtistForm(artist)),
-    receiveTimeForm: time => dispatch(receiveTimeForm(time)),
     getTaskTypes: () => dispatch(getTaskTypes()),
+    receiveTaskForm: taskForm => dispatch(receiveTaskForm(taskForm)),
+    setDescribeForm: describe => dispatch(receiveDescribeForm(describe)),
+    updateDescribeForm: describe => dispatch(updateDescribeForm(describe)),
+    setArtistForm: artist => dispatch(receiveArtistForm(artist)),
+    setTimeForm: time => dispatch(receiveTimeForm(time)),
+    setErrors: errors => dispatch(receiveTaskFormErrors(errors)),
+    setError: error => dispatch(receiveTaskFormError(error)),
+    setFocus: section => dispatch(receiveFocusSection(section)),
+    setFormStep: formStep => dispatch(receiveFormStep(formStep)),
     postTask: task => dispatch(postTask(task)),
+    clearErrors: () => dispatch(clearTaskFormErrors()),
+    clearError: (error) => dispatch(clearTaskFormError(error)),
     openModal: type => dispatch(openModal(type)),
     closeModal: () => dispatch(closeModal()),
-    setFormStep: formStep => dispatch(receiveFormStep(formStep))
 })
 
 export default connect(
