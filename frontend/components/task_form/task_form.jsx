@@ -12,9 +12,9 @@ export default class TaskForm extends React.Component {
         super(props)
         this.props.getTaskTypes()
         let storedState = {};
-        if (window.localStorage.getItem("task_form")) {
-            storedState = JSON.parse(window.localStorage.getItem("task_form"))
-        }
+        // if (window.localStorage.getItem("task_form")) {
+        //     storedState = JSON.parse(window.localStorage.getItem("task_form"))
+        // }
 
         this.state = Object.assign({}, this.props.taskForm, {localErrors: {}, completedFormSections: [], focusSection: null}, storedState)
 
@@ -35,16 +35,16 @@ export default class TaskForm extends React.Component {
         }
     }
 
-    componentDidUpdate(){
-        window.localStorage.setItem("task_form", JSON.stringify(this.state))
-    }
+    // componentDidUpdate(){
+    //     window.localStorage.setItem("task_form", JSON.stringify(this.state))
+    // }
 
     handleChange(form, type) {
         return (e) => {
             const newState = Object.assign({}, this.state)
             newState[form][type] = e.target.value
             this.setState(newState)
-            window.localStorage.setItem("task_form", JSON.stringify(this.state))
+            // window.localStorage.setItem("task_form", JSON.stringify(this.state))
         }
     }
 
@@ -59,7 +59,9 @@ export default class TaskForm extends React.Component {
     }
 
     setFormStep(step){
-        this.setState({ form_step: step })  
+        this.props.setFormStep(step)
+        this.forceUpdate()
+        // this.setState({ form_step: step })  
     }
 
     setFocusSection(sectionName){
@@ -88,8 +90,9 @@ export default class TaskForm extends React.Component {
     render(){
         if (this.props.taskTypeId){
             let CurrentForm;
+            window.propState = this.taskForm
             window.formState = this.state
-            switch (this.state.form_step){
+            switch (this.props.formStep){
                 case 1:
                     CurrentForm = (props) => <DescribeTask {...props} />; break;
                 case 2:
@@ -110,7 +113,7 @@ export default class TaskForm extends React.Component {
             return(
                 <>  
                     <ProgressBar 
-                        step={this.state.form_step} 
+                        step={this.props.formStep} 
                         setFormStep={this.setFormStep}/>
                     <CurrentForm 
                         taskType={this.props.taskTypes[this.props.taskTypeId]}

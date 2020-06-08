@@ -7,6 +7,7 @@ import {receiveDescribeForm, receiveArtistForm, receiveTimeForm, receiveFormStep
 
 const mapStateToProps = state => {
     let savedForm = window.localStorage.getItem("task_form")
+    debugger
     return {
     currentUser: state.session.currentUser,
     taskTypes: state.entities.taskTypes,
@@ -15,7 +16,7 @@ const mapStateToProps = state => {
     users: state.entities.users,
     reviews: state.entities.reviews,
     taskForm: state.ui.task_form,
-    formStep: state.ui.task_form.formStep,
+    formStep: state.ui.task_form.form_step || (savedForm === "" ? "" : JSON.parse(savedForm).form_step),
 }}
 
 //is receiveDescribeForm and the others really doing anything? somehow the globals tate seems to be updating regardless. Some redux magic I guess?
