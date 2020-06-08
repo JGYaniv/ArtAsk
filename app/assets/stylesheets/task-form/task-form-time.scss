@@ -1,0 +1,75 @@
+.select-time-form{
+    background-color: white;
+    max-width: 700px;
+    min-width: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+    .calendar-columns{
+        display: flex;
+    }
+    .artist-name{
+        display:flex;
+        img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+    .datetime-section{
+        display:inline-block;
+        width: 60%;
+
+    }
+
+    .calendar{
+        display:flex;
+        flex-flow: column;
+
+        .week {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            width: 280px;
+            border-top: 1px solid lightgray;
+        }
+
+        .dates li:last-child{
+            border-right: 1px solid lightgray;
+        
+        }
+        .week li{
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            line-height: 2.7;
+            border-left: 1px solid lightgray;
+
+        }
+
+        .dates{
+            border-bottom: none;
+            border-right: none;
+            box-sizing: border-box;
+
+        }
+        
+        .days {
+            border: none;
+            li {
+                border: none;
+            }
+        }
+
+        .week:last-child{
+            border-bottom: 1px solid lightgray;
+        }
+
+        li.active{
+            background-color: mediumslateblue;
+            color: white;
+        }
+    }
+    .confirm-time{
+        width: 40%;
+    }
+}

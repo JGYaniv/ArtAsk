@@ -37,7 +37,7 @@ export const receiveArtistForm = artist => ({
 })
 
 export const receiveTimeForm = time => ({
-    type: UPDATE_TIME_FORM,
+    type: RECEIVE_TIME_FORM,
     time
 })
 

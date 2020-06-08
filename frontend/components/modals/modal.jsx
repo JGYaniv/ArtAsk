@@ -1,14 +1,14 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { postUser } from '../../actions/users_actions'
-import { receiveFormStep } from '../../actions/task_form_actions'
+import { receiveFormStep, receiveTimeForm } from '../../actions/task_form_actions'
 import { login, clearSessionErrors } from '../../actions/session_actions'
 import { connect } from 'react-redux';
 import Login from '../session/login';
 import Signup from '../session/signup';
-import SelectTime from '../task_form/select_time_modal';
+import SelectTime from './select_time_modal';
 
-const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeTimeModal }) => {
+const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeTimeModal, setTimeForm, setFormStep }) => {
     if (!modal) {
         return null;
     }
@@ -32,7 +32,9 @@ const Modal = ({ modal, errors, closeModal, postUser, login, clearErrors, closeT
             component = <SelectTime 
                 clearErrors={clearErrors}
                 closeModal={closeModal}
-                errors={errors}  />
+                errors={errors}  
+                setTimeForm={setTimeForm}
+                setFormStep={setFormStep}/>
             break;
         default:
             return null;
@@ -53,17 +55,22 @@ const mapStateToProps = state => {
     return {
         modal: state.ui.modal,
         errors: state.errors.session,
-        formStep: state.ui.task_form.form_step
+        taskForm: state.ui.task_form
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         closeModal: () => dispatch(closeModal()),
-        closeTimeModal: () => { dispatch(closeModal()); }, //dispatch(receiveFormStep(2))
+        closeTimeModal: () => { 
+            dispatch(closeModal());
+            // dispatch(receiveFormStep(2));
+        },
         postUser: user => dispatch(postUser(user)),
         login: user => dispatch(login(user)),
-        clearErrors: () => dispatch(clearSessionErrors())
+        clearErrors: () => dispatch(clearSessionErrors()),
+        setTimeForm: (time) => dispatch(receiveTimeForm(time)),
+        setFormStep: (step) => dispatch(receiveFormStep(step)),
     };
 };
 
