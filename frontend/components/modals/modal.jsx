@@ -1,17 +1,18 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { postUser } from '../../actions/users_actions'
 import { receiveFormStep, receiveTimeForm } from '../../actions/task_form_actions'
 import { login, clearSessionErrors } from '../../actions/session_actions'
 import { connect } from 'react-redux';
-import Login from '../session/login';
-import Signup from '../session/signup';
+import Login from './login_modal';
+import Signup from './signup_modal';
 import SelectTime from './select_time_modal';
 
 const Modal = ({ 
     modal, 
     errors, 
     closeModal, 
+    openModal, 
     postUser, 
     login, 
     clearErrors, 
@@ -36,7 +37,9 @@ const Modal = ({
             component = <Signup 
                 clearErrors={clearErrors} 
                 closeModal={closeModal} 
+                openModal={openModal} 
                 postUser={postUser} 
+                login={login} 
                 errors={errors}  />;
             break;
         case 'selectTime':
@@ -72,6 +75,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        openModal: modal => dispatch(openModal(modal)),
         closeModal: () => dispatch(closeModal()),
         closeFormModal: () => { 
             dispatch(closeModal());

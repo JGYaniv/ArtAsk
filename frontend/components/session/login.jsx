@@ -22,6 +22,11 @@ export default class LogIn extends React.Component {
     
     handleSubmit(e){
         e.preventDefault();
+        let sectionNames = ["email", "password"]
+        sectionNames.forEach(section => {
+            let el = document.querySelector(`input[name='${section}']`)
+            this.handleBlur({ target: el })
+        })
         this.props.login(this.state)
             .then(() => this.props.history.push('/dashboard'));
     }

@@ -23,6 +23,11 @@ export default class SignUp extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let sectionNames = ["first_name","last_name","email","password","area_code"]
+        sectionNames.forEach(section => {
+            let el = document.querySelector(`input[name='${section}']`)
+            this.handleBlur({target: el})
+        })
         this.postUser(this.state)
             .then(() => this.props.history.push('/dashboard'))
     }
@@ -81,6 +86,7 @@ export default class SignUp extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <label>First Name</label>
                 <input 
+                    className="first-name"
                     type="text" 
                     onChange={this.handleChange("first_name")} 
                     value={this.state.first_name}
@@ -90,6 +96,7 @@ export default class SignUp extends React.Component {
                 <p className="inlineError">{this.localErrors.first_name}</p>
                 <label>Last Name</label>
                 <input 
+                    className="last-name"
                     type="text" 
                     onChange={this.handleChange("last_name")} 
                     value={this.state.last_name}

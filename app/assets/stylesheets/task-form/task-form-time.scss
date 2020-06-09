@@ -88,12 +88,19 @@
             border-bottom: 1px solid lightgray;
         }
 
+        li:hover{
+            cursor: pointer;
+        }
+
         li.active{
             background-color: mediumslateblue;
             color: white;
         }
         li.unavailable{
             background-color: lightgray;
+        }
+        li.unavailable:hover{
+            cursor: default;
         }
     }
 
@@ -103,6 +110,10 @@
         height: 45px;
         border: 1px solid lightgray;
         border-radius: 4px;
+    }
+
+    select:hover{
+        cursor: pointer;
     }
     
     .confirm-time{
@@ -131,6 +142,9 @@
             border: none;
             text-align: center;
             margin-bottom: 30px;
+        }
+        button:hover{
+            cursor: pointer;
         }
     }
 }
