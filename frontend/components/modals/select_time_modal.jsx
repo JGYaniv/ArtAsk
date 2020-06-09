@@ -1,27 +1,42 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 
 export default (props) => {
-
-    const today = new Date();
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    const dateNum = (today.getDate());
-    const month = months[today.getMonth()];
-    const year = today.getFullYear()
-    const weekDay = weekDays[today.getDay()];
-
-    const [date, setDate] = useState(dateNum);
+    const today = new Date()
+    const [date, setDate] = useState(today);
     const [time, setTime] = useState("");
-    
-    const calculateDate = (id) => dateNum + id;
-    const assignActive = (id) => (date === calculateDate(id) ? "active" : "");
+
+    function addDays(startDate, days) {
+        var newDate = new Date(date);
+        newDate.setDate(startDate.getDate() + days);
+        return newDate;
+    }
+
+    const threeWeeks = (startDate) => {
+        const dates = []
+        for (let i = 0; i < 21; i++) {
+            dates.push(addDays(startDate, i))
+        }
+        return dates
+    }
+
+    const assignActive = (id) => {
+        let truth = (date.getTime() === calDates[id].getTime())
+        let value = truth ? "active" : ""
+        console.log(`${id}: ${value}`)
+        return (value)
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setTimeForm({start_date: today })
+        props.setTimeForm({ start_date: today })
         props.setFormStep(4)
     }
 
+    const calendarStart = addDays(today, (-1 * today.getDay()))
+    const calDates = threeWeeks(calendarStart)
+    
     return (
         <>
             <div className="select-time-form">
@@ -30,10 +45,10 @@ export default (props) => {
                     <div className="datetime-section">
                         <div className="artist-name">
                             <img width="20px" src="https://www.careercontessa.com/uploadedImages/Library/career-contessa-anon-avatar.jpg" alt=""/>
-                            <h3>Artist's Avail</h3>
+                            <h3>Artist's Availability</h3>
                         </div>
                         <div className="calendar">
-                            <h4>{month} {year}</h4>
+                            <h4>{months[date.getMonth()]} {date.getFullYear()}</h4>
                             <ul className="week days">
                                 <li>Sun</li>
                                 <li>Mon</li>
@@ -44,31 +59,31 @@ export default (props) => {
                                 <li>Sat</li>
                             </ul>
                             <ul className="week dates">
-                                <li id="0" onClick={(e) => setDate(calculateDate(0))} className={assignActive(0)}>{calculateDate(0)}</li>
-                                <li id="1" onClick={(e) => setDate(calculateDate(1))} className={assignActive(1)}>{calculateDate(1)}</li>
-                                <li id="2" onClick={(e) => setDate(calculateDate(2))} className={assignActive(2)}>{calculateDate(2)}</li>
-                                <li id="3" onClick={(e) => setDate(calculateDate(3))} className={assignActive(3)}>{calculateDate(3)}</li>
-                                <li id="4" onClick={(e) => setDate(calculateDate(4))} className={assignActive(4)}>{calculateDate(4)}</li>
-                                <li id="5" onClick={(e) => setDate(calculateDate(5))} className={assignActive(5)}>{calculateDate(5)}</li>
-                                <li id="6" onClick={(e) => setDate(calculateDate(6))} className={assignActive(6)}>{calculateDate(6)}</li>
+                                <li id={0} onClick={(e) => setDate(calDates[0])} className={assignActive(0)}>{`${calDates[0].getDate()}`}</li>
+                                <li id={1} onClick={(e) => setDate(calDates[1])} className={assignActive(1)}>{`${calDates[1].getDate()}`}</li>
+                                <li id={2} onClick={(e) => setDate(calDates[2])} className={assignActive(2)}>{`${calDates[2].getDate()}`}</li>
+                                <li id={3} onClick={(e) => setDate(calDates[3])} className={assignActive(3)}>{`${calDates[3].getDate()}`}</li>
+                                <li id={4} onClick={(e) => setDate(calDates[4])} className={assignActive(4)}>{`${calDates[4].getDate()}`}</li>
+                                <li id={5} onClick={(e) => setDate(calDates[5])} className={assignActive(5)}>{`${calDates[5].getDate()}`}</li>
+                                <li id={6} onClick={(e) => setDate(calDates[6])} className={assignActive(6)}>{`${calDates[6].getDate()}`}</li>
                             </ul>
                             <ul className="week dates">
-                                <li id="8" onClick={() => setDate(8)} className={assignActive(8)}>8</li>
-                                <li id="9" onClick={() => setDate(9)} className={assignActive(9)}>9</li>
-                                <li id="10" onClick={() => setDate(10)} className={assignActive(10)}>10</li>
-                                <li id="11" onClick={() => setDate(11)} className={assignActive(11)}>11</li>
-                                <li id="12" onClick={() => setDate(12)} className={assignActive(12)}>12</li>
-                                <li id="13" onClick={() => setDate(13)} className={assignActive(13)}>13</li>
-                                <li id="14" onClick={() => setDate(14)} className={assignActive(14)}>14</li>
+                                <li id={7} onClick={(e) => setDate(calDates[7])} className={assignActive(7)}>{`${calDates[7].getDate()}`}</li>
+                                <li id={8} onClick={(e) => setDate(calDates[8])} className={assignActive(8)}>{`${calDates[8].getDate()}`}</li>
+                                <li id={9} onClick={(e) => setDate(calDates[9])} className={assignActive(9)}>{`${calDates[9].getDate()}`}</li>
+                                <li id={10} onClick={(e) => setDate(calDates[10])} className={assignActive(10)}>{`${calDates[10].getDate()}`}</li>
+                                <li id={11} onClick={(e) => setDate(calDates[11])} className={assignActive(11)}>{`${calDates[11].getDate()}`}</li>
+                                <li id={12} onClick={(e) => setDate(calDates[12])} className={assignActive(12)}>{`${calDates[12].getDate()}`}</li>
+                                <li id={13} onClick={(e) => setDate(calDates[13])} className={assignActive(13)}>{`${calDates[13].getDate()}`}</li>
                             </ul>
                             <ul className="week dates">
-                                <li id="15" onClick={() => setDate(15)} className={assignActive(15)}>15</li>
-                                <li id="16" onClick={() => setDate(16)} className={assignActive(16)}>16</li>
-                                <li id="17" onClick={() => setDate(17)} className={assignActive(17)}>17</li>
-                                <li id="18" onClick={() => setDate(18)} className={assignActive(18)}>18</li>
-                                <li id="19" onClick={() => setDate(19)} className={assignActive(19)}>19</li>
-                                <li id="20" onClick={() => setDate(20)} className={assignActive(20)}>20</li>
-                                <li id="21" onClick={() => setDate(21)} className={assignActive(21)}>21</li>
+                                <li id={14} onClick={(e) => setDate(calDates[14])} className={assignActive(14)}>{`${calDates[14].getDate()}`}</li>
+                                <li id={15} onClick={(e) => setDate(calDates[15])} className={assignActive(15)}>{`${calDates[15].getDate()}`}</li>
+                                <li id={16} onClick={(e) => setDate(calDates[16])} className={assignActive(16)}>{`${calDates[16].getDate()}`}</li>
+                                <li id={17} onClick={(e) => setDate(calDates[17])} className={assignActive(17)}>{`${calDates[17].getDate()}`}</li>
+                                <li id={18} onClick={(e) => setDate(calDates[18])} className={assignActive(18)}>{`${calDates[18].getDate()}`}</li>
+                                <li id={19} onClick={(e) => setDate(calDates[19])} className={assignActive(19)}>{`${calDates[19].getDate()}`}</li>
+                                <li id={20} onClick={(e) => setDate(calDates[20])} className={assignActive(20)}>{`${calDates[20].getDate()}`}</li>
                             </ul>
                         </div>
                         <div className="select-time">
@@ -89,7 +104,7 @@ export default (props) => {
                     </div>
                     <div className="confirm-time">
                         <h1>Request for:</h1>
-                        <h2>{month} {date} {time}</h2>
+                        <h2>{months[date.getMonth()]} {date.getDate()} {time}</h2>
                         <button onClick={handleSubmit}>Select & Continue</button>
                         <p>Next, confirm your details to get connected with your artist volunteer!</p>
                     </div>

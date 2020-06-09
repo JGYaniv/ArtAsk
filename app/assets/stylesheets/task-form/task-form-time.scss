@@ -19,20 +19,37 @@
     .artist-name{
         display:flex;
         img{
-            height: 50px;
-            width: 50px;
+            margin-right: 15px;
+            height: 40px;
+            width: 40px;
             border-radius: 50%;
+        }
+        h3{
+            text-align: center;
+            font-family: Khula, sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            margin: 7px 0;
         }
     }
     .datetime-section{
         display:inline-block;
         width: 60%;
-
+        margin-right: 20px;
     }
 
     .calendar{
         display:flex;
         flex-flow: column;
+        padding: 0 20px 0 0;
+        border-right: 1px solid lightgray;
+
+        h4{
+            margin: -5px 0 20px -25px;
+            text-align: center;
+            font-family: Khula, sans-serif;
+            font-weight: 600;
+        }
 
         .week {
             display: flex;
@@ -52,14 +69,12 @@
             text-align: center;
             line-height: 2.7;
             border-left: 1px solid lightgray;
-
+            margin-bottom: -1px;
         }
 
         .dates{
             border-bottom: none;
             border-right: none;
-            box-sizing: border-box;
-
         }
         
         .days {
@@ -78,7 +93,41 @@
             color: white;
         }
     }
+
+    select{
+        width:280px;
+        margin-top: 20px;
+        height: 45px;
+        border: 1px solid lightgray;
+        border-radius: 4px;
+    }
+    
     .confirm-time{
+        margin-left: 20px;
+        display: flex;
+        flex-flow: column;
         width: 40%;
+        
+        h1{
+            text-align: left;
+            margin-bottom: 0;
+            margin-top: 50px;
+        }
+        h2{
+            margin-top: 0;
+        }
+
+        button{
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 2.8;
+            color:white;
+            background-color: mediumslateblue;
+            width: 175px;
+            border: none;
+            text-align: center;
+            margin-bottom: 30px;
+        }
     }
 }
