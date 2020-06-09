@@ -36,14 +36,14 @@ export default (props) => {
             <div className="form-banner">
                 <p>Filter and sort to find your artist. Then view their availability to request their help.</p>
             </div>
-            <div className="artists sort-menu">
+            {/* <div className="artists sort-menu">
                 <SortMenu />
-            </div>
+            </div> */}
             <div className="form-page artists">
                 <div className="filters">
                     <ArtistDisclaimer />
-                    <DateFilter />
-                    <TypeFilter />
+                    {/* <DateFilter /> */}
+                    {/* <TypeFilter /> */}
                 </div>
                 <div className="form-page select-artist">
                     {artistList}

@@ -4,9 +4,18 @@
     min-width: 600px;
     padding: 20px;
     box-sizing: border-box;
+
+    h1{
+        font-size: 22px;
+        font-weight: 300;
+        text-align: center;
+    }
+    
     .calendar-columns{
         display: flex;
+        margin: 40px;
     }
+
     .artist-name{
         display:flex;
         img{

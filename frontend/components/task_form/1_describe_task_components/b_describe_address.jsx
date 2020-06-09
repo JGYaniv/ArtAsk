@@ -11,11 +11,12 @@ export default ({
 
     const completeAddress = (e) => {
         e.preventDefault()
-        setComplete("completed")
+        setComplete(true)
         setFocus("options")
         // let address = (`${streetAddress}, ${apartmentNumber}`)
+        let address = streetAddress ? streetAddress : "remote"
         updateDescribeForm({ 
-            street_address: streetAddress, 
+            street_address: address, 
             apartment_number: apartmentNumber 
         })
     }
@@ -36,24 +37,28 @@ export default ({
 
             <div className="form-section-header" onClick={focus}>
                 <h3>TASK LOCATION</h3>
-                <h4>{taskForm.describe.street_address}</h4>
+                <h4>📍 Your location is {taskForm.describe.street_address}</h4>
             </div>
             <form className="address-form">
-                <h1>Leave blank if this is a remote project.</h1><br />
+                <h2>*Leave blank if this is a remote project.</h2><br />
 
                 <input className="street-address"
+                    placeholder="Enter street address..."
                     type="text"
                     onChange={e => setStreetAddress(e.target.value)}
                     value={streetAddress} />
                 <input className="apartment-number"
+                    placeholder="Unit or Apt #"
                     type="text"
                     onChange={e => setApartmentNumber(e.target.value)}
                     value={apartmentNumber} />
 
-                <input 
-                    type="submit" 
-                    value={completed ? "Save" : "Continue"} 
-                    onClick={completeAddress} />
+                <div className="form-button-section">
+                    <input 
+                        type="submit" 
+                        value={completed ? "Save" : "Continue"} 
+                        onClick={completeAddress} />
+                </div>
             </form>
         </div>
     )

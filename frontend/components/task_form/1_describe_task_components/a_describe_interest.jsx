@@ -39,7 +39,7 @@ export default ({
 
             <div className="form-section-header" onClick={focus}>
                 <h3>TASK INTEREST</h3>
-                <h4>{taskForm.describe.interest}</h4>
+                <h4>📋 You're {interest}</h4>
             </div>
             
             <form className="interest-form">
@@ -79,10 +79,12 @@ export default ({
                     </p>
                 </div>
 
-                <input 
-                    type="submit" 
-                    value={completed ? "Save" : "Continue"} 
-                    onClick={completeInterest} />
+                <div className="form-button-section">
+                    <input 
+                        type="submit" 
+                        value={completed ? "Save" : "Continue"} 
+                        onClick={completeInterest} />
+                </div>
             </form>
         </div>
     )

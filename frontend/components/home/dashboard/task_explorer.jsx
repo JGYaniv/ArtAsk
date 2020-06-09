@@ -35,7 +35,7 @@ export default class BannerCta extends React.Component{
     render(){
         const taskTypes = this.props.taskTypes.map((taskType, idx) => (
             <li key={idx}><Link to="/form" onClick={this.selectTask(taskType)}>{taskType.title}</Link></li>
-        )).slice(1,5)
+        ))//.slice(1,5)
         return(
             <div className="explorer-background-image">
                 <div className="explorer-dash">

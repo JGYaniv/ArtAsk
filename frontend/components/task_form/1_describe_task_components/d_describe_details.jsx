@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 
 export default ({
     errors,
-    receiveDescribeForm,
+    setFormStep,
     updateDescribeForm,
-    completePage,
     setError,
     clearError,
     setFocus,
@@ -22,7 +21,7 @@ export default ({
             clearError("details")
             setComplete("completed")
             updateDescribeForm({ details: details })
-            completePage()
+            setFormStep(2)
         }
     }
 
@@ -43,7 +42,7 @@ export default ({
 
             <div className="form-section-header" onClick={focus}>
                 <h3>TASK DETAILS</h3>
-                <h4>{details}</h4>
+                <h4>📝 {details}</h4>
             </div>
             
             <form className="options-form">
@@ -61,7 +60,7 @@ export default ({
                     </p>
                 </div>
 
-                <div>
+                <div className="form-button-section">
                     <input 
                         onClick={completeDetails} 
                         type="submit" 

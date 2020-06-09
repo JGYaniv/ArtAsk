@@ -14,6 +14,7 @@ export default ({
 
     const completeAddress = (e) => {
         e.preventDefault()
+
         if (size === "") {
             setError("size")
         } else { 
@@ -24,13 +25,21 @@ export default ({
             setError("revisions")
         } else { 
             clearError("revisions") 
+        }
+
+        if (
+            (revisions.length > 0) &&
+                (size.length > 0) 
+        ) {
             setComplete("completed")
             setFocus("details")
-            updateDescribeForm({ 
-                revisions: revisions, 
-                size: size 
-            })
         }
+
+
+        updateDescribeForm({ 
+            revisions: revisions, 
+            size: size 
+        })
         
     }
 
@@ -52,70 +61,73 @@ export default ({
                     
                 <div className="form-section-header" onClick={focus}>
                     <h3>TASK OPTIONS</h3>
-                    <h4>{size}</h4>
-                    <h4>{revisions}</h4>
+                    <h4>📊 Your project size is {size}, with {revisions} revisions</h4>
+                    <h4></h4>
                 </div>
                 <form className="options-form">
 
                     <h1>How big is your task?</h1><br />
-                    <input 
-                        type="radio" 
-                        name="size"
-                        onChange={e => setSize(e.target.value)}
-                        value="small"
-                        checked={(size === "small") ? true : false} />
-                    <label>Small - Est. half day</label>
-                    <input 
-                        type="radio" 
-                        name="size"
-                        onChange={e => setSize(e.target.value)}
-                        value="medium"
-                        checked={(size === "medium") ? true : false} />
-                    <label>Medium - Est. 1 day</label>
-                    <input 
-                        type="radio" 
-                        name="size"
-                        onChange={e => setSize(e.target.value)}
-                        value="large"
-                        checked={(size === "large") ? true : false} />
-                    <label>Large - Est. 2 days</label>
+                    <span>
+                        <input 
+                            type="radio" 
+                            name="size"
+                            onChange={e => setSize(e.target.value)}
+                            value="small"
+                            checked={(size === "small") ? true : false} />
+                        <label>Small - Est. half day</label>
+                        <input 
+                            type="radio" 
+                            name="size"
+                            onChange={e => setSize(e.target.value)}
+                            value="medium"
+                            checked={(size === "medium") ? true : false} />
+                        <label>Medium - Est. 1 day</label>
+                        <input 
+                            type="radio" 
+                            name="size"
+                            onChange={e => setSize(e.target.value)}
+                            value="large"
+                            checked={(size === "large") ? true : false} />
+                        <label>Large - Est. 2 days</label>
+                    </span>
 
                     <p className="inline-error">
                         {errors.includes("size") ? "Cannot leave blank!" : ""}
                     </p>
-
-                    <h1>Requested Revisions</h1><br />
-                    <input 
-                        type="radio" 
-                        name="revisions"
-                        onChange={e => setRevisions(e.target.value)}
-                        value="none"
-                        checked={(revisions === "none") ? true : false} />
-                    <label>No revisions needed</label><br />
-                    <input 
-                        type="radio" 
-                        name="revisions"
-                        onChange={e => setRevisions(e.target.value)}
-                        value="one"
-                        checked={(revisions === "one") ? true : false} />
-                    <label>One round of revisions</label><br />
-                    <input 
-                        type="radio" 
-                        name="revisions"
-                        onChange={e => setRevisions(e.target.value)}
-                        value="two"
-                        checked={(revisions === "two") ? true : false} />
-                    <label>Two rounds of revisions</label><br />
-                    
+                    <div className="options-list">
+                        <h1>Requested Revisions</h1><br />
+                        <input 
+                            type="radio" 
+                            name="revisions"
+                            onChange={e => setRevisions(e.target.value)}
+                            value="zero"
+                            checked={(revisions === "zero") ? true : false} />
+                        <label>No revisions needed</label><br />
+                        <input 
+                            type="radio" 
+                            name="revisions"
+                            onChange={e => setRevisions(e.target.value)}
+                            value="one"
+                            checked={(revisions === "one") ? true : false} />
+                        <label>One round of revisions</label><br />
+                        <input 
+                            type="radio" 
+                            name="revisions"
+                            onChange={e => setRevisions(e.target.value)}
+                            value="two"
+                            checked={(revisions === "two") ? true : false} />
+                        <label>Two rounds of revisions</label><br />
+                    </div>
                     <p className="inline-error">
                         {errors.includes("revisions") ? "Cannot leave blank!" : ""}
                     </p>
 
-                    
-                    <input
-                        type="submit"
-                        value={completed ? "Save" : "Continue"}
-                        onClick={completeAddress} />
+                    <div className="form-button-section">
+                        <input
+                            type="submit"
+                            value={completed ? "Save" : "Continue"}
+                            onClick={completeAddress} />
+                    </div>
                 </form>
             </div>
         </>

@@ -16,12 +16,6 @@ export default ({
     clearError
 }) => {
 
-    const completePage = () => {
-        if (errors.length === 0){
-            setFormStep(2)
-        }
-    }
-
     const sectionProps = {
         taskForm: taskForm,
         errors: errors,
@@ -30,7 +24,7 @@ export default ({
         setError: setError,
         clearError: clearError,
         setFocus: setFocus,
-        completePage: completePage,
+        setFormStep: setFormStep
     }
 
     return (

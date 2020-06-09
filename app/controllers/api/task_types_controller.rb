@@ -13,6 +13,6 @@ class Api::TaskTypesController < ApplicationController
   end
 
   def reviews
-    @reviews = TaskType.find(params[:id]).reviews
+    @reviews = TaskType.find(params[:id]).reviews.includes(:user)
   end
 end

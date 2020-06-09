@@ -1,21 +1,70 @@
 .address-form, .options-form, .details-form {
     display: none;
 }
-.completed{
+
+div.completed{
     form{
         display: none;
     }
     h4 {
         display: block;
+        font-weight: 400;
+        margin-bottom: 0;
     }
 }
 
-.focused{
+div.focused{
+    h2 {
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 200;
+        margin-bottom: 0;
+    }
     h4 {
         display: none;
     }
     form{
         display: block;
+    }
+
+    input[type="text"]{
+        padding: 0 20px;
+        font-size: 15px;
+        height: 45px;
+        box-sizing: border-box;
+        border-radius: 3px;
+        border: 1px solid lightgray;
+    }
+}
+#options{
+    .inline-error{
+        margin: 0;
+    }
+
+}
+.address-form {
+    .street-address{
+        width: 80%;
+        margin-right: 10px;
+    }
+    .apartment-number{
+        width: calc(20% - 10px);
+    }
+}
+
+.options-form{
+    span{
+        label {
+            font-weight: 600;
+            margin-right:15%;
+        }
+    }
+    .options-list{
+        text-align: left;
+    }
+    h1{
+        border-bottom: 1px solid lightgray;
+        width: 200px;
     }
 }
 .form-section-header{
@@ -24,4 +73,12 @@
 }
 .form-section-header:hover{
     cursor: pointer;
+}
+
+.form-button-section{
+    text-align: center;
+    input[type="submit"]{
+        width: 135px;
+        align-self: center;
+    }
 }

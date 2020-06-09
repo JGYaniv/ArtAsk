@@ -4,38 +4,97 @@
     min-width: 970px;
     margin: 0 auto;
     padding-top: 10px;
+
     .filters {
         margin-right: 20px;
         width: 400px;
     }
+
     .select-artist{
         width: 100%;
         margin: 0;
         padding: 0;
+
         .artist {
-            padding: 10px;
+            padding: 35px;
             box-sizing: border-box;
             display: flex;
 
             .left-col{
-                width: 25%;
+                width: 30%;
                 display: flex;
+                padding-right: 30px;
                 flex-flow: column;
+
                 img{
                     border-radius: 50%;
+                    object-fit: cover;
+                    height: 190px;
+                    width: 190px;
+                    margin: 0 auto;
+                }
+
+                button{
+                    background-color: mediumslateblue;
+                    color: white;
+                    border: none;
+                    height: 45px;
+                    border-radius: 4px;
+                    font-size: 18px;
+                    line-height: 2.7;
+                    font-weight: 500;
+                    width: 190px;
+                    margin: 0 auto;
+                    margin-top: 20px;
+                }
+
+                button:hover{
+                    background-color: rgb(88, 73, 171);
+                    cursor: pointer;
                 }
             }
+
             .right-col{
                 box-sizing: border-box;
                 width: 75%;
                 padding-left: 10px;
                 display: flex;
                 flex-flow: column;
+                h1{
+                    margin: 0;
+                }
+                h4{
+                    display: inline-block;
+                    margin-bottom: 0;
+                    font-family: Khula, sans-serif;
+                    margin-top: 20px;
+                }
+                ul{
+                    margin: 5px 0;
+                    padding: 0;
+                    border-bottom: 1px solid lightgray;
+                    padding-bottom: 10px;
+                }
+                p{
+                    display: inline-block;
+                    font-size: 16px;
+                    color: black;
+                }
                 .artist-review{
-                    img{
-                        height: 50px;
-                        width: 50x;
+                    margin-top: 15px;
+                    .mini-profile-picture {
+                        width: 75px;
+                        height: 75px;
                         border-radius: 50%;
+                        border: 1px solid lightgray;
+                        // object-fit: cover;
+                    }
+                    .review-text{
+                        width: 100%;
+                        padding-left: 20px;
+                    }
+                    .review-quote{
+                        font-style: italic;
                     }
                     display: flex;
                 }
