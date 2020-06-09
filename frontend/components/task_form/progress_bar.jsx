@@ -7,12 +7,14 @@ export default (props) => {
             activeSteps[i] = "active"
         }
     }
+
     const completedSteps = ["", "", "", ""]
     if (props.step) {
         for (let i = 0; i < props.step - 1; i++) {
             completedSteps[i] = "completed"
         }
     }
+    
     const setFormStep = (num) => {
         if(props.step > num){
             props.setFormStep(num)

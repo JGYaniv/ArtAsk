@@ -36,7 +36,8 @@ export default (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        props.setTimeForm({ start_date: tomorrow })
+        const dateTime = new Date(`${date.toDateString()} time`)
+        props.setTimeForm({ start_date: dateTime })
         props.setFormStep(4)
     }
     
@@ -101,17 +102,16 @@ export default (props) => {
                         </div>
                         <div className="select-time">
                             <select value={time} onChange={(e) => setTime(e.target.value)}>
-                                {/* <option value="" disabled>Choose a Time</option> */}
-                                <option value="9:00am">9:00am</option>
-                                <option value="10:00am">10:00am</option>
-                                <option value="11:00am">11:00am</option>
-                                <option value="12:00am">12:00am</option>
-                                <option value="1:00pm">1:00pm</option>
-                                <option value="2:00pm">2:00pm</option>
-                                <option value="3:00pm">3:00pm</option>
-                                <option value="4:00pm">4:00pm</option>
-                                <option value="5:00pm">5:00pm</option>
-                                <option value="6:00pm">6:00pm</option>
+                                <option value="09:00">9:00am</option>
+                                <option value="10:00">10:00am</option>
+                                <option value="11:00">11:00am</option>
+                                <option value="12:00">12:00am</option>
+                                <option value="13:00">1:00pm</option>
+                                <option value="14:00">2:00pm</option>
+                                <option value="15:00">3:00pm</option>
+                                <option value="16:00">4:00pm</option>
+                                <option value="17:00">5:00pm</option>
+                                <option value="18:00">6:00pm</option>
                             </select>
                         </div>
                     </div>

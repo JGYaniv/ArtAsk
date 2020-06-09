@@ -4,7 +4,7 @@ class Api::TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where(user_id: params[:user_id])
+    @tasks = Task.where(user_id: params[:user_id]).includes(:artist)
   end
 
   def create
@@ -36,6 +36,6 @@ class Api::TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :details, :completed, :artist_id, :user_id, :start_date, :end_date, :task_type_id)
+    params.require(:task).permit(:title, :details, :completed, :artist_id, :user_id, :start_date, :task_type_id)
   end
 end

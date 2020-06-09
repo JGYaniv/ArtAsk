@@ -27,7 +27,7 @@ const defaultState = {
         artist_id: ""
     },
     select_time: {
-        start_time: ""
+        start_date: ""
     }
 }
 
