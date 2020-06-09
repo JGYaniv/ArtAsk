@@ -40,6 +40,10 @@ export default ({
     }
 
     return (
+        <>
+        <div className="form-banner">
+            <p>You're almost done! We just need a few more details to connect you with your volunteer artist.</p>
+        </div>
         <div className="form-page confirm">
             <div className="confirm-content">
                 <div className="form-section" >
@@ -71,8 +75,10 @@ export default ({
             <div className="confirm-sidebar">
                 <div className="form-section">
                     <div className="artist-details">
-                        <h1>{Boolean(taskType) ? taskType.title : ""}</h1>
-                        <h3>{selectedArtist.first_name} {selectedArtist.last_name}</h3>
+                        <div className="summary">
+                            <h1>{Boolean(taskType) ? taskType.title : ""}</h1>
+                            <h3>{selectedArtist.first_name} {selectedArtist.last_name.slice(0,1)}.</h3>
+                        </div>
                         <img 
                             src={selectedArtist.photo_url} 
                             alt={selectedArtist.first_name} />
@@ -80,21 +86,22 @@ export default ({
 
                     <div className="task-details">
                         <ul>
-                            <li>{`${taskForm.select_time.start_date}`}</li>
-                            <li>
+                                <li>🗓 {Boolean(taskForm.select_time.start_date) ? `${taskForm.select_time.start_date}`.slice(0,10) :  ""
+                                    }</li>
+                            <li>📍 
                                 {taskForm.describe.street_address}
                                 {taskForm.describe.apartment_number}
                             </li>
-                            <li>{taskForm.describe.size}</li>
-                            <li>{taskForm.describe.revisions}</li>
+                                <li>📐 {taskForm.describe.size} size - {taskForm.describe.revisions} revisions</li>
                             <li className="edit-link" 
                                 onClick={() => setFormStep(1)}>
-                                    Edit Project
+                                    📝 Edit Project
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </>
     )
 }

@@ -36,7 +36,7 @@ export default ({
     return (
         <div id="interest" 
             className={classString} >
-
+                
             <div className="form-section-header" onClick={focus}>
                 <h3>TASK INTEREST</h3>
                 <h4>📋 You're {interest}</h4>

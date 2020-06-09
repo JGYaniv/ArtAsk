@@ -2,4 +2,69 @@
     .confirm-details {
         display: block;
     }
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-page{
+
+
+    .confirm-content{
+        width:65%;
+        margin-right: 40px;
+
+        .confirm-button-section{
+            text-align: center;
+
+            button{
+                width: 230px;
+                height: 45px;
+                color: white;
+                background-color: mediumslateblue;
+                border: none;
+                border-radius: 4px;
+                font-size: 20px;
+                line-height: 2.6;
+            }
+        }
+    }
+    .confirm-sidebar{
+        width: 35%;
+        .artist-details{
+            display: flex;
+            padding-bottom: 25px;
+            border-bottom: 1px solid lightgray;
+            .summary {
+                width: 100%;
+
+                h1{
+                    margin-top: 13px;
+                }
+                h3{
+                    font-size: 16px;
+                    font-weight: 400;
+                    font-family: Khula, sans-serif;
+                }
+            }
+
+
+            img {
+                height: 70px;
+                width: 75px;
+                border-radius: 50%;
+                margin-top: 15px;
+            }
+        }
+        ul {
+            line-height: 2.5;
+            padding-left: 0px;
+            li{
+                font-size: 18px;
+            }
+            li:last-child{
+                color: mediumslateblue;
+            }
+        }
+    }
 }
