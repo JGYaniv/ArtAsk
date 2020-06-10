@@ -68,27 +68,30 @@ export default ({
 
                     <h1>How big is your task?</h1><br />
                     <span>
-                        <input 
-                            type="radio" 
-                            name="size"
-                            onChange={e => setSize(e.target.value)}
-                            value="small"
-                            checked={(size === "small") ? true : false} />
-                        <label>Small - Est. half day</label>
-                        <input 
-                            type="radio" 
-                            name="size"
-                            onChange={e => setSize(e.target.value)}
-                            value="medium"
-                            checked={(size === "medium") ? true : false} />
-                        <label>Medium - Est. 1 day</label>
-                        <input 
-                            type="radio" 
-                            name="size"
-                            onChange={e => setSize(e.target.value)}
-                            value="large"
-                            checked={(size === "large") ? true : false} />
-                        <label>Large - Est. 2 days</label>
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="size"
+                                onChange={e => setSize(e.target.value)}
+                                value="small"
+                                checked={(size === "small") ? true : false} />
+                            Small - Est. half day</label>
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="size"
+                                onChange={e => setSize(e.target.value)}
+                                value="medium"
+                                checked={(size === "medium") ? true : false} />
+                            Medium - Est. 1 day</label>
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="size"
+                                onChange={e => setSize(e.target.value)}
+                                value="large"
+                                checked={(size === "large") ? true : false} />
+                        Large - Est. 2 days</label>
                     </span>
 
                     <p className="inline-error">
@@ -96,27 +99,30 @@ export default ({
                     </p>
                     <div className="options-list">
                         <h1>Requested Revisions</h1><br />
-                        <input 
-                            type="radio" 
-                            name="revisions"
-                            onChange={e => setRevisions(e.target.value)}
-                            value="zero"
-                            checked={(revisions === "zero") ? true : false} />
-                        <label>No revisions needed</label><br />
-                        <input 
-                            type="radio" 
-                            name="revisions"
-                            onChange={e => setRevisions(e.target.value)}
-                            value="one"
-                            checked={(revisions === "one") ? true : false} />
-                        <label>One round of revisions</label><br />
-                        <input 
-                            type="radio" 
-                            name="revisions"
-                            onChange={e => setRevisions(e.target.value)}
-                            value="two"
-                            checked={(revisions === "two") ? true : false} />
-                        <label>Two rounds of revisions</label><br />
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="revisions"
+                                onChange={e => setRevisions(e.target.value)}
+                                value="zero"
+                                checked={(revisions === "zero") ? true : false} />
+                        No revisions needed</label><br />
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="revisions"
+                                onChange={e => setRevisions(e.target.value)}
+                                value="one"
+                                checked={(revisions === "one") ? true : false} />
+                        One round of revisions</label><br />
+                        <label>
+                            <input 
+                                type="radio" 
+                                name="revisions"
+                                onChange={e => setRevisions(e.target.value)}
+                                value="two"
+                                checked={(revisions === "two") ? true : false} />
+                        Two rounds of revisions</label><br />
                     </div>
                     <p className="inline-error">
                         {errors.includes("revisions") ? "Cannot leave blank!" : ""}

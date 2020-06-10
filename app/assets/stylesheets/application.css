@@ -28,8 +28,14 @@ a, input, p, li, label, button{
     text-decoration: none;
     list-style: none;
 }
+button:hover{
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    cursor: pointer;
+}
 
-input:focus, textarea:focus {
+input[type="text"]:focus, textarea:focus {
     outline: 1px dotted gray;
 }
 

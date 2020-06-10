@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MyTasks from './my_tasks'
-import {getTasks, deleteTask} from '../../actions/tasks_actions'
+import { getTasks, deleteTask, updateTask} from '../../actions/tasks_actions'
 
 const mapStateToProps = state => ({
     tasks: state.entities.tasks,
@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getTasks: (userId) => dispatch(getTasks(userId)),
-    deleteTask: (taskId) => dispatch(deleteTask(taskId))
+    deleteTask: (taskId) => dispatch(deleteTask(taskId)),
+    updateTask: (task) => dispatch(updateTask(task))
 })
 
 export default connect(

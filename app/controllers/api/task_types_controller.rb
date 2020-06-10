@@ -5,6 +5,7 @@ class Api::TaskTypesController < ApplicationController
 
   def show
     @task_type = TaskType.find(params[:id])
+    @artists = @task_type.artists.with_attached_photo.includes(reviews: [:user])
   end
 
   def artists

@@ -10,9 +10,9 @@ export const receiveTaskTypes = (taskTypes) => ({
     taskTypes
 })
 
-export const receiveTaskType = (taskType) => ({
+export const receiveTaskType = (res) => ({
     type: RECEIVE_TASK_TYPE,
-    taskType
+    ...res
 })
 
 export const getTaskTypes = () => dispatch => {
@@ -23,7 +23,7 @@ export const getTaskTypes = () => dispatch => {
 
 export const getTaskType = taskTypeId => dispatch => (
     taskTypesApiUtils.getTaskType(taskTypeId)
-        .then(taskType => dispatch(receiveTaskType(taskType)))
+        .then(res => dispatch(receiveTaskType(res)))
 )
 
 export const getTaskTypeArtists = taskTypeId => dispatch => (

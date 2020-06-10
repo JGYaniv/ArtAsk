@@ -18,7 +18,7 @@ export default class TaskForm extends React.Component {
 
     componentWillMount(){
         if (Boolean(this.props.taskTypeId)){
-            this.props.getTaskTypeArtists(this.props.taskTypeId)
+            // this.props.getTaskTypeArtists(this.props.taskTypeId)
             this.props.getTaskType(this.props.taskTypeId)
         }
     }

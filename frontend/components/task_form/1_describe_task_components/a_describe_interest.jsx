@@ -46,31 +46,34 @@ export default ({
                 <h1>What brings you here today?</h1>
 
                 <span>
-                    <input
-                        type="radio"
-                        name="interest"
-                        onChange={e => setInterest(e.target.value)}
-                        value="ready"
-                        checked={(interest === "ready") ? true : false} />
-                    <label>I'm ready to book right now</label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest"
+                            onChange={e => setInterest(e.target.value)}
+                            value="ready"
+                            checked={(interest === "ready") ? true : false} />
+                    I'm ready to book right now</label>
                 </span>
                 <span>
-                    <input
-                        type="radio"
-                        name="interest"
-                        onChange={e => setInterest(e.target.value)}
-                        value="interested"
-                        checked={(interest === "interested") ? true : false} />
-                    <label>I'm interested in booking soon</label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest"
+                            onChange={e => setInterest(e.target.value)}
+                            value="interested"
+                            checked={(interest === "interested") ? true : false} />
+                    I'm interested in booking soon</label>
                 </span>
                 <span>
-                    <input
-                        type="radio"
-                        name="interest"
-                        onChange={e => setInterest(e.target.value)}
-                        value="browsing"
-                        checked={(interest === "browsing") ? true : false} />
-                    <label>I'm just browsing</label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="interest"
+                            onChange={e => setInterest(e.target.value)}
+                            value="browsing"
+                            checked={(interest === "browsing") ? true : false} />
+                    I'm just browsing</label>
                 </span>
 
                 <div>

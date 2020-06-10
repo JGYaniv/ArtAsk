@@ -32,7 +32,7 @@ export default ({
                 title: taskType.title,
                 artist_id: taskForm.select_artist.artist_id,
                 task_type_id: taskForm.task_type_id,
-                address: `${taskForm.street_address} ${taskForm.apartment_number}`,
+                address: `${taskForm.describe.street_address} ${taskForm.describe.apartment_number}`,
                 completed: false,
                 details: details,
                 start_date: `${taskForm.select_time.start_date}`,
