@@ -14,10 +14,11 @@ export const receiveTask = task => {
     })
 }
 
-export const receiveTasks = tasks => ({
-    type: RECEIVE_TASK,
-    tasks
-})
+export const receiveTasks = res => {
+    return {
+    type: RECEIVE_TASKS,
+    ...res
+}}
 
 export const receiveTasksErrors = errors => ({
     type: RECEIVE_TASKS_ERRORS,
@@ -35,8 +36,7 @@ export const getTask = taskId => dispatch => (
 
 export const getTasks = (userId) => dispatch => (
     tasksApiUtil.getTasks(userId)
-        .then(res => dispatch(receiveTasks(res.tasks)))
-        .then(res => dispatch(receiveUsers(res.users)))
+        .then(res => dispatch(receiveTasks(res)))
 )
 
 export const postTask = task => dispatch => (

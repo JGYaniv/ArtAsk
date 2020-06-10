@@ -18,9 +18,8 @@ export default class TaskForm extends React.Component {
 
     componentWillMount(){
         if (Boolean(this.props.taskTypeId)){
-            this.props.getTaskTypes()
             this.props.getTaskTypeArtists(this.props.taskTypeId)
-            this.props.getTaskTypeReviews(this.props.taskTypeId)
+            this.props.getTaskType(this.props.taskTypeId)
         }
     }
 
@@ -71,9 +70,6 @@ export default class TaskForm extends React.Component {
                         setFocus={this.props.setFocus}
                         setError={this.props.setError}
                         clearError={this.props.clearError}
-                        getTaskTypes={this.props.getTaskTypes}
-                        getTaskTypeArtists={this.props.getTaskTypeArtists}
-                        getTaskTypeReviews={this.props.getTaskTypeReviews} 
                         history={this.props.history} />
                 </>
             )

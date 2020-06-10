@@ -4,7 +4,7 @@ class Api::TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where(user_id: params[:user_id]).includes(:artist)
+    @tasks = Task.where(user_id: params[:user_id]).includes(:artist, :user, :task_type)
   end
 
   def create

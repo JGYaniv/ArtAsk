@@ -1,5 +1,6 @@
 import * as usersApiUtil from '../utils/users_api_utils'
 import {login, logout, receiveCurrentUser, receiveSessionErrors} from './session_actions'
+import { clearTaskForm } from './task_form_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -12,10 +13,11 @@ export const receiveUser = user => {
         user: user
 })}
 
-export const receiveUsers = users => ({
+export const receiveUsers = users => {
+    return ({
     type: RECEIVE_USERS,
     users
-})
+})}
 
 export const receiveUsersErrors = errors => ({
     type: RECEIVE_USERS_ERRORS,

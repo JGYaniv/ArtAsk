@@ -7,7 +7,7 @@ export const getTask = (taskId) => (
 
 export const getTasks = (userId) => (
     $.ajax({
-        url: `/api/${userId}/tasks`,
+        url: `/api/users/${userId}/tasks`,
         method: 'get'
     })
 )

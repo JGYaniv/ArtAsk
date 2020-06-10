@@ -11,6 +11,8 @@ import {
     CLEAR_TASK_FORM
 } from '../../actions/task_form_actions'
 
+import { RECEIVE_TASK } from '../../actions/tasks_actions'
+
 const defaultState = {
     task_type_id: "",
     form_step: "",
@@ -32,7 +34,7 @@ const defaultState = {
 }
 
 
-export default (initialState = defaultState, action) => {
+export default (initialState = {}, action) => {
     Object.freeze(initialState)
     let newState;
     switch (action.type) {
@@ -63,6 +65,9 @@ export default (initialState = defaultState, action) => {
         case CLEAR_TASK_TYPE:
             return Object.assign({}, initialState, { task_type_id: "" });
         case CLEAR_TASK_FORM:
+            window.localStorage.setItem("task_form", JSON.stringify(defaultState))
+            return Object.assign({}, defaultState);
+        case RECEIVE_TASK:
             window.localStorage.setItem("task_form", JSON.stringify(defaultState))
             return Object.assign({}, defaultState);
         default:

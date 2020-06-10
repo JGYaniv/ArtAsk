@@ -1,0 +1,130 @@
+.my-tasks-page{
+    width: 890px;
+    margin: 0 auto;
+
+    .my-tasks-nav{
+        display:flex;
+
+        li{
+            font-size: 16px;
+            padding: 5px 30px;
+            border-bottom: 2px solid mediumslateblue;
+            color: mediumslateblue;
+            box-sizing: border-box;
+            margin-top: 60px;
+            margin-bottom: 15px;
+            margin-right: 40px;
+            letter-spacing: .7px;
+        }
+
+        li:last-child{
+            border:none;
+        }
+    }
+    
+    .task-item{
+        max-width: 800px;
+        min-width: 500px;
+        margin: 0 auto;
+        border: 1px solid lightgray;
+        border-radius: 4px;
+        margin-bottom: 50px;
+    }
+
+    .header{
+        .title{
+            height: 80px;
+            border-bottom: 1px solid lightgray;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        h1{
+            margin: 0px;
+            padding-top: 10px;
+            font-weight: 400;
+            font-family: Khula, sans-serif;
+            color: #545454;
+        }
+
+        .summary{
+            display: flex;
+            flex-flow: column;
+            box-sizing: border-box;
+            padding: 15px 20px;
+
+            span:first-child{
+                margin-bottom: 10px;
+            }
+
+            span{
+                display: flex;
+                flex-flow: row;
+                align-items: center;
+
+                h2:first-child{
+                    font-size: 12px;
+                }
+            }
+
+            h2{
+                margin: 0;
+                font-family: Khula, sans-serif;
+                font-weight: 400;
+                font-size: 18px;
+                padding-right: 10px;
+            }
+
+            img{
+                height: 35px;
+                width: 35px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+        }
+    }
+    .details {
+        padding: 0 20px 20px 20px;
+        display: flex;
+        flex-flow: column;
+        box-sizing: border-box;
+
+        span {
+            display: flex;
+            flex-flow: row;    
+        }
+
+        .location {
+            width: 50%;
+        }
+
+        h3 {
+            font-family: Khula, sans-serif;
+            font-size: 14px;
+            font-weight: 200;
+            margin-bottom: 0px;
+        }
+
+        p{
+            font-size: 18px;
+        }
+
+        .description{
+            h3{
+                margin-top: 20px;
+            }
+        }
+    
+        .details-menu{
+            margin-top: 40px;
+
+            li{
+                font-size: 16px;
+                color: mediumslateblue;
+                text-decoration: underline;
+            }
+        }
+    }
+}

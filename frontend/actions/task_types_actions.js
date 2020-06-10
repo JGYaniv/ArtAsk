@@ -28,10 +28,12 @@ export const getTaskType = taskTypeId => dispatch => (
 
 export const getTaskTypeArtists = taskTypeId => dispatch => (
     taskTypesApiUtils.getTaskTypeArtists(taskTypeId)
-        .then(users => dispatch(receiveUsers(users)))
+        .then(res => {
+            dispatch(receiveReviews(res))
+        })
 )
 
-export const getTaskTypeReviews = taskTypeId => dispatch => {
-    return taskTypesApiUtils.getTaskTypeReviews(taskTypeId)
-        .then(reviews => dispatch(receiveReviews(reviews)))
-}
+// export const getTaskTypeReviews = taskTypeId => dispatch => {
+//     return taskTypesApiUtils.getTaskTypeReviews(taskTypeId)
+//         .then(reviews => dispatch(receiveReviews(reviews)))
+// }

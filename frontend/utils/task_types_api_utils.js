@@ -12,12 +12,13 @@ export const getTaskType = (taskTypeId) => (
     })
 )
 
-export const getTaskTypeArtists = (taskTypeId) => (
+export const getTaskTypeArtists = (taskTypeId) => {
+    return (
     $.ajax({
         url: `/api/task_types/${taskTypeId}/artists`,
         method: 'get'
     })
-)
+)}
 
 export const getTaskTypeReviews = (taskTypeId) => {
     return $.ajax({

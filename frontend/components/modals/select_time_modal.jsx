@@ -13,7 +13,7 @@ export default (props) => {
     const today = new Date()
     const tomorrow = addDays(today, 1)
     const [date, setDate] = useState(tomorrow);
-    const [time, setTime] = useState("9:00am");
+    const [time, setTime] = useState("09:00");
 
 
     const threeWeeks = (startDate) => {
@@ -36,7 +36,7 @@ export default (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const dateTime = new Date(`${date.toDateString()} time`)
+        const dateTime = new Date(`${date.toDateString()} ${time}`)
         props.setTimeForm({ start_date: dateTime })
         props.setFormStep(4)
     }

@@ -2,15 +2,17 @@ import React, {useState} from 'react'
 
 export default ({
     task,
-    taskType,
+    taskType = {title: ""},
     artist
 }) => {
     const [expanded, setExpanded] = useState(false)
+    const dateTime = new Date(task.start_date)
+    const date = dateTime.toDateString()
+    const time = dateTime.toLocaleTimeString('en-US')
+    const ExpandedMenu = () => (<><li>Hide Details</li><li>Cancel Task</li>{/* <li>Give us Artist Feedback</li> */}</>)
+    const ShortenedMenu = () => (<><li>View More Details</li></>)
 
-    const expandedMenu = () => (<><li>Hide Details</li><li>Cancel Task</li>{/* <li>Give us Artist Feedback</li> */}</>)
-    const shortenedMenu = () => (<><li>View More Details</li></>)
-
-    render (
+    return (
         <div className="task-item">
             <div className="header">
                 <div className="title">
@@ -24,27 +26,29 @@ export default ({
                     </span>
 
                     <span>
-                        <p>🗓</p>
-                        <p>{task.start_date.toDateString()}</p>
+                        <h2>🗓</h2>
+                        <h2>{date}</h2>
                     </span>
 
                     <span>
-                        <p>🕘</p>
-                        <p>{task.start_date.toLocaleTimeString('en-US')}</p>
+                        <h2>🕘</h2>
+                        <h2>{time}</h2>
                     </span>
                 </div>
             </div>
 
             <div className="details">
-                <div className="location">
-                    <h3>Location</h3>
-                    <p>{task.street_address} {task.apartment_number}</p>
-                </div>
-
-                <div className="artist">
-                    <h3>Artist</h3>
-                    <p>{artist.first_name} {task.last_name.slice(0,1)}</p>
-                </div>
+                <span>
+                    <div className="location">
+                        <h3>Location</h3>
+                        <p>📍 123 Somewhere Street, apartment 5</p>
+                        {/* <p>{task.street_address} {task.apartment_number}</p> */}
+                    </div>
+                    <div className="artist">
+                        <h3>Artist</h3>
+                        <p>{artist.first_name} {artist.last_name.slice(0,1)}</p>
+                    </div>
+                </span>
 
                 <div className="description">
                     <h3>Description</h3>
@@ -55,7 +59,7 @@ export default ({
                     <li>{task.size}</li>
                 </ul> */}
                 <nav className="details-menu">
-                    { expanded ? expandedMenu : shortenedMenu }
+                    { expanded ? <ExpandedMenu/> : <ShortenedMenu/> }
                 </nav>
             </div>
         </div>

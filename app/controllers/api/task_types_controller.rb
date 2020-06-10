@@ -8,8 +8,7 @@ class Api::TaskTypesController < ApplicationController
   end
 
   def artists
-    @artists = TaskType.find(params[:id]).artists.with_attached_photo.includes(:reviews)
-    # @artists = User.with_attached_photo.includes(:reviews).where("reviews.task_type_id = ?", params[:id])
+    @artists = TaskType.find(params[:id]).artists.with_attached_photo.includes(reviews: [:user])
   end
 
   def reviews
