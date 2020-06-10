@@ -36,7 +36,7 @@ export default ({
                 completed: false,
                 details: details,
                 start_date: `${taskForm.select_time.start_date}`,
-            }).then(history.push('/'))
+            }).then(history.push('/active'))
         }
     }
 

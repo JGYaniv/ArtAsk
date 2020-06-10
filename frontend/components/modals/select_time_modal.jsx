@@ -50,7 +50,11 @@ export default (props) => {
             setDate(newDate)
         }
     }
-    
+    //
+    //
+    //
+    const artist = props.users[props.taskForm.select_artist.artist_id] || {first_name: "", last_name: "", photo_url: ""}
+
     return (
         <>
             <div className="select-time-form">
@@ -58,8 +62,8 @@ export default (props) => {
                 <div className="calendar-columns">
                     <div className="datetime-section">
                         <div className="artist-name">
-                            <img width="20px" src="https://www.careercontessa.com/uploadedImages/Library/career-contessa-anon-avatar.jpg" alt=""/>
-                            <h3>Artist's Availability</h3>
+                            <img width="20px" src={artist.photo_url} alt=""/>
+                        <h3>{`${artist.first_name} ${artist.last_name.slice(0, 1)}.`}</h3>
                         </div>
                         <div className="calendar">
                             <h4>{months[date.getMonth()]} {date.getFullYear()}</h4>

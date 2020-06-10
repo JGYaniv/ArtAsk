@@ -16,10 +16,12 @@ export default ({
         console.log(tasks)
         getTasks(currentUser.id)
     }, []) //why do we need to pass the [] arg? not sure what is causing it to constantly update...
+
     const currentTasksList = currentTasks.map(
         (task, idx) => <TaskItem 
             key={idx}
             task={task} 
+            deleteTask={deleteTask}
             taskType={taskTypes[task.task_type_id]} 
             artist={users[task.artist_id]} 
         />
@@ -36,8 +38,8 @@ export default ({
     return (
         <div className="my-tasks-page">
             <nav className="my-tasks-nav">
-                <li className="current-tab" onClick={e => setActiveTab("current")}>CURRENT</li>
-                <li className="completed-tab" onClick={e => setActiveTab("completed")}>COMPLETED</li>
+                <li className={`current-tab ${activeTab === "current" ? "activated" : ""}`} onClick={e => setActiveTab("current")}>CURRENT</li>
+                <li className={`completed-tab ${activeTab === "completed" ? "activated" : ""}`} onClick={e => setActiveTab("completed")}>COMPLETED</li>
             </nav>
             { activeTab === "current" ? currentTasksList : completedTasksList }        
         </div>

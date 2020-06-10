@@ -31,6 +31,6 @@ export const updateTask = (task) => {
 export const deleteTask = (taskId) => (
     $.ajax({
         url: `/api/tasks/${taskId}`,
-        method: 'get'
+        method: 'delete'
     })
 )

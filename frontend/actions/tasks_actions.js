@@ -2,6 +2,7 @@ import * as tasksApiUtil from '../utils/tasks_api_utils'
 import {clearTaskForm} from  './task_form_actions'
 import {receiveUsers} from './users_actions'
 
+export const REMOVE_TASK = 'REMOVE_TASK';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 export const RECEIVE_TASKS_ERRORS = 'RECEIVE_TASKS_ERRORS';
@@ -24,6 +25,12 @@ export const receiveTasksErrors = errors => ({
     type: RECEIVE_TASKS_ERRORS,
     errors
 })
+
+export const removeTask = taskId => {
+    return {
+    type: REMOVE_TASK,
+    taskId
+}}
 
 export const clearTasksErrors = () => ({
     type: CLEAR_TASKS_ERRORS,
@@ -59,6 +66,6 @@ export const updateTask = task => dispatch => (
 )
 
 export const deleteTask = taskId => dispatch => {
-    tasksApiUtil.deleteTask(taskId)
-        .then(() => dispatch(logout()))
+    return tasksApiUtil.deleteTask(taskId)
+        .then(() => dispatch(removeTask(taskId)))
 }

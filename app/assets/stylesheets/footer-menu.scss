@@ -1,18 +1,22 @@
 .footer {
     background-color: rgb(101, 109, 125);
-    height: 300px;
+    min-height: 350px;
     width: 100%;
     padding: 30px;
     box-sizing: border-box;
+
     .footer-header{
         p{
             display:inline-block;
             margin-right: 5px;
+            margin-bottom: 35px;
         }
         a{
             margin: 0 5px;
         }
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
     p{
         color: rgb(190, 190, 190);
@@ -30,9 +34,17 @@
     }
     .cols {
         display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+
         .left-col, .mid-col{
             width: 375px;
             min-height: 200px;
         }
+    }
+
+    .about {
+        max-width: 350px;
+        color: white;
     }
 }

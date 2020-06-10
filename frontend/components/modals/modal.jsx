@@ -18,7 +18,9 @@ const Modal = ({
     clearErrors, 
     closeFormModal, 
     setTimeForm, 
-    setFormStep 
+    setFormStep,
+    users,
+    taskForm
 }) => {
     if (!modal) {
         return null;
@@ -48,7 +50,9 @@ const Modal = ({
                 closeModal={closeFormModal}
                 errors={errors}  
                 setTimeForm={setTimeForm}
-                setFormStep={setFormStep}/>
+                setFormStep={setFormStep}
+                users={users}
+                taskForm={taskForm}/>
             break;
         default:
             return null;
@@ -69,7 +73,8 @@ const mapStateToProps = state => {
     return {
         modal: state.ui.modal,
         errors: state.errors.session,
-        taskForm: state.ui.task_form
+        taskForm: state.ui.task_form,
+        users: state.entities.users
     };
 };
 

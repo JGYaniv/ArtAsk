@@ -4,12 +4,15 @@
 
     .my-tasks-nav{
         display:flex;
-
+        .activated{
+            color: mediumslateblue;
+            border-bottom: 2px solid mediumslateblue;
+        }
         li{
             font-size: 16px;
             padding: 5px 30px;
-            border-bottom: 2px solid mediumslateblue;
-            color: mediumslateblue;
+            border-bottom: none;
+            color: gray;
             box-sizing: border-box;
             margin-top: 60px;
             margin-bottom: 15px;
@@ -17,9 +20,6 @@
             letter-spacing: .7px;
         }
 
-        li:last-child{
-            border:none;
-        }
     }
     
     .task-item{
@@ -85,9 +85,17 @@
             }
         }
     }
+
+    div.expanded {
+        display: block;
+    }
+
+    .location, .artist, .description{
+        display: none;
+    }
+
     .details {
         padding: 0 20px 20px 20px;
-        display: flex;
         flex-flow: column;
         box-sizing: border-box;
 
@@ -119,11 +127,13 @@
     
         .details-menu{
             margin-top: 40px;
+            display: flex;
 
             li{
                 font-size: 16px;
                 color: mediumslateblue;
                 text-decoration: underline;
+                margin-right: 20px;
             }
         }
     }

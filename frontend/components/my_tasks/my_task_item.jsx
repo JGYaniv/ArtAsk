@@ -3,14 +3,20 @@ import React, {useState} from 'react'
 export default ({
     task,
     taskType = {title: ""},
-    artist
+    artist,
+    deleteTask
 }) => {
     const [expanded, setExpanded] = useState(false)
     const dateTime = new Date(task.start_date)
     const date = dateTime.toDateString()
     const time = dateTime.toLocaleTimeString('en-US')
-    const ExpandedMenu = () => (<><li>Hide Details</li><li>Cancel Task</li>{/* <li>Give us Artist Feedback</li> */}</>)
-    const ShortenedMenu = () => (<><li>View More Details</li></>)
+
+    const hide = () => setExpanded(false)
+    const show = () => setExpanded(true)
+    const remove = (e) => deleteTask(task.id) 
+
+    const ExpandedMenu = () => (<><li onClick={hide}>Hide Details</li><li onClick={remove}>Cancel Task</li>{/* <li>Give us Artist Feedback</li> */}</>)
+    const ShortenedMenu = () => (<><li onClick={show}>View More Details</li></>)
 
     return (
         <div className="task-item">
@@ -37,20 +43,20 @@ export default ({
                 </div>
             </div>
 
-            <div className="details">
+            <div className={`details`}>
                 <span>
-                    <div className="location">
+                    <div className={`location ${expanded ? "expanded" : ""}`}>
                         <h3>Location</h3>
                         <p>📍 123 Somewhere Street, apartment 5</p>
                         {/* <p>{task.street_address} {task.apartment_number}</p> */}
                     </div>
-                    <div className="artist">
+                    <div className={`artist ${expanded ? "expanded" : ""}`}>
                         <h3>Artist</h3>
                         <p>{artist.first_name} {artist.last_name.slice(0,1)}</p>
                     </div>
                 </span>
 
-                <div className="description">
+                <div className={`description ${expanded ? "expanded" : ""}`}>
                     <h3>Description</h3>
                     <p>{task.details}</p>
                 </div>
@@ -58,9 +64,9 @@ export default ({
                     <li>{task.revisions}</li>
                     <li>{task.size}</li>
                 </ul> */}
-                <nav className="details-menu">
-                    { expanded ? <ExpandedMenu/> : <ShortenedMenu/> }
-                </nav>
+            <nav className="details-menu">
+                { expanded ? <ExpandedMenu/> : <ShortenedMenu/> }
+            </nav>
             </div>
         </div>
     )
