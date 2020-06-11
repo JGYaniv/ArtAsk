@@ -2,6 +2,13 @@
     width: 890px;
     margin: 0 auto;
 
+    img{
+        height: 200px;
+        margin: 0 auto;
+        display: flex;
+        padding: 20px 0 20px;
+    }
+
     .my-tasks-nav{
         display:flex;
         .activated{

@@ -17,7 +17,7 @@ export default ({
 
     const hide = () => setExpanded(false)
     const show = () => setExpanded(true)
-    const remove = () => {deleteTask(task.id) ; hide}
+    const remove = () => {deleteTask(task.id) ; hide()}
     const complete = () => {updateTask({ id: task.id, completed: true }) ; hide}
 
     const ExpandedMenu = () => (
@@ -53,7 +53,7 @@ export default ({
                         <div className="menu-button" 
                             tabIndex="0"
                             onFocus={() => {setMenuOpen(true)}} 
-                            onBlur={() => setMenuOpen(false)} >
+                            onBlur={() => setInterval(() => setMenuOpen(false), 100)} >
                                 <p>...</p>
                             <ul className={`${menuOpen ? "reveal" : "hidden"}`} tabIndex="0">
                                     <li className={`box-pointer ${menuOpen ? "reveal" : "hidden"}`} tabIndex="0"/>
