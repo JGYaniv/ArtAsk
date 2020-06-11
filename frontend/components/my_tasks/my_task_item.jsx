@@ -52,7 +52,7 @@ export default ({
                     {mode === "completed" ? "" : (
                         <div className="menu-button" 
                             tabIndex="0"
-                            onFocus={() => setMenuOpen(true)} 
+                            onFocus={() => {setMenuOpen(true)}} 
                             onBlur={() => setMenuOpen(false)} >
                                 <p>...</p>
                             <ul className={`${menuOpen ? "reveal" : "hidden"}`} tabIndex="0">

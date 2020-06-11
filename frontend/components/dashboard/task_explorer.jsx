@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export default class BannerCta extends React.Component{
     constructor(props){
         super(props)
-        this.state = { drop: false }
+        this.state = { drop: false, search: "" }
         this.clicker = this.clicker.bind(this)
         this.leave = this.leave.bind(this)
         this.timeout = null
@@ -33,19 +33,38 @@ export default class BannerCta extends React.Component{
     }
 
     render(){
-        const taskTypes = this.props.taskTypes.map((taskType, idx) => (
-            <li key={idx}><Link to="/form" onClick={this.selectTask(taskType)}>{taskType.title}</Link></li>
-        ))//.slice(1,5)
+        let filteredTaskTypes = this.props.taskTypes;
+
+        if (this.state.search.length > 0){
+            let regex = RegExp(`${this.state.search.toLowerCase()}`)
+            filteredTaskTypes = this.props.taskTypes.filter((taskType) => {
+                if (regex.test(taskType.title.toLowerCase())){
+                    return taskType
+                // } else if (regex.test(taskType.description.toLowerCase())){
+                //     return taskType
+                }
+            })
+        }
+
+        const taskTypes = filteredTaskTypes.map((taskType, idx) => {
+            return <li key={idx}><Link to="/form" onClick={this.selectTask(taskType)}>{taskType.title}</Link></li>
+        })
+        
         return(
             <div className="explorer-background-image">
                 <div className="explorer-dash">
                     <h1>Book Your Next Task</h1>
                     <form className="explorer-form" onBlur={this.leave} onFocus={this.clicker}>
                         <input className="dash-input" type="text" 
-                            placeholder="What do you need help with?"/>
+                            placeholder="What do you need help with?"
+                            onChange={e => this.setState({search: e.target.value})}/>
                         <div className="mag-glass">🔎</div>
                         <ul  className={this.state.drop ? "reveal" : "hide"}>
-                            {taskTypes}
+                            {taskTypes.length > 0 ? taskTypes : (
+                                <li key="w@">
+                                    <a href="#" onClick={e => e.preventDefault()}>☠️ no results, please try again ☠️</a>
+                                </li>
+                            )}
                         </ul>
                     </form>
                 </div>
