@@ -50,7 +50,7 @@ export default ({
                 {completedTasksList.length > 0 ? navButtons : navButtons.slice(0, 1)}
             </nav>
             {activeTab === "current" ? currentTasksList : completedTasksList}
-            {currentTasksList.length === 0 ? <img height="200px" src="https://i.imgur.com/TQT2wQ8.jpg"/> : ""}
+            {currentTasksList.length === 0 ? <img src="https://i.imgur.com/TQT2wQ8.jpg"/> : ""}
             <div className="my-tasks-cta">
                 <h1>Got another project you're working on?</h1>
                 <h2>Find another artist volunteer to collaborate with on ArtAsk!</h2>
