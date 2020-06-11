@@ -53,10 +53,10 @@ export default ({
                         <div className="menu-button" 
                             tabIndex="0"
                             onFocus={() => {setMenuOpen(true)}} 
-                            onBlur={() => setInterval(() => setMenuOpen(false), 100)} >
+                            onBlur={() => setTimeout(() => setMenuOpen(false), 100)} >
                                 <p>...</p>
-                            <ul className={`${menuOpen ? "reveal" : "hidden"}`} tabIndex="0">
-                                    <li className={`box-pointer ${menuOpen ? "reveal" : "hidden"}`} tabIndex="0"/>
+                            <ul className={`${menuOpen ? "reveal" : "hidden"}`}>
+                                    <li className={`box-pointer ${menuOpen ? "reveal" : "hidden"}`}/>
                                     <li onClick={complete}>Mark Completed</li>
                                     <li onClick={remove}>Cancel Task</li>
                                 </ul>

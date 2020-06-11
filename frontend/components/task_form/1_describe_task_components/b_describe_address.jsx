@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import PlacesAutocomplete from 'react-places-autocomplete'
+import { geocodeByAddress, geocodeByPlaceId } from 'react-places-autocomplete'
 
 export default ({
     updateDescribeForm,
     setFocus,
-    taskForm
+    taskForm,
+    errors,
+    setError
 }) => {
     const [streetAddress, setStreetAddress] = useState(taskForm.describe.street_address);
     const [apartmentNumber, setApartmentNumber] = useState(taskForm.describe.apartment_number);
@@ -11,14 +15,16 @@ export default ({
 
     const completeAddress = (e) => {
         e.preventDefault()
-        setComplete(true)
-        setFocus("options")
-        // let address = (`${streetAddress}, ${apartmentNumber}`)
-        let address = streetAddress ? streetAddress : "remote"
-        updateDescribeForm({ 
-            street_address: address, 
-            apartment_number: apartmentNumber 
-        })
+        if (streetAddress === "") {
+            setError("address")
+        } else {
+            setComplete(true)
+            setFocus("options")
+            updateDescribeForm({ 
+                street_address: streetAddress, 
+                apartment_number: apartmentNumber 
+            })
+        }
     }
 
     const focus = () => {
@@ -33,6 +39,20 @@ export default ({
             taskForm.focus_section === "address" ? "focused" : ""
         }`
 
+    const handleChange = address => setStreetAddress(address)
+
+    const inputProps = {
+        value: streetAddress,
+        onChange: handleChange
+    }
+
+    const googlePlacesClasses = {
+        root: 'address-search-bar',
+        autocompleteContainer: 'address-dropdown',
+        autocompleteItem: 'dropdown-item',
+        autocompleteItemActive: 'active'
+    }
+
     return(
         <div id="address" 
             className={classString}>
@@ -42,19 +62,20 @@ export default ({
                 <h4>📍 Your location is {taskForm.describe.street_address}</h4>
             </div>
             <form className="address-form">
-                <h2>*Leave blank if this is a remote project.</h2><br />
+                {window.google ? (<PlacesAutocomplete inputProps={inputProps} classNames={googlePlacesClasses} />) : ""}
 
-                <input className="street-address"
-                    placeholder="Enter street address..."
-                    type="text"
-                    onChange={e => setStreetAddress(e.target.value)}
-                    value={streetAddress} />
                 <input className="apartment-number"
                     placeholder="Unit or Apt #"
                     type="text"
                     onChange={e => setApartmentNumber(e.target.value)}
                     value={apartmentNumber} />
 
+                <div>
+                    <p className="inline-error">
+                        {errors.includes("address") ? "Cannot leave blank!" : ""}
+                    </p>
+                </div>
+                
                 <div className="form-button-section">
                     <input 
                         type="submit" 

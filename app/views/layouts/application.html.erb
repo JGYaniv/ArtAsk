@@ -4,6 +4,8 @@
     <title>ArtTask</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <% mapscall = "https://maps.googleapis.com/maps/api/js?key=" + Rails.application.credentials.google_maps_api + "&libraries=places" %>
+    <script type='text/javascript' src="<%= mapscall %>"></script>
     <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>

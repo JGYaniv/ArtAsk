@@ -43,6 +43,8 @@ div.focused{
     }
 
 }
+
+
 .address-form {
     .street-address{
         width: 80%;
@@ -50,6 +52,37 @@ div.focused{
     }
     .apartment-number{
         width: calc(20% - 10px);
+    }
+
+    .address-search-bar {
+        width: 80%;
+        margin-top: 40px;
+        margin-right: 10px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .address-dropdown {
+        position: absolute;
+        width: 100%;
+        max-width: 763px;
+        left: 0px;
+        background-color: white;
+        z-index: 1;
+        border: 1px solid lightgray;
+        border-top: none;
+        font-family: khula, sans-serif;
+        font-weight: 100;
+    }
+
+    .dropdown-item {
+        padding: 20px 15px;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .active {
+    background-color: #fafafa;
     }
 }
 

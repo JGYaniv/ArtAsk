@@ -11,7 +11,10 @@
         color: black;
     }
 }
-
+.form-button-section{
+    text-align:center;
+    margin: 37px 0 15px;
+}
 .form-page{
     padding: 30px 90px;
     .task-title{
@@ -34,6 +37,8 @@
         display: none;
     }
 }
+
+
 textarea {
     resize: none;
     width: 100%;
@@ -73,12 +78,8 @@ textarea {
         input[type="radio"]{
             cursor: pointer;
         }
-        div{
-            text-align:center;
-            margin: 37px 0 15px;
-        }
+
         .inline-error {
-            margin: -20px 0 12px 5px;
             text-align: left;
             font-size: 14px;
             color: red;

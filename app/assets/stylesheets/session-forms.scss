@@ -1,7 +1,9 @@
 .session {
+    top: 0;
+    height: 100%;
+    min-height: 800px;
     position: absolute;
     width: 100%;
-    min-height: 720px;
     background-image: url('https://i.imgur.com/rr7b3AT.jpg');
     background-size: cover;
     z-index: -10;

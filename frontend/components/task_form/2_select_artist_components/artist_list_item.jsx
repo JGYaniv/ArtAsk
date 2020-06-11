@@ -28,10 +28,10 @@ export default ({
                 <h4>How I can help:</h4>
                 <p>{artist.about}</p>
                 <div className="artist-review">
-                    <img className="mini-profile-picture" src={reviewer.photo_url}></img>
+                    <img className="mini-profile-picture" src={reviewer ? reviewer.photo_url : ""}></img>
                     <div className="review-text">
-                        <p className="review-quote">{review.details}</p>
-                        <p>{reviewer.first_name} {reviewer.last_name.slice(0,1)}. -{`${review.created_at}`}</p>
+                        <p className="review-quote">{reviewer ? review.details : ""}</p>
+                        <p>{reviewer ? reviewer.first_name : ""} {reviewer ? `${reviewer.last_name.slice(0,1)}. -${review.created_at}` : ""}</p>
                     </div>
                 </div>
             </div>
