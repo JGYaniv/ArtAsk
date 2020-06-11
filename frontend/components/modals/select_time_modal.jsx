@@ -15,6 +15,16 @@ export default (props) => {
     const [date, setDate] = useState(tomorrow);
     const [time, setTime] = useState("09:00");
 
+    const timeToString = () => {
+        let hours = parseInt(time.slice(0,2), 10)
+        if (hours > 12){
+            return `${hours % 12}:00pm`
+        } else if (hours < 10) {
+            return `${time.slice(1,2)}:00am`
+        } else {
+            return `${hours}:00am`
+        }
+    }
 
     const threeWeeks = (startDate) => {
         const dates = []
@@ -50,9 +60,7 @@ export default (props) => {
             setDate(newDate)
         }
     }
-    //
-    //
-    //
+
     const artist = props.users[props.taskForm.select_artist.artist_id] || {first_name: "", last_name: "", photo_url: ""}
 
     return (
@@ -109,7 +117,7 @@ export default (props) => {
                                 <option value="09:00">9:00am</option>
                                 <option value="10:00">10:00am</option>
                                 <option value="11:00">11:00am</option>
-                                <option value="12:00">12:00am</option>
+                                <option value="12:00">12:00pm</option>
                                 <option value="13:00">1:00pm</option>
                                 <option value="14:00">2:00pm</option>
                                 <option value="15:00">3:00pm</option>
@@ -121,7 +129,7 @@ export default (props) => {
                     </div>
                     <div className="confirm-time">
                         <h1>Request for:</h1>
-                        <h2>{months[date.getMonth()]} {date.getDate()}, {time}</h2>
+                        <h2>{months[date.getMonth()]} {date.getDate()}, {timeToString()}</h2>
                         <button onClick={handleSubmit}>Select & Continue</button>
                         <p>Next, confirm your details to get connected with your artist volunteer!</p>
                     </div>

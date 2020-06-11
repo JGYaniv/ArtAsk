@@ -22,7 +22,9 @@ export default ({
     }
 
     const focus = () => {
-        setFocus("address")
+        if (completed){
+            setFocus("address")
+        }
     }
 
     const classString = `form-section ${

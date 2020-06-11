@@ -9,7 +9,7 @@ export default () => (
     <>
         <MenuBar />
         <Switch>
-            <Route path="/active" component={MyTasks} /> 
+            <Route path="/active" component={MyTasks} />
             <Route path="/" component={TaskExplorer}/>
         </Switch>
         <FooterMenu />

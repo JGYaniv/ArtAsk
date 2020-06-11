@@ -14,9 +14,10 @@
  *= require_self
  */
 
- body{
-     margin:0;
+ body {
+     margin: 8px 0 0 0;
  }
+
 
 a, input, p, li, label, button{
     font-size: 14px;

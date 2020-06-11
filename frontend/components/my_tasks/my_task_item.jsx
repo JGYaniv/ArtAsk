@@ -50,10 +50,17 @@ export default ({
                 <div className="title">
                     <h1>{taskType.title}</h1>
                     {mode === "completed" ? "" : (
-                        <button className="menu-button" onFocus={() => setMenuOpen(true)} onBlur={() => { console.log("blurry"); setMenuOpen(false) }}>
-                            <p>...</p>
-                            {menuOpen ? <DropMenu /> : "" }
-                        </button>
+                        <div className="menu-button" 
+                            tabIndex="0"
+                            onFocus={() => setMenuOpen(true)} 
+                            onBlur={() => setMenuOpen(false)} >
+                                <p>...</p>
+                            <ul className={`${menuOpen ? "reveal" : "hidden"}`} tabIndex="0">
+                                    <li className={`box-pointer ${menuOpen ? "reveal" : "hidden"}`} tabIndex="0"/>
+                                    <li onClick={complete}>Mark Completed</li>
+                                    <li onClick={remove}>Cancel Task</li>
+                                </ul>
+                        </div>
                     )}
                 </div>
 

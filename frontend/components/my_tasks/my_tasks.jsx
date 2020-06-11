@@ -14,7 +14,6 @@ export default ({
     const [activeTab, setActiveTab] = useState("current")
 
     useEffect(() => {
-        console.log(tasks)
         getTasks(currentUser.id)
     }, []) //why do we need to pass the [] arg? not sure what is causing it to constantly update...
 

@@ -52,6 +52,10 @@
             font-family: Khula, sans-serif;
             color: #545454;
         }
+            
+        .menu-button:focus {
+            outline: none;
+        }
 
         .menu-button{
             border-radius: 50%;
@@ -76,12 +80,19 @@
                 height: 10px;
                 transform: rotate(45deg);
                 background: #f7f7f7;
-                margin-top: 31px;
+                margin-top: -26px;
                 border-top: 1px solid #ababab;
                 border-left: 1px solid #ababab;
                 z-index: 1;
                 position: absolute;
+                padding: 0;
+                margin-left: 175px;
             }
+
+            .box-pointer:focus {
+                outline: none;
+            }
+
             ul {
                 position: absolute;
                 top: 35px;

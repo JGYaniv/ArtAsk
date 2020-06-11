@@ -4,7 +4,6 @@ export default (initialState = [], action) => {
     Object.freeze(initialState)
     switch (action.type) {
         case RECEIVE_TASKS_ERRORS:
-            console.log(action.errors)
             return action.errors || [];
         case RECEIVE_TASK:
             return [];

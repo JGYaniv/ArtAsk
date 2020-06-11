@@ -16,7 +16,7 @@ export default ({
         let userList = Object.values(users)
         let artists = userList.filter(user => user.account_type === "artist")
         artistList = artists.map((artist, idx) => {
-            let firstReview = reviews[artist.review_ids[0]]
+            let firstReview = (artist.review_ids ? reviews[artist.review_ids[0]] : "")
             let handleSelect = () => {
                 setArtistForm({ artist_id: artist.id })
                 setFormStep(3)

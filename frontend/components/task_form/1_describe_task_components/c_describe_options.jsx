@@ -44,7 +44,9 @@ export default ({
     }
 
     const focus = () => {
-        setFocus("options")
+        if (completed){
+            setFocus("options")
+        }
     }
 
     const classString = `form-section ${
