@@ -29,7 +29,7 @@ export default class SignUp extends React.Component {
             this.handleBlur({target: el})
         })
         this.postUser(this.state)
-            .then(() => this.props.history.push('/dashboard'))
+            // .then(() => this.props.history.push('/dashboard'))
     }
 
     handleFocus(e) {

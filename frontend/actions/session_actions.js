@@ -42,4 +42,5 @@ export const logout = () => dispatch => (
         .then(() => {
             dispatch(logoutCurrentUser())})
         .then(() => window.localStorage.setItem('currentUser', ""))
+        .then(() => window.localStorage.setItem('task_form', ''))
 )

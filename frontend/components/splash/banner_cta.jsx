@@ -12,6 +12,7 @@ export default class BannerCta extends React.Component{
 
     selectTask(taskType){
         return (e) => {
+            this.props.clearTaskForm();
             this.props.selectTaskType(taskType);
         }
     }

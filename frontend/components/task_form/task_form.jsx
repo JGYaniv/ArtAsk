@@ -26,12 +26,11 @@ export default class TaskForm extends React.Component {
         window.localStorage.setItem("task_form", JSON.stringify(this.props.taskForm))
     }
 
-    // componentWillUnmount(){
-    //     debugger
-    //     window.localStorage.setItem("task_form", "");
-    //     this.props.clearTaskType();
-    //     this.props.clearTaskForm();
-    // }
+    componentWillUnmount(){
+        window.localStorage.setItem("task_form", "");
+        this.props.clearTaskType();
+        this.props.clearTaskForm();
+    }
 
     render(){
         if (Boolean(this.props.taskTypeId)){

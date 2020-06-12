@@ -1,4 +1,6 @@
-
+json.user do
+    json.extract! @user, :id, :email, :first_name, :last_name, :area_code
+end
 
 json.users do
     @user.clients.each do |client|

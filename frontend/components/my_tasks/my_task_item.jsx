@@ -17,9 +17,10 @@ export default ({
 
     const hide = () => setExpanded(false)
     const show = () => setExpanded(true)
-    const remove = () => {deleteTask(task.id) ; hide()}
+    const remove = () => {deleteTask(task.id) ; setMenuOpen(false) ; hide()}
     const complete = () => { 
         updateTask({ id: task.id, completed: true }) ; 
+        setMenuOpen(false) ;
         hide() ;
     }
 
