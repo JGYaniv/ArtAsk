@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     end
     
     def show
-        @user = User.find(params[:id])
+        @user = User.includes(:artist_task_types, :reviews, :clients).with_attached_photo.find(params[:id])
     end
 
     def update

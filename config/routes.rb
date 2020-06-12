@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get 'verification'
       end
     end
+    resources :reviews, only: [:create]
     resources :tasks, only: [:show, :create, :update, :destroy]
     resources :task_types, only: [:show, :index] do
       member do

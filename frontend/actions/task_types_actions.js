@@ -10,10 +10,11 @@ export const receiveTaskTypes = (taskTypes) => ({
     taskTypes
 })
 
-export const receiveTaskType = (res) => ({
+export const receiveTaskType = (res) => {
+    return {
     type: RECEIVE_TASK_TYPE,
     ...res
-})
+}}
 
 export const getTaskTypes = () => dispatch => {
     taskTypesApiUtils.getTaskTypes()

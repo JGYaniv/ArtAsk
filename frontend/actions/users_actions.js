@@ -13,10 +13,10 @@ export const receiveUser = user => {
         user: user
 })}
 
-export const receiveUsers = users => {
+export const receiveUsers = res => {
     return ({
     type: RECEIVE_USERS,
-    users
+    ...res
 })}
 
 export const receiveUsersErrors = errors => ({
@@ -35,7 +35,7 @@ export const getUser = userId => dispatch => (
 
 export const getUsers = () => dispatch => (
     usersApiUtil.getUsers()
-        .then(users => dispatch(receiveUsers(users)))
+        .then(res => dispatch(receiveUsers(res)))
 )
 
 export const postUser = user => dispatch => (

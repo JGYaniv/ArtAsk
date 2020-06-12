@@ -5,10 +5,10 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'
 export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS'
 
-export const receiveCurrentUser = user => {
+export const receiveCurrentUser = res => {
     return({
     type: RECEIVE_CURRENT_USER,
-    user
+    ...res
 })}
 
 export const logoutCurrentUser = () => ({
@@ -30,7 +30,7 @@ export const login = user => dispatch => (
     sessionApiUtil.login(user)
         .then(res => {
             dispatch(receiveCurrentUser(res))
-            window.localStorage.setItem('currentUser', JSON.stringify(res))
+            window.localStorage.setItem('currentUser', JSON.stringify(res.user))
         }, errors => (
             dispatch(receiveSessionErrors(errors.responseJSON))
         ))

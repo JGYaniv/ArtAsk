@@ -28,7 +28,9 @@ export default class BannerCta extends React.Component{
 
     selectTask(taskType) {
         return (e) => {
+            e.preventDefault();
             this.props.selectTaskType(taskType);
+            this.props.history.push("/form")
         }
     }
 

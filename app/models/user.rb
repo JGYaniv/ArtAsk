@@ -14,6 +14,12 @@ class User < ApplicationRecord
     has_many :reviews,
         through: :artist_tasks,
         source: :reviews
+    has_many :artist_task_types,
+        class_name: :ArtistTaskType,
+        foreign_key: :artist_id
+    has_many :clients,
+        through: :reviews,
+        source: :user
 
     def password=(password)
         @password = password

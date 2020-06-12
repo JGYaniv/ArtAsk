@@ -9,12 +9,18 @@ export default ({
     users,
     reviews,
     setArtistForm,
-    setFormStep
+    setFormStep,
+    taskTypeId
 }) => {
     let artistList = [];
     if (Object.values(users).length > 0){
         let userList = Object.values(users)
-        let artists = userList.filter(user => user.account_type === "artist")
+        let artists = userList.filter(user => {
+            debugger
+            return (user.account_type === "artist") && 
+                (user.task_types.includes(taskTypeId))
+            }
+        )
         artistList = artists.map((artist, idx) => {
             let firstReview = (artist.review_ids ? reviews[artist.review_ids[0]] : "")
             let handleSelect = () => {

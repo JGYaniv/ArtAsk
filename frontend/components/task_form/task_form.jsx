@@ -18,7 +18,6 @@ export default class TaskForm extends React.Component {
 
     componentWillMount(){
         if (Boolean(this.props.taskTypeId)){
-            // this.props.getTaskTypeArtists(this.props.taskTypeId)
             this.props.getTaskType(this.props.taskTypeId)
         }
     }
@@ -26,6 +25,13 @@ export default class TaskForm extends React.Component {
     componentDidUpdate(){
         window.localStorage.setItem("task_form", JSON.stringify(this.props.taskForm))
     }
+
+    // componentWillUnmount(){
+    //     debugger
+    //     window.localStorage.setItem("task_form", "");
+    //     this.props.clearTaskType();
+    //     this.props.clearTaskForm();
+    // }
 
     render(){
         if (Boolean(this.props.taskTypeId)){

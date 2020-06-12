@@ -1,0 +1,94 @@
+.review{
+    background-color: #f7f7f7;
+    top: 70px;
+}
+.review-modal{
+    background-color: white;
+    padding: 35px 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    h1{
+        font-family: Khula, sans-serif;
+        font-weight: 300;
+        letter-spacing: 1px;
+        font-size: 28px;
+        margin: 0;
+        padding: 0;
+    }
+    h2{
+        font-family: khula, sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+        text-align: center;
+        
+    }
+    .stars{
+        flex-flow: row;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .review-modal-header{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        border-bottom: 1px solid lightgray;
+        text-align: center;
+        padding-bottom: 20px;
+        .artist-photo{
+            img{
+                height: 45px;
+                width: 45px;
+                border-radius: 50%;
+                padding: 2px;
+                border: solid lightgray 1px;
+            }
+        }
+    }
+    .rating-section{
+        li{
+            color:mediumslateblue;
+            letter-spacing: 5px;
+            font-size: 40px;
+            cursor: pointer;
+        }
+        p{
+            height: 22px;
+            width: 100%;
+        }
+    }
+    .description-section{
+        margin-bottom: 15px;
+        min-width: 635px;
+        padding: 0 160px;
+        textarea{
+            height: 150px;
+        }
+    }
+    button{
+        align-self: center;
+        background-color: mediumslateblue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        height: 45px;
+        width: 115px;
+        font-size: 18px;
+        line-height: 2.9;
+    }
+    button:hover{
+        cursor:pointer;
+        background-color: rgb(66, 50, 158);
+    }
+}

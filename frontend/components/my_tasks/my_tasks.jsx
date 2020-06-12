@@ -9,7 +9,7 @@ export default ({
     currentTasks,
     currentUser,
     users,
-    taskTypes
+    taskTypes,
 }) => {
     const [activeTab, setActiveTab] = useState("current")
 
@@ -31,7 +31,7 @@ export default ({
             task={task} 
             taskType={taskTypes[task.task_type_id]} 
             artist={users[task.artist_id]}
-            mode="completed" 
+            mode="completed"
         />
     )
 
@@ -44,11 +44,10 @@ export default ({
         <li key={200000}  className={`completed-tab ${activeTab === "completed" ? "activated" : ""}`} onClick={e => setActiveTab("completed")}>COMPLETED</li>
     ]
 
-    useEffect(()=>{
-        if (currentTasksList && currentTasksList.length === 0) {
-            currentTasksList = [<img key="666" src="https://i.imgur.com/TQT2wQ8.jpg" />]
-        }
-    })
+    if (currentTasksList && currentTasksList.length === 0) {
+        currentTasksList = [<img key="666" src="https://i.imgur.com/TQT2wQ8.jpg" />]
+    }
+
     return (
         <div className="my-tasks-page">
             <nav className="my-tasks-nav">

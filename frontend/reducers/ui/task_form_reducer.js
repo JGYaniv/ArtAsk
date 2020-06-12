@@ -13,7 +13,7 @@ import {
 
 import { RECEIVE_TASK } from '../../actions/tasks_actions'
 
-const defaultState = {
+const emptyState = {
     task_type_id: "",
     form_step: "",
     focus_section: "",
@@ -36,10 +36,13 @@ const defaultState = {
 
 export default (initialState = {}, action) => {
     Object.freeze(initialState)
+    Object.freeze(emptyState)
+
     let newState;
     switch (action.type) {
         case SELECT_TASK_TYPE:
-            newState = Object.assign({}, defaultState, { task_type_id: action.taskType.id })
+            let defaultCopy = Object.assign({}, emptyState)
+            newState = Object.assign({}, defaultCopy, { task_type_id: action.taskType.id })
             window.localStorage.setItem("task_form", JSON.stringify(newState))
             return newState;
         case RECEIVE_DESCRIBE_FORM:
@@ -65,11 +68,11 @@ export default (initialState = {}, action) => {
         case CLEAR_TASK_TYPE:
             return Object.assign({}, initialState, { task_type_id: "" });
         case CLEAR_TASK_FORM:
-            window.localStorage.setItem("task_form", JSON.stringify(defaultState))
-            return Object.assign({}, defaultState);
+            window.localStorage.setItem("task_form", "")
+            return {};
         case RECEIVE_TASK:
-            window.localStorage.setItem("task_form", JSON.stringify(defaultState))
-            return Object.assign({}, defaultState);
+            window.localStorage.setItem("task_form", "")
+            return {};
         default:
             return initialState;
     }

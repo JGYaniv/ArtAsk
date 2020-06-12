@@ -1,1 +1,1 @@
-@review.extract! review, :id, :artist_id, :details, :rating, :task_id
+json.extract! @review, :id, :artist_id, :details, :rating, :task_id

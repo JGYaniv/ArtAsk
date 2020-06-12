@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import TaskForm from './task_form'
 import { postTask } from '../../actions/tasks_actions'
 import { openModal, closeModal } from '../../actions/modal_actions'
-import { getTaskTypeArtists, getTaskType } from '../../actions/task_types_actions'
+import { getTaskType } from '../../actions/task_types_actions'
 import { 
     receiveDescribeForm, 
     updateDescribeForm,
@@ -10,6 +10,8 @@ import {
     receiveTimeForm, 
     receiveFormStep,
     receiveTaskForm, 
+    clearTaskForm,
+    clearTaskType,
     receiveTaskFormErrors, 
     receiveTaskFormError, 
     clearTaskFormErrors,
@@ -31,9 +33,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    getTaskTypeArtists: taskTypeId => dispatch(getTaskTypeArtists(taskTypeId)),
     getTaskType: taskTypeId => dispatch(getTaskType(taskTypeId)),
-    receiveTaskForm: taskForm => dispatch(receiveTaskForm(taskForm)),
+    clearTaskForm: () => dispatch(clearTaskForm()),
+    clearTaskType: () => dispatch(clearTaskType()),
     setDescribeForm: describe => dispatch(receiveDescribeForm(describe)),
     updateDescribeForm: describe => dispatch(updateDescribeForm(describe)),
     setArtistForm: artist => dispatch(receiveArtistForm(artist)),

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 export default ({
     task,
-    taskType = {title: ""},
+    taskType,
     artist,
     deleteTask,
     updateTask,
@@ -18,7 +18,10 @@ export default ({
     const hide = () => setExpanded(false)
     const show = () => setExpanded(true)
     const remove = () => {deleteTask(task.id) ; hide()}
-    const complete = () => {updateTask({ id: task.id, completed: true }) ; hide}
+    const complete = () => { 
+        updateTask({ id: task.id, completed: true }) ; 
+        hide() ;
+    }
 
     const ExpandedMenu = () => (
         <>
@@ -48,7 +51,7 @@ export default ({
         <div className="task-item">
             <div className="header">
                 <div className="title">
-                    <h1>{taskType.title}</h1>
+                    <h1>{taskType ? taskType.title : ""}</h1>
                     {mode === "completed" ? "" : (
                         <div className="menu-button" 
                             tabIndex="0"

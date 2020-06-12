@@ -1,7 +1,8 @@
 import * as tasksApiUtil from '../utils/tasks_api_utils'
 import {clearTaskForm} from  './task_form_actions'
 import {receiveUsers} from './users_actions'
-
+import { openModal} from './modal_actions'
+import { taskToReviewForm } from './reviews_actions'
 export const REMOVE_TASK = 'REMOVE_TASK';
 export const RECEIVE_TASK = 'RECEIVE_TASK';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
@@ -49,7 +50,8 @@ export const getTasks = (userId) => dispatch => (
 export const postTask = task => dispatch => (
     tasksApiUtil.postTask(task)
         .then(task => dispatch(receiveTask(task)))
-        .then(() => dispatch(clearTaskForm()))
+        .then(() => {
+            return dispatch(clearTaskForm())})
         .fail(errors => {
             dispatch(receiveTasksErrors(errors.responseJSON))
         })
@@ -60,6 +62,8 @@ export const updateTask = task => dispatch => (
         .then(task => {
             dispatch(receiveTask(task))
         })
+        .then(() => dispatch(taskToReviewForm(task)))
+        .then(() => dispatch(openModal("reviewTask")))
         .fail(errors => {
             dispatch(receiveTasksErrors(errors.responseJSON))
         })

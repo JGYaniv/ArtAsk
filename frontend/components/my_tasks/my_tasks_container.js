@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import MyTasks from './my_tasks'
 import { getTasks, deleteTask, updateTask} from '../../actions/tasks_actions'
+import {openModal} from '../../actions/modal_actions'
 
 const mapStateToProps = state => ({
     tasks: state.entities.tasks,

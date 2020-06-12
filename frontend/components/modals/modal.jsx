@@ -1,12 +1,14 @@
 import React from 'react';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { postUser } from '../../actions/users_actions'
+import { postReview } from '../../actions/reviews_actions'
 import { receiveFormStep, receiveTimeForm } from '../../actions/task_form_actions'
 import { login, clearSessionErrors } from '../../actions/session_actions'
 import { connect } from 'react-redux';
 import Login from './login_modal';
 import Signup from './signup_modal';
 import SelectTime from './select_time_modal';
+import Review from './review_modal';
 
 const Modal = ({ 
     modal, 
@@ -20,7 +22,13 @@ const Modal = ({
     setTimeForm, 
     setFormStep,
     users,
-    taskForm
+    tasks,
+    taskForm,
+    postReview,
+    reviewTaskId,
+    reviewTask,
+    reviewArtist,
+    currentUser
 }) => {
     if (!modal) {
         return null;
@@ -54,10 +62,23 @@ const Modal = ({
                 users={users}
                 taskForm={taskForm}/>
             break;
+        case 'reviewTask':
+            component = <Review 
+                closeModal={closeModal}
+                errors={errors}
+                clearErrors={clearErrors}
+                postReview={postReview}
+                reviewTaskId={reviewTaskId}
+                reviewTask={reviewTask}
+                reviewArtist={reviewArtist}
+                users={users}
+                tasks={tasks}
+                currentUser={currentUser} />
+            break;
         default:
             return null;
     }
-
+    const modalClass = modal === "reviewTask" ? "review modal-background" : "modal-background"
     return (
         <>
             <div className="modal-background" onClick={closeFormModal}>
@@ -70,11 +91,17 @@ const Modal = ({
 }
 
 const mapStateToProps = state => {
+    let reviewTask = state.ui.review_form ? state.entities.tasks[state.ui.review_form.id] : undefined;
     return {
         modal: state.ui.modal,
         errors: state.errors.session,
         taskForm: state.ui.task_form,
-        users: state.entities.users
+        users: state.entities.users,
+        tasks: state.entities.tasks,
+        reviewTaskId: state.ui.review_form.id,
+        currentUser: state.session.currentUser,
+        reviewTask: reviewTask,
+        reviewArtist: reviewTask ? state.entities.users[reviewTask.artist_id] : "",
     };
 };
 
@@ -87,6 +114,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(receiveFormStep(2));
         },
         postUser: user => dispatch(postUser(user)),
+        postReview: review => dispatch(postReview(review)),
         login: user => dispatch(login(user)),
         clearErrors: () => dispatch(clearSessionErrors()),
         setTimeForm: (time) => dispatch(receiveTimeForm(time)),
