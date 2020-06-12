@@ -35,6 +35,8 @@ Page for managing tasks, marking them as completed or deleting, and reviewing.
 #### Account Page
 Page for managing your account, including editing profile info, changing password, and deleting account.
 
+<p align="center"><img width="400px" src="app/assets/images/gifs/account_page.gif"/></p>
+
 #
 
 #### CTA Banners
