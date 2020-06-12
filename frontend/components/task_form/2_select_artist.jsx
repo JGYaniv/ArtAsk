@@ -16,7 +16,6 @@ export default ({
     if (Object.values(users).length > 0){
         let userList = Object.values(users)
         let artists = userList.filter(user => {
-            debugger
             return (user.account_type === "artist") && 
                 (user.task_types.includes(taskTypeId))
             }
