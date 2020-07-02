@@ -4,6 +4,11 @@
     <title>ArtTask</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta property="og:title" content="ArtAsk" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://artasks.herokuapp.com/" />
+    <meta property="og:image" content="https://i.imgur.com/MheUifd.png" />
+    <meta property="og:description" content="ArtAsk is platform for nonprofits to find artists to volunteer their talents." />    
     <% mapscall = "https://maps.googleapis.com/maps/api/js?key=" + Rails.application.credentials.google_maps_api + "&libraries=places" %>
     <script type='text/javascript' src="<%= mapscall %>"></script>
     <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
