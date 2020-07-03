@@ -17,8 +17,8 @@ export default (props) => {
 
     const timeToString = () => {
         let hours = parseInt(time.slice(0,2), 10)
-        if (hours > 12){
-            return `${hours % 12}:00pm`
+        if (hours >= 12){
+            return `${hours % 13}:00pm`
         } else if (hours < 10) {
             return `${time.slice(1,2)}:00am`
         } else {
