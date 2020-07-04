@@ -68,9 +68,9 @@ export default ({
                     )}
                 </div>
 
-                <div className="summary">
+                <div className="summary" onClick={() => window.open(`#/artist/${artist.id}`)}>
                     <span>
-                        <img src={artist.photo_url} />
+                        <img src={artist.photo_url}/>
                         <h2>{artist.first_name} {artist.last_name.slice(0,1)}</h2>
                     </span>
 

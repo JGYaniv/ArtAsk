@@ -75,7 +75,7 @@ export default ({
 
             <div className="confirm-sidebar">
                 <div className="form-section">
-                    <div className="artist-details">
+                    <div className="artist-details" onClick={() => window.open(`#/artist/${selectedArtist.id}`)}>
                         <div className="summary">
                             <h1>{Boolean(taskType) ? taskType.title : ""}</h1>
                             <h3>{selectedArtist.first_name} {selectedArtist.last_name.slice(0,1)}.</h3>

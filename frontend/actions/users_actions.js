@@ -1,11 +1,20 @@
 import * as usersApiUtil from '../utils/users_api_utils'
 import {login, logout, receiveCurrentUser, receiveSessionErrors} from './session_actions'
 import { clearTaskForm } from './task_form_actions';
+import { receiveReviews } from './reviews_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const RECEIVE_USERS_ERRORS = 'RECEIVE_USERS_ERRORS';
 export const CLEAR_USER_ERRORS = 'CLEAR_USER_ERRORS';
+export const RECEIVE_CURRENT_ARTIST = 'RECEIVE_CURRENT_ARTIST';
+
+export const receiveArtistUser = artist => {
+    return({
+        type: RECEIVE_CURRENT_ARTIST,
+        artistId: artistId
+    })
+}
 
 export const receiveUser = user => {
     return ({
@@ -30,7 +39,7 @@ export const clearUsersErrors = () => ({
 
 export const getUser = userId => dispatch => (
     usersApiUtil.getUser(userId)
-        .then(user => dispatch(receiveUser(user)))
+        .then(res => dispatch(receiveUsers(res)))
 )
 
 export const getUsers = () => dispatch => (

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import FeaturedArtists from '../featured_artists/featured_artists'
 
 export default class BannerCta extends React.Component{
     constructor(props){
@@ -12,6 +13,7 @@ export default class BannerCta extends React.Component{
 
     componentWillMount(){
         this.props.getTaskTypes();
+        this.props.getUsers();
     }
 
     clicker(e){
@@ -37,7 +39,7 @@ export default class BannerCta extends React.Component{
 
 
     render(){
-        let filteredTaskTypes = this.props.taskTypes;
+        let filteredTaskTypes = this.props.taskTypesArr;
 
         if (this.state.search.length > 0){
             let regex = RegExp(`${this.state.search.toLowerCase()}`)
@@ -55,24 +57,27 @@ export default class BannerCta extends React.Component{
         })
         
         return(
-            <div className="explorer-background-image">
-                <div className="explorer-dash">
-                    <h1>Book Your Next Task</h1>
-                    <form className="explorer-form" onBlur={this.leave} onFocus={this.clicker}>
-                        <input className="dash-input" type="text" 
-                            placeholder="What do you need help with?"
-                            onChange={e => this.setState({search: e.target.value})}/>
-                        <div className="mag-glass">🔎</div>
-                        <ul  className={this.state.drop ? "reveal" : "hide"}>
-                            {taskTypes.length > 0 ? taskTypes : (
-                                <li key="w@">
-                                    <a href="#" onClick={e => e.preventDefault()}>☠️ no results, please try again ☠️</a>
-                                </li>
-                            )}
-                        </ul>
-                    </form>
+            <>
+                <div className="explorer-background-image">
+                    <div className="explorer-dash">
+                        <h1>Book Your Next Task</h1>
+                        <form className="explorer-form" onBlur={this.leave} onFocus={this.clicker}>
+                            <input className="dash-input" type="text" 
+                                placeholder="What do you need help with?"
+                                onChange={e => this.setState({search: e.target.value})}/>
+                            <div className="mag-glass">🔎</div>
+                            <ul  className={this.state.drop ? "reveal" : "hide"}>
+                                {taskTypes.length > 0 ? taskTypes : (
+                                    <li key="w@">
+                                        <a href="#" onClick={e => e.preventDefault()}>☠️ no results, please try again ☠️</a>
+                                    </li>
+                                )}
+                            </ul>
+                        </form>
+                    </div>
                 </div>
-            </div>
+                <FeaturedArtists artists={this.props.artists} taskTypes={this.props.taskTypes} />
+            </>
         )
     }
 }

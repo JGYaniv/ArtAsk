@@ -1,0 +1,87 @@
+.featured-artists-section-background{
+  background-color: #f7f7f7;
+}
+
+.featured-artists-section {
+  padding: 40px 0 80px 0;
+  margin: 0 10%;
+  h1 {
+    margin: 0;
+    font-weight: 200;
+    margin-top: 10px;
+  }
+}
+
+.featured-artists {
+  margin-top: 10px;
+  display: flex;
+}
+
+.featured-artist {
+  background-color: white;
+  border: 1px solid lightgray;
+  margin-right: 40px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 30%;
+  display: flex;
+  flex-flow: column;
+
+  img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 190px;
+    width: 190px;
+    margin: 0 auto;
+  }
+
+  button {
+    background-color: mediumslateblue;
+    color: white;
+    border: none;
+    height: 45px;
+    border-radius: 4px;
+    font-size: 18px;
+    line-height: 2.7;
+    font-weight: 500;
+    width: 190px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    background-color: rgb(88, 73, 171);
+    cursor: pointer;
+  }
+  h4 {
+    display: inline-block;
+    margin-bottom: 0;
+    font-family: Khula, sans-serif;
+    margin-top: 20px;
+  }
+  ul {
+    margin: 5px 0;
+    padding: 0;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+  }
+  p {
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+  }
+  a {
+    padding-top: 10px;
+    margin-top: auto;
+    text-align: center;
+  }
+
+  a:hover {
+    color: mediumslateblue;
+    text-decoration: underline;
+  }
+}
+
+.featured-artist:last-child {
+  margin-right: 0;
+}

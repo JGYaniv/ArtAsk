@@ -88,6 +88,7 @@ form.explorer-form{
     background-repeat: no-repeat;
     background-position-y: top;
     background-size: 1000px 575px;
+    border-bottom: 1px solid lightgray;
 }
 
 .explorer-dash{
@@ -95,6 +96,7 @@ form.explorer-form{
     height: 365px;
     margin: 0 auto;
     margin-top: 75px;
+
     h1{
         font-weight: 400;
         text-align: center;
