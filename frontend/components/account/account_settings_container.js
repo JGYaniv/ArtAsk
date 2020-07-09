@@ -4,6 +4,7 @@ import {logout, clearSessionErrors} from '../../actions/session_actions'
 import {deleteUser, updateUser, clearUsersErrors} from '../../actions/users_actions'
 
 const mapStateToProps = state => ({
+    users: state.entities.users,
     currentUser: state.entities.users[state.session.currentUser.id],
     sessionErrors: state.errors.session,
     userErrors: state.errors.user

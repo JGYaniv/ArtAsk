@@ -43,7 +43,7 @@ export default class BannerCta extends React.Component{
 
         if (this.state.search.length > 0){
             let regex = RegExp(`${this.state.search.toLowerCase()}`)
-            filteredTaskTypes = this.props.taskTypes.filter((taskType) => {
+            filteredTaskTypes = this.props.taskTypesArr.filter((taskType) => {
                 if (regex.test(taskType.title.toLowerCase())){
                     return taskType
                 // } else if (regex.test(taskType.description.toLowerCase())){

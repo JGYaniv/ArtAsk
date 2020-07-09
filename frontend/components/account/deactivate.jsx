@@ -12,7 +12,7 @@ export default (props) => {
     return (
         <div className='deactive-account'>
             <h2>Account Deactivation</h2>
-            <p>Once you click the deactivate button, your account will be immediately and irrevocably removed from existence (and possibly banished to the phantome zone).</p>
+            <p>Once you click the deactivate button, your account will be immediately and irrevocably removed from existence (and possibly banished to the phantom zone).</p>
             <button onClick={handleSubmit}>Deactivate Account</button>
         </div>
     )

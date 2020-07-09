@@ -14,7 +14,7 @@ export default class MenuBar extends React.Component{
                         <a href="/"><img src="https://i.imgur.com/sh8ARuh.png" className="nav-logo" /></a>
                         <nav>
                             <a href="#/a/">Log In</a>
-                            <a href="#/" className="volunteerButton">Volunteer with us!</a>
+                            {/* <a href="#/" className="volunteerButton">Volunteer with us!</a> */}
                         </nav>
                     </div>
                 </div>
